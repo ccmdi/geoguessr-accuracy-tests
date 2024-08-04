@@ -3,5 +3,55 @@
     "all": 250,
     "nm": 190,
     "nmpz": 60
+  },
+  "tests": {
+    "AUG_23": {
+      "year": "2023",
+      "month": "August"
+    },
+    "SEP_23": {
+      "year": "2023",
+      "month": "September"
+    },
+    "OCT_23": {
+      "year": "2023",
+      "month": "October"
+    },
+    "NOV_23": {
+      "year": "2023",
+      "month": "November"
+    },
+    "DEC_23": {
+      "year": "2023",
+      "month": "December"
+    },
+    "JAN_24": {
+      "year": "2024",
+      "month": "January"
+    },
+    "FEB_24": {
+      "year": "2024",
+      "month": "February"
+    },
+    "MAR_24": {
+      "year": "2024",
+      "month": "March"
+    },
+    "APR_24": {
+      "year": "2024",
+      "month": "April"
+    },
+    "MAY_24": {
+      "year": "2024",
+      "month": "May"
+    },
+    "JUN_24": {
+      "year": "2024",
+      "month": "June"
+    },
+    "JUL_24": {
+      "year": "2024",
+      "month": "July"
+    }
   }
 }

@@ -3,238 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player Lifetime Stats</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        .tab-container {
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .tab-menu {
-            display: flex;
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #ddd;
-        }
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            border: none;
-            background-color: transparent;
-            transition: background-color 0.3s;
-        }
-        .tab:hover {
-            background-color: #e0e0e0;
-        }
-        .tab.active {
-            background-color: #fff;
-            border-bottom: 2px solid #007bff;
-        }
-        .submenu {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-radius: 0 0 5px 5px;
-        }
-        .submenu.active {
-            display: block;
-        }
-        .submenu-item {
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        .submenu-item:hover {
-            background-color: #f0f0f0;
-        }
-        .content {
-            padding: 20px;
-        }
-        table {
-            border-collapse: separate;
-            border-spacing: 0;
-            width: 100%;
-            margin-top: 20px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-        }
-        th {
-            background-color: #007bff;
-            color: #ffffff;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.85em;
-            letter-spacing: 0.5px;
-        }
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        tr:hover {
-            background-color: #e9ecef;
-        }
-        td {
-            border-bottom: 1px solid #dee2e6;
-        }
-        tr:last-child td {
-            border-bottom: none;
-        }
-        .top-1 {
-            font-weight: 900;
-        }
-        .top-2 {
-            font-weight: 800;
-        }
-        .top-3 {
-            font-weight: 700;
-        }
-    </style>
+    <title>GeoGuessr accuracy test</title>
+    <link rel="stylesheet" href="main.css"></link>
 </head>
 <body>
     <div class="tab-container">
         <div class="tab-menu">
-            <div class="tab" id="modes-tab">Modes</div>
-        </div>
-        <div class="submenu" id="modes-submenu">
-            <div class="submenu-item active" data-file="PLAYER_LIFETIME.csv">All</div>
-            <div class="submenu-item" data-file="PLAYER_LIFETIME_NM.csv">NM</div>
-            <div class="submenu-item" data-file="PLAYER_LIFETIME_NMPZ.csv">NMPZ</div>
+            <div class="tab" id="modes-tab">Modes
+                <div class="submenu" id="modes-submenu">
+                    <div class="submenu-item active" data-file="PLAYER_LIFETIME.csv">All</div>
+                    <div class="submenu-item" data-file="PLAYER_LIFETIME_NM.csv">NM</div>
+                    <div class="submenu-item" data-file="PLAYER_LIFETIME_NMPZ.csv">NMPZ</div>
+                </div>
+            </div>
+            <div class="tab" id="special-tab">Special
+                <div class="submenu" id="special-submenu">
+                    <div class="submenu-item" data-file="GAME_SUM.csv">Game summary</div>
+                    <div class="submenu-item" data-file="PLAYER_HEDGE.csv">Hedge</div>
+                </div>
+            </div>
+            <div class="tab" id="records-tab">Records
+                <div class="submenu" id="records-submenu">
+                    <div class="submenu-item" data-file="GAME_SUM.csv">Highest scoring games</div>
+                </div>
+            </div>
         </div>
         <div class="content">
+            <h1 id="csvTitle"></h1>
             <table id="csvTable"></table>
         </div>
     </div>
+    </div>
 
-    <script>
-        let SEEDS;
-        const MODES = {
-            MIN_THRESHOLD: 1/3,
-            LIMIT: 15,
-            HEADERS: ['Player name', 'Accuracy', 'Games played']
-        }
-
-        async function global() {
-            try {
-                SEEDS = await fetch(`./static/json/precomp.json`)
-                    .then(response => response.text())
-                    .then(json => {
-                        return JSON.parse(json);
-                    });
-                
-                loadCSV('PLAYER_LIFETIME.csv');
-
-            } catch (error) {
-                console.error('Error fetching SEEDS:', error);
-            }
-        }
-
-        function loadCSV(file) {
-            fetch(`./static/csv/views/${file}`)
-                .then(response => response.text())
-                .then(csv => {
-                    const rows = csv.split('\n').map(row => row.split(','));
-                    displayCSV(file, rows);
-                })
-                .catch(error => console.error('Error fetching CSV:', error));
-        }
-
-        function displayCSV(file, data) {
-            const table = document.getElementById('csvTable');
-            table.innerHTML = '';
-
-            switch(file) {
-                case 'PLAYER_LIFETIME_NMPZ.csv':
-                    displayLeaderboard(table, data, 'nmpz');
-                    break;
-                case 'PLAYER_LIFETIME_NM.csv':
-                    displayLeaderboard(table, data, 'nm');
-                    break;
-                case 'PLAYER_LIFETIME.csv':
-                    displayLeaderboard(table, data, 'all');
-                    break;
-                default:
-                    displayDefault(table, data);
-            }
-        }
-
-        function displayLeaderboard(table, data, mode) {
-            // Sorts and filters data
-            data = data.slice(1)
-                .filter(row => parseInt(row[4]) >= SEEDS['seedCount'][mode] / (1/ MODES.MIN_THRESHOLD))
-                .sort((a, b) => parseFloat(b[5]) - parseFloat(a[5]));
-
-            const headers = MODES.HEADERS;
-            const tr = table.insertRow();
-            headers.forEach(header => {
-                const th = document.createElement('th');
-                th.textContent = header;
-                tr.appendChild(th);
-            });
-
-            data.slice(0, MODES.LIMIT).forEach((row, index) => {
-                const tr = table.insertRow();
-                [1, 5, 4].forEach((colIndex, cellIndex) => {
-                    const td = document.createElement('td');
-                    switch (colIndex) {
-                        case 5:
-                            td.textContent = `${Number(row[colIndex] * 100).toFixed(2)}%`;
-                            break;
-                        default:
-                            td.textContent = row[colIndex];
-                    }
-                    if (cellIndex === 0) {  // Apply styling to player names
-                        if (index === 0) td.classList.add('top-1');
-                        else if (index === 1) td.classList.add('top-2');
-                        else if (index === 2) td.classList.add('top-3');
-                    }
-                    tr.appendChild(td);
-                });
-            });
-        }
-
-        function displayDefault(table, data) {
-            const tr = table.insertRow();
-            data[0].forEach(header => {
-                const th = document.createElement('th');
-                th.textContent = header;
-                tr.appendChild(th);
-            });
-
-            data.slice(1).forEach(row => {
-                const tr = table.insertRow();
-                row.forEach(cell => {
-                    const td = document.createElement('td');
-                    td.textContent = cell;
-                    tr.appendChild(td);
-                });
-            });
-        }
-
-        document.getElementById('modes-tab').addEventListener('click', function() {
-            document.getElementById('modes-submenu').classList.toggle('active');
-        });
-
-        document.querySelectorAll('.submenu-item').forEach(item => {
-            item.addEventListener('click', () => {
-                document.querySelectorAll('.submenu-item').forEach(t => t.classList.remove('active'));
-                item.classList.add('active');
-                const file = item.getAttribute('data-file');
-                loadCSV(file);
-                document.getElementById('modes-submenu').classList.remove('active');
-            });
-        });
-        
-        global();
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
