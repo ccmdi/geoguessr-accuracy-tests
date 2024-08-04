@@ -8,6 +8,11 @@ const HEDGE = {
     LIMIT: 10,
     HEADERS: ['Player name', 'Streak length', 'Streak start', 'Streak end']
 }
+const ROUNDS = {
+    MIN_THRESHOLD: 1/4,
+    LIMIT: 10,
+    HEADERS: ['Player name', 'Median round score', 'Rounds played']
+}
 const HIGHEST_SCORING_GAMES = {
     LIMIT: 10,
     HEADERS: ['Player name', 'Score', 'Game']
@@ -33,31 +38,35 @@ function loadCSV(file) {
         .then(response => response.text())
         .then(csv => {
             const rows = csv.split('\n').map(row => row.split(','));
-            displayCSV(file, rows);
+            displayCSV(rows);
         })
         .catch(error => console.error('Error fetching CSV:', error));
 }
 
-function displayCSV(file, data) {
+function displayCSV(data) {
     const table = document.getElementById('csvTable');
     const tableTitle = document.getElementById('csvTitle');
+    const active = document.querySelector('.submenu-item.active').getAttribute('id');
     table.innerHTML = '';
     tableTitle.innerHTML = '';
 
-    switch(file) {
-        case 'PLAYER_LIFETIME_NMPZ.csv':
+    switch(active) {
+        case 'player-nmpz':
             displayLeaderboard(table, data, 'nmpz');
             break;
-        case 'PLAYER_LIFETIME_NM.csv':
+        case 'player-nm':
             displayLeaderboard(table, data, 'nm');
             break;
-        case 'PLAYER_LIFETIME.csv':
+        case 'player-lifetime':
             displayLeaderboard(table, data, 'all');
             break;
-        case 'GAME_SUM.csv':
+        case 'highest-scoring-games':
             displayGames(table, data);
             break;
-        case 'PLAYER_HEDGE.csv':
+        case 'player-rounds':
+            displayRounds(table, data);
+            break;
+        case 'player-hedge':
             displayHedge(table, data);
             break;
         default:
@@ -68,7 +77,7 @@ function displayCSV(file, data) {
 function displayLeaderboard(table, data, mode) {
     // Sorts and filters data
     data = data.slice(1)
-        .filter(row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode] / (1/ MODES.MIN_THRESHOLD))
+        .filter(row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode] * MODES.MIN_THRESHOLD)
         .sort((a, b) => parseFloat(b[5]) - parseFloat(a[5]));
 
     switch(mode){
@@ -221,6 +230,52 @@ function displayGames(table, data) {
     });
 }
 
+function displayRounds(table, data) {
+    data = data.slice(1)
+        .filter(row => parseInt(row[2]) >= PRECOMPUTE['seedCount']['all'] * MODES.MIN_THRESHOLD)
+        .sort((a, b) => parseFloat(b[4]) - parseFloat(a[4]));
+    document.getElementById('csvTitle').innerHTML = `Rounds leaderboard`;
+
+    const headers = ROUNDS.HEADERS;
+    const tr = table.insertRow();
+    tr.classList.add('header-row-rounds');
+    headers.forEach(header => {
+        const th = document.createElement('th');
+        th.classList.add('header-rounds');
+        th.textContent = header;
+        tr.appendChild(th);
+    });
+
+    data.slice(0, ROUNDS.LIMIT).forEach((row, index) => {
+        const tr = table.insertRow();
+        [1, 4, 2].forEach((colIndex, cellIndex) => {
+            const td = document.createElement('td');
+            let link;
+
+            switch (colIndex) {
+                case 1:
+                    link = document.createElement('a');
+                    link.href = "https://geoguessr.com/user/" + row[0];
+                    link.textContent = row[1];
+                    td.appendChild(link);
+                    break;
+                case 4:
+                    td.textContent = Math.round(row[colIndex]);
+                    break;
+                default:
+                    td.textContent = row[colIndex];
+                    break;
+            }
+            if (cellIndex === 0) {  // Apply styling to player names
+                if (index === 0) td.classList.add('top-1');
+                else if (index === 1) td.classList.add('top-2');
+                else if (index === 2) td.classList.add('top-3');
+            }
+            tr.appendChild(td);
+        });
+    });
+}
+
 function displayDefault(table, data) {
     const tr = table.insertRow();
     data[0].forEach(header => {
@@ -274,10 +329,7 @@ document.querySelectorAll('.submenu-item').forEach(item => {
         const file = item.getAttribute('data-file');
         loadCSV(file);
         
-        // Close the submenu after selection
-        setTimeout(() => {
-            closeAllSubmenus();
-        }, 100);  // Short delay to ensure the selection is registered
+        closeAllSubmenus();
 
         e.stopPropagation(); // Prevent the click from closing the submenu immediately
     });
