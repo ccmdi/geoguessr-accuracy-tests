@@ -1,0 +1,1 @@
+Static DB. [Stats hosted here](https://ccmdi.github.io/geoguessr-accuracy-tests/).
