@@ -8,10 +8,15 @@ const HEDGE = {
     LIMIT: 10,
     HEADERS: ['Player name', 'Streak length', 'Streak start', 'Streak end']
 }
-const ROUNDS = {
+const AGGR_ROUNDS = {
     MIN_THRESHOLD: 1/4,
     LIMIT: 10,
     HEADERS: ['Player name', 'Median round score', 'Rounds played']
+}
+const AGGR_GAMES = {
+    MIN_THRESHOLD: 1/4,
+    LIMIT: 10,
+    HEADERS: ['Player name', 'Median game score', 'Games played']
 }
 const HIGHEST_SCORING_GAMES = {
     LIMIT: 10,
@@ -63,8 +68,11 @@ function displayCSV(data) {
         case 'highest-scoring-games':
             displayGames(table, data);
             break;
+        case 'player-games':
+            displayAggr(table, data, 'games');
+            break;
         case 'player-rounds':
-            displayRounds(table, data);
+            displayAggr(table, data, 'rounds');
             break;
         case 'player-hedge':
             displayHedge(table, data);
@@ -230,23 +238,33 @@ function displayGames(table, data) {
     });
 }
 
-function displayRounds(table, data) {
+function displayAggr(table, data, mode) {
+    let SETTINGS;
+    switch(mode){
+        case 'rounds':
+            SETTINGS = AGGR_ROUNDS;
+            document.getElementById('csvTitle').innerHTML = `Rounds aggregate leaderboard`;
+            break;
+        case 'games':
+            SETTINGS = AGGR_GAMES;
+            document.getElementById('csvTitle').innerHTML = `Games aggregate leaderboard`;
+            break;
+    }
     data = data.slice(1)
-        .filter(row => parseInt(row[2]) >= PRECOMPUTE['seedCount']['all'] * MODES.MIN_THRESHOLD)
+        .filter(row => parseInt(row[2]) >= PRECOMPUTE['seedCount']['all'] * SETTINGS.MIN_THRESHOLD)
         .sort((a, b) => parseFloat(b[4]) - parseFloat(a[4]));
-    document.getElementById('csvTitle').innerHTML = `Rounds leaderboard`;
 
-    const headers = ROUNDS.HEADERS;
+    const headers = SETTINGS.HEADERS;
     const tr = table.insertRow();
-    tr.classList.add('header-row-rounds');
+    tr.classList.add('header-row-aggr'+mode);
     headers.forEach(header => {
         const th = document.createElement('th');
-        th.classList.add('header-rounds');
+        th.classList.add('header-aggr'+mode);
         th.textContent = header;
         tr.appendChild(th);
     });
 
-    data.slice(0, ROUNDS.LIMIT).forEach((row, index) => {
+    data.slice(0, SETTINGS.LIMIT).forEach((row, index) => {
         const tr = table.insertRow();
         [1, 4, 2].forEach((colIndex, cellIndex) => {
             const td = document.createElement('td');
