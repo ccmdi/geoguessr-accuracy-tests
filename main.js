@@ -13,14 +13,7 @@ const MODES = {
         
         titleElement.innerHTML = 'Accuracy leaderboard'
         const headers = ['Player name', 'Accuracy', 'Games played'];
-        const tr = table.insertRow();
-        tr.classList.add('header-row-'+mode);
-        headers.forEach(header => {
-            const th = document.createElement('th');
-            th.classList.add('header-'+mode);
-            th.textContent = header;
-            tr.appendChild(th);
-        });
+        createHeaders(table, headers, mode);
 
         data.slice(0, MODES.LIMIT).forEach((row, index) => {
             const tr = table.insertRow();
@@ -94,22 +87,13 @@ const MODES = {
 }
 const HEDGE = {
     LIMIT: 10,
-    HEADERS: ['Player name', 'Streak length', 'Streak start', 'Streak end'],
     display(table, data, titleElement) {
         data = data.slice(1)
             .sort((a, b) => parseFloat(b[2]) - parseFloat(a[2]));
         pageTitle.innerHTML = `Hedge`;
         titleElement.innerHTML = 'Streak leaderboard';
 
-        const headers = HEDGE.HEADERS;
-        const tr = table.insertRow();
-        tr.classList.add('header-row-hedge');
-        headers.forEach(header => {
-            const th = document.createElement('th');
-            th.classList.add('header-hedge');
-            th.textContent = header;
-            tr.appendChild(th);
-        });
+        createHeaders(table, ['Player name', 'Streak length', 'Streak start', 'Streak end'], 'hedge');
 
         data.slice(0, HEDGE.LIMIT).forEach((row, index) => {
             const tr = table.insertRow();
@@ -161,14 +145,7 @@ const AGGR = {
             .sort((a, b) => parseFloat(b[4]) - parseFloat(a[4]));
 
         const headers = mode === 'rounds' ? ['Player name', 'Median round score', 'Rounds played'] : ['Player name', 'Median game score', 'Games played'];
-        const tr = table.insertRow();
-        tr.classList.add('header-row-aggr'+mode);
-        headers.forEach(header => {
-            const th = document.createElement('th');
-            th.classList.add('header-aggr'+mode);
-            th.textContent = header;
-            tr.appendChild(th);
-        });
+        createHeaders(table, headers, 'aggr'+mode);
 
         data.slice(0, AGGR.LIMIT).forEach((row, index) => {
             const tr = table.insertRow();
@@ -197,25 +174,15 @@ const AGGR = {
 }
 const HIGH_SCORES = {
     LIMIT: 10,
-    HEADERS: ['Player name', 'Score', 'Game'],
     display(table, data) {
         data = data.slice(1)
-            .sort((a, b) => parseFloat(b[10]) - parseFloat(a[10]));
-        pageTitle.innerHTML = `Highest scoring games`;
+            .sort((a, b) => parseFloat(b[9]) - parseFloat(a[9]));
+        pageTitle.innerHTML = `High scores`;
 
-        const headers = HIGH_SCORES.HEADERS;
-        const tr = table.insertRow();
-        tr.classList.add('header-row-high-scores');
-        headers.forEach(header => {
-            const th = document.createElement('th');
-            th.classList.add('header-high-scores');
-            th.textContent = header;
-            tr.appendChild(th);
-        });
-
+        createHeaders(table, ['Player name', 'Score', 'Game'], 'high-scores');
         data.slice(0, HIGH_SCORES.LIMIT).forEach((row, index) => {
             const tr = table.insertRow();
-            [3, 10, 4].forEach((colIndex, cellIndex) => {
+            [3, 9, 4].forEach((colIndex, cellIndex) => {
                 const td = document.createElement('td');
                 let link;
 
@@ -233,6 +200,44 @@ const HIGH_SCORES = {
                         link.href = row[1];
                         link.textContent = dateStr + roundStr;
                         td.appendChild(link);
+                        break;
+                    default:
+                        td.textContent = row[colIndex];
+                        break;
+                }
+                tr.appendChild(td);
+            });
+        });
+    }
+}
+const TESTS = {
+    LIMIT: 10,
+    display(table, data) {
+        data = data.slice(1)
+            .filter((row) => parseInt(row[4]) >= parseInt(row[5]) * 1/2)
+            .sort((a, b) => parseFloat(b[6]) - parseFloat(a[6]));
+        pageTitle.innerHTML = `Tests`;
+
+        createHeaders(table, ['Player name', 'Accuracy', 'Test date', 'Test games played'], 'test');
+        data.slice(0, TESTS.LIMIT).forEach((row, index) => {
+            const tr = table.insertRow();
+            [2, 6, 0, 4].forEach((colIndex, cellIndex) => {
+                const td = document.createElement('td');
+                let link;
+
+                switch (colIndex) {
+                    case 0:
+                        const dateStr = PRECOMPUTE['tests'][row[colIndex]].month + ' ' + PRECOMPUTE['tests'][row[colIndex]].year;
+                        td.textContent = dateStr;
+                        break;
+                    case 2:
+                        link = document.createElement('a');
+                        link.href = "https://geoguessr.com/user/" + row[1];
+                        link.textContent = row[2];
+                        td.appendChild(link);
+                        break;
+                    case 6:
+                        td.textContent = `${Number(row[colIndex] * 100).toFixed(2)}%`;
                         break;
                     default:
                         td.textContent = row[colIndex];
@@ -262,6 +267,17 @@ const DEFAULT = {
             });
         });
     }
+}
+
+function createHeaders(table, headerNames, rowName) {
+    const tr = table.insertRow();
+    tr.classList.add('header-row-'+rowName);
+    headerNames.forEach(header => {
+        const th = document.createElement('th');
+        th.classList.add('header-'+rowName);
+        th.textContent = header;
+        tr.appendChild(th);
+    });
 }
 
 async function global() {
@@ -322,6 +338,9 @@ function displayCSV(data, table, titleElement, activeId, fileIndex) {
             break;
         case 'player-rounds':
             AGGR.display(table, data, 'rounds', titleElement);
+            break;
+        case 'tests':
+            TESTS.display(table, data, titleElement);
             break;
         case 'player-hedge':
             HEDGE.display(table, data, titleElement);
