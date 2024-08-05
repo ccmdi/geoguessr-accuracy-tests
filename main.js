@@ -368,7 +368,6 @@ function initializeTabs() {
         });
     });
 
-    // Close all tabs when clicking outside
     document.addEventListener('click', function() {
         tabs.forEach(tab => {
             if (!tab.classList.contains('page')) {

@@ -1,19 +1,25 @@
 async function fetchPlayerStats(playerName) {
     const tableContainer = document.getElementById('tableContainer');
     tableContainer.innerHTML = '<p>Loading player stats...</p>';
-
     try {
-        const response = await fetch(`./static/csv/views/PLAYER_LIFETIME.csv`);
-        const csvText = await response.text();
-        const csvData = csvText.split('\n').map(row => row.split(','));
+        const playerLifetime = await loadCSV('PLAYER_LIFETIME_ALL_MODES.csv');
+        const sortedPlayerLifetime = playerLifetime.filter(row => parseInt(row[4]) >= PRECOMPUTE['seedCount']['all'] * 1/3).sort((a, b) => parseFloat(b[5]) - parseFloat(a[5]));
+        const sortedPlayerNMLifetime = playerLifetime.filter(row => parseInt(row[10]) >= PRECOMPUTE['seedCount']['nm'] * 1/3).sort((a, b) => parseFloat(b[11]) - parseFloat(a[11]));
+        const sortedPlayerNMPZLifetime = playerLifetime.filter(row => parseInt(row[16]) >= PRECOMPUTE['seedCount']['nmpz'] * 1/3).sort((a, b) => parseFloat(b[17]) - parseFloat(a[17]));
 
-        let playerData = csvData.find(row => row[1].toLowerCase() === playerName.toLowerCase());
-
+        let playerData = playerLifetime.find(row => row[1].toLowerCase() === playerName.toLowerCase());
         if (!playerData) {
-            playerData = csvData.find(row => row[0].toLowerCase() === playerName.toLowerCase());
+            playerData = playerLifetime.find(row => row[0].toLowerCase() === playerName.toLowerCase());
         }
-
         if (playerData) {
+            const playerRankAll = sortedPlayerLifetime.findIndex(row => row[0] === playerData[0]);
+            const playerRankNM = sortedPlayerNMLifetime.findIndex(row => row[0] === playerData[0]);
+            const playerRankNMPZ = sortedPlayerNMPZLifetime.findIndex(row => row[0] === playerData[0]);
+            
+            playerData.push(playerRankAll === -1 ? 'N/A' : playerRankAll + 1);
+            playerData.push(playerRankNM === -1 ? 'N/A' : playerRankNM + 1);
+            playerData.push(playerRankNMPZ === -1 ? 'N/A' : playerRankNMPZ + 1);
+
             displayPlayerSummary(playerData);
         } else {
             document.getElementById('pageTitle').innerHTML = '';
@@ -55,8 +61,15 @@ function displayPlayerSummary(playerData) {
 
     const stats = [
         ['Games played', playerData[4]],
-        ['Rounds played', playerData[2]],
-        ['Accuracy', `${(parseFloat(playerData[5]) * 100).toFixed(2)}%`],
+        ['Rounds played', playerData[3]],
+        ['Accuracy', `${(parseFloat(playerData[5]) * 100).toFixed(2)}%`,],
+        ['NM accuracy', `${(parseFloat(playerData[11]) * 100).toFixed(2)}%`,],
+        ['NMPZ accuracy', `${(parseFloat(playerData[17]) * 100).toFixed(2)}%`,],
+        ['Accuracy rank', playerData[20]],
+        ['NM accuracy rank', playerData[21]],
+        ['NMPZ accuracy rank', playerData[22]],
+        ['Highest hedge streak', playerData[6]],
+        ['Average hedge streak', playerData[7]]
     ];
 
     stats.forEach(([statName, value]) => {
@@ -68,6 +81,4 @@ function displayPlayerSummary(playerData) {
     });
 
     tableContainer.appendChild(table);
-
-    // Remove the separate profile link since the name is now clickable
 }
