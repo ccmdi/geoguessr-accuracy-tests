@@ -1,26 +1,267 @@
 let PRECOMPUTE;
+const tableContainer = document.getElementById('tableContainer');
+const pageTitle = document.getElementById('pageTitle');
+
 const MODES = {
     MIN_THRESHOLD: 1/3,
-    LIMIT: 15,
-    HEADERS: ['Player name', 'Accuracy', 'Games played']
+    LIMIT: 10,
+    display(table, data, mode, titleElement) {
+            data = data.slice(1)
+            .filter(row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode] * MODES.MIN_THRESHOLD)
+            .sort((a, b) => parseFloat(b[5]) - parseFloat(a[5]));
+        
+        
+        titleElement.innerHTML = 'Accuracy leaderboard'
+        const headers = ['Player name', 'Accuracy', 'Games played'];
+        const tr = table.insertRow();
+        tr.classList.add('header-row-'+mode);
+        headers.forEach(header => {
+            const th = document.createElement('th');
+            th.classList.add('header-'+mode);
+            th.textContent = header;
+            tr.appendChild(th);
+        });
+
+        data.slice(0, MODES.LIMIT).forEach((row, index) => {
+            const tr = table.insertRow();
+            [1, 5, 4].forEach((colIndex, cellIndex) => {
+                const td = document.createElement('td');
+                switch (colIndex) {
+                    case 1:
+                        link = document.createElement('a');
+                        link.href = "https://geoguessr.com/user/" + row[0];
+                        link.textContent = row[1];
+                        td.appendChild(link);
+                        break;
+                    case 5:
+                        td.textContent = `${Number(row[colIndex] * 100).toFixed(2)}%`;
+                        break;
+                    default:
+                        td.textContent = row[colIndex];
+                }
+                tr.appendChild(td);
+            });
+        });
+    },
+    displayAdjusted(table, data, mode, titleElement) {
+        data = data.slice(1)
+                .filter(row => parseInt(row[2]/5) >= PRECOMPUTE['seedCount'][mode] * MODES.MIN_THRESHOLD)
+                .sort((a, b) => parseFloat(b[5]) - parseFloat(a[5]));
+    
+        let offset = 0;
+        if(mode === 'nm') {
+            offset = 1;
+        } else if (mode === 'nmpz') {
+            offset = 2;
+        }
+    
+        titleElement.innerHTML = 'Adjusted accuracy leaderboard'
+        
+        const headers = ['Player name', 'Adjusted accuracy', 'Adjusted games played'];
+        const headerRow = table.insertRow();
+        headerRow.classList.add('header-row-adjusted-'+mode);
+        headers.forEach(header => {
+            const th = document.createElement('th');
+            th.textContent = header;
+            th.classList.add('header-adjusted-'+mode);
+            headerRow.appendChild(th);
+        });
+    
+        data.slice(0, MODES.LIMIT).forEach((row, index) => {
+            const tr = table.insertRow();
+            [1, 5 + (offset * 3), 4 + (offset * 3)].forEach((colIndex, cellIndex) => {
+                const td = document.createElement('td');
+                switch (colIndex) {
+                    case 1:
+                        link = document.createElement('a');
+                        link.href = "https://geoguessr.com/user/" + row[0];
+                        link.textContent = row[1];
+                        td.appendChild(link);
+                        break;
+                    case 4 + (offset * 3):
+                        td.textContent = Math.round(row[colIndex]/5);
+                        break;
+                    case 5 + (offset * 3):
+                        td.textContent = `${Number(row[colIndex] * 100).toFixed(2)}%`;
+                        break;
+                    default:
+                        td.textContent = row[colIndex];
+                }
+                tr.appendChild(td);
+            });
+        });
+    }
 }
 const HEDGE = {
     LIMIT: 10,
-    HEADERS: ['Player name', 'Streak length', 'Streak start', 'Streak end']
+    HEADERS: ['Player name', 'Streak length', 'Streak start', 'Streak end'],
+    display(table, data, titleElement) {
+        data = data.slice(1)
+            .sort((a, b) => parseFloat(b[2]) - parseFloat(a[2]));
+        pageTitle.innerHTML = `Hedge`;
+        titleElement.innerHTML = 'Streak leaderboard';
+
+        const headers = HEDGE.HEADERS;
+        const tr = table.insertRow();
+        tr.classList.add('header-row-hedge');
+        headers.forEach(header => {
+            const th = document.createElement('th');
+            th.classList.add('header-hedge');
+            th.textContent = header;
+            tr.appendChild(th);
+        });
+
+        data.slice(0, HEDGE.LIMIT).forEach((row, index) => {
+            const tr = table.insertRow();
+            [1, 2, 5, 7].forEach((colIndex, cellIndex) => {
+                const td = document.createElement('td');
+                let link;
+
+                switch (colIndex) {
+                    case 1:
+                        link = document.createElement('a');
+                        link.href = "https://geoguessr.com/user/" + row[0];
+                        link.textContent = row[1];
+                        td.appendChild(link);
+                        break;
+                    case 5:
+                    case 7:
+                        const dateStr = PRECOMPUTE['tests'][row[colIndex]].month + ' ' + PRECOMPUTE['tests'][row[colIndex]].year;
+                        const roundStr = " - "+row[colIndex + 1];
+                        link = document.createElement('a');
+                        link.href = colIndex == 5 ? row[3] : row[4];
+                        link.textContent = dateStr + roundStr;
+                        td.appendChild(link);
+                        break;
+                    default:
+                        td.textContent = row[colIndex];
+                        break;
+                }
+                tr.appendChild(td);
+            });
+        });
+    }
 }
-const AGGR_ROUNDS = {
+const AGGR = {
     MIN_THRESHOLD: 1/4,
     LIMIT: 10,
-    HEADERS: ['Player name', 'Median round score', 'Rounds played']
+    display(table, data, mode, titleElement) {
+        switch(mode){
+            case 'rounds':
+                pageTitle.innerHTML = `Rounds`;
+                titleElement.innerHTML = 'Aggregate leaderboard';
+                break;
+            case 'games':
+                pageTitle.innerHTML = `Games`;
+                titleElement.innerHTML = 'Aggregate leaderboard';
+                break;
+        }
+        data = data.slice(1)
+            .filter(row => parseInt(row[2]) >= PRECOMPUTE['seedCount']['all'] * AGGR.MIN_THRESHOLD)
+            .sort((a, b) => parseFloat(b[4]) - parseFloat(a[4]));
+
+        const headers = mode === 'rounds' ? ['Player name', 'Median round score', 'Rounds played'] : ['Player name', 'Median game score', 'Games played'];
+        const tr = table.insertRow();
+        tr.classList.add('header-row-aggr'+mode);
+        headers.forEach(header => {
+            const th = document.createElement('th');
+            th.classList.add('header-aggr'+mode);
+            th.textContent = header;
+            tr.appendChild(th);
+        });
+
+        data.slice(0, AGGR.LIMIT).forEach((row, index) => {
+            const tr = table.insertRow();
+            [1, 4, 2].forEach((colIndex, cellIndex) => {
+                const td = document.createElement('td');
+                let link;
+
+                switch (colIndex) {
+                    case 1:
+                        link = document.createElement('a');
+                        link.href = "https://geoguessr.com/user/" + row[0];
+                        link.textContent = row[1];
+                        td.appendChild(link);
+                        break;
+                    case 4:
+                        td.textContent = Math.round(row[colIndex]);
+                        break;
+                    default:
+                        td.textContent = row[colIndex];
+                        break;
+                }
+                tr.appendChild(td);
+            });
+        });
+    }
 }
-const AGGR_GAMES = {
-    MIN_THRESHOLD: 1/4,
+const HIGH_SCORES = {
     LIMIT: 10,
-    HEADERS: ['Player name', 'Median game score', 'Games played']
+    HEADERS: ['Player name', 'Score', 'Game'],
+    display(table, data) {
+        data = data.slice(1)
+            .sort((a, b) => parseFloat(b[10]) - parseFloat(a[10]));
+        pageTitle.innerHTML = `Highest scoring games`;
+
+        const headers = HIGH_SCORES.HEADERS;
+        const tr = table.insertRow();
+        tr.classList.add('header-row-high-scores');
+        headers.forEach(header => {
+            const th = document.createElement('th');
+            th.classList.add('header-high-scores');
+            th.textContent = header;
+            tr.appendChild(th);
+        });
+
+        data.slice(0, HIGH_SCORES.LIMIT).forEach((row, index) => {
+            const tr = table.insertRow();
+            [3, 10, 4].forEach((colIndex, cellIndex) => {
+                const td = document.createElement('td');
+                let link;
+
+                switch (colIndex) {
+                    case 3:
+                        link = document.createElement('a');
+                        link.href = "https://geoguessr.com/user/" + row[2];
+                        link.textContent = row[3];
+                        td.appendChild(link);
+                        break;
+                    case 4:
+                        const dateStr = PRECOMPUTE['tests'][row[colIndex]].month + ' ' + PRECOMPUTE['tests'][row[colIndex]].year;
+                        const roundStr = " - "+row[colIndex + 1];
+                        link = document.createElement('a');
+                        link.href = row[1];
+                        link.textContent = dateStr + roundStr;
+                        td.appendChild(link);
+                        break;
+                    default:
+                        td.textContent = row[colIndex];
+                        break;
+                }
+                tr.appendChild(td);
+            });
+        });
+    }
 }
-const HIGHEST_SCORING_GAMES = {
+const DEFAULT = {
     LIMIT: 10,
-    HEADERS: ['Player name', 'Score', 'Game']
+    display(table, data) {
+        const tr = table.insertRow();
+        data[0].forEach(header => {
+            const th = document.createElement('th');
+            th.textContent = header;
+            tr.appendChild(th);
+        });
+
+        data.slice(1).forEach(row => {
+            const tr = table.insertRow();
+            row.forEach(cell => {
+                const td = document.createElement('td');
+                td.textContent = cell;
+                tr.appendChild(td);
+            });
+        });
+    }
 }
 
 async function global() {
@@ -30,309 +271,91 @@ async function global() {
             .then(json => {
                 return JSON.parse(json);
             });
-        
-        loadCSV('PLAYER_LIFETIME.csv');
-
     } catch (error) {
         console.error('Error fetching SEEDS:', error);
     }
 }
 
 function loadCSV(file) {
-    fetch(`./static/csv/views/${file}`)
+    return fetch(`./static/csv/views/${file}`)
         .then(response => response.text())
         .then(csv => {
-            const rows = csv.split('\n').map(row => row.split(','));
-            displayCSV(rows);
+            return csv.split('\n').map(row => row.split(','));
         })
         .catch(error => console.error('Error fetching CSV:', error));
 }
 
-function displayCSV(data) {
-    const table = document.getElementById('csvTable');
-    const tableTitle = document.getElementById('csvTitle');
-    const active = document.querySelector('.submenu-item.active').getAttribute('id');
+function displayCSV(data, table, titleElement, activeId, fileIndex) {
     table.innerHTML = '';
-    tableTitle.innerHTML = '';
+    titleElement.innerHTML = '';
 
-    switch(active) {
+    switch(activeId) {
         case 'player-nmpz':
-            displayLeaderboard(table, data, 'nmpz');
+            pageTitle.innerHTML = `NMPZ`;
+            if (fileIndex === 0) {
+                MODES.display(table, data, 'nmpz', titleElement);
+            } else if (fileIndex === 1) {
+                MODES.displayAdjusted(table, data, 'nmpz', titleElement);
+            }
             break;
         case 'player-nm':
-            displayLeaderboard(table, data, 'nm');
+            pageTitle.innerHTML = `NM`;
+            if (fileIndex === 0) {
+                MODES.display(table, data, 'nm', titleElement);
+            } else if (fileIndex === 1) {
+                MODES.displayAdjusted(table, data, 'nm', titleElement);
+            }
             break;
         case 'player-lifetime':
-            displayLeaderboard(table, data, 'all');
+            pageTitle.innerHTML = `All-time`;
+            if (fileIndex === 0) {
+                MODES.display(table, data, 'all', titleElement);
+            } else if (fileIndex === 1) {
+                MODES.displayAdjusted(table, data, 'all', titleElement);
+            }
             break;
-        case 'highest-scoring-games':
-            displayGames(table, data);
+        case 'high-scores':
+            HIGH_SCORES.display(table, data, titleElement);
             break;
         case 'player-games':
-            displayAggr(table, data, 'games');
+            AGGR.display(table, data, 'games', titleElement);
             break;
         case 'player-rounds':
-            displayAggr(table, data, 'rounds');
+            AGGR.display(table, data, 'rounds', titleElement);
             break;
         case 'player-hedge':
-            displayHedge(table, data);
+            HEDGE.display(table, data, titleElement);
             break;
         default:
-            displayDefault(table, data);
+            DEFAULT.display(table, data, titleElement);
     }
 }
 
-function displayLeaderboard(table, data, mode) {
-    // Sorts and filters data
-    data = data.slice(1)
-        .filter(row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode] * MODES.MIN_THRESHOLD)
-        .sort((a, b) => parseFloat(b[5]) - parseFloat(a[5]));
-
-    switch(mode){
-        case 'all':
-            document.getElementById('csvTitle').innerHTML = `All-time leaderboard`;
-            break;
-        case 'nm':
-            document.getElementById('csvTitle').innerHTML = `NM all-time leaderboard`;
-            break;
-        case 'nmpz':
-            document.getElementById('csvTitle').innerHTML = `NMPZ all-time leaderboard`;
-            break;
-    }
-
-    const headers = MODES.HEADERS;
-    const tr = table.insertRow();
-    tr.classList.add('header-row-'+mode);
-    headers.forEach(header => {
-        const th = document.createElement('th');
-        th.classList.add('header-'+mode);
-        th.textContent = header;
-        tr.appendChild(th);
-    });
-
-    data.slice(0, MODES.LIMIT).forEach((row, index) => {
-        const tr = table.insertRow();
-        [1, 5, 4].forEach((colIndex, cellIndex) => {
-            const td = document.createElement('td');
-            switch (colIndex) {
-                case 1:
-                    link = document.createElement('a');
-                    link.href = "https://geoguessr.com/user/" + row[0];
-                    link.textContent = row[1];
-                    td.appendChild(link);
-                    break;
-                case 5:
-                    td.textContent = `${Number(row[colIndex] * 100).toFixed(2)}%`;
-                    break;
-                default:
-                    td.textContent = row[colIndex];
-            }
-            if (cellIndex === 0) {  // Apply styling to player names
-                if (index === 0) td.classList.add('top-1');
-                else if (index === 1) td.classList.add('top-2');
-                else if (index === 2) td.classList.add('top-3');
-            }
-            tr.appendChild(td);
-        });
-    });
-}
-
-function displayHedge(table, data) {
-    data = data.slice(1)
-        .sort((a, b) => parseFloat(b[2]) - parseFloat(a[2]));
-    document.getElementById('csvTitle').innerHTML = `Hedge streak leaderboard`;
-
-    const headers = HEDGE.HEADERS;
-    const tr = table.insertRow();
-    tr.classList.add('header-row-hedge');
-    headers.forEach(header => {
-        const th = document.createElement('th');
-        th.classList.add('header-hedge');
-        th.textContent = header;
-        tr.appendChild(th);
-    });
-
-    data.slice(0, HEDGE.LIMIT).forEach((row, index) => {
-        const tr = table.insertRow();
-        [1, 2, 5, 7].forEach((colIndex, cellIndex) => {
-            const td = document.createElement('td');
-            let link;
-
-            switch (colIndex) {
-                case 1:
-                    link = document.createElement('a');
-                    link.href = "https://geoguessr.com/user/" + row[0];
-                    link.textContent = row[1];
-                    td.appendChild(link);
-                    break;
-                case 5:
-                case 7:
-                    const dateStr = PRECOMPUTE['tests'][row[colIndex]].month + ' ' + PRECOMPUTE['tests'][row[colIndex]].year;
-                    const roundStr = " - "+row[colIndex + 1];
-                    link = document.createElement('a');
-                    link.href = colIndex == 5 ? row[3] : row[4];
-                    link.textContent = dateStr + roundStr;
-                    td.appendChild(link);
-                    break;
-                default:
-                    td.textContent = row[colIndex];
-                    break;
-            }
-            if (cellIndex === 0) {  // Apply styling to player names
-                if (index === 0) td.classList.add('top-1');
-                else if (index === 1) td.classList.add('top-2');
-                else if (index === 2) td.classList.add('top-3');
-            }
-            tr.appendChild(td);
-        });
-    });
-}
-
-function displayGames(table, data) {
-    data = data.slice(1)
-        .sort((a, b) => parseFloat(b[6]) - parseFloat(a[6]));
-    document.getElementById('csvTitle').innerHTML = `Highest scoring games`;
-
-    const headers = HIGHEST_SCORING_GAMES.HEADERS;
-    const tr = table.insertRow();
-    tr.classList.add('header-row-highest-scoring-games');
-    headers.forEach(header => {
-        const th = document.createElement('th');
-        th.classList.add('header-highest-scoring-games');
-        th.textContent = header;
-        tr.appendChild(th);
-    });
-
-    data.slice(0, HIGHEST_SCORING_GAMES.LIMIT).forEach((row, index) => {
-        const tr = table.insertRow();
-        [3, 6, 4].forEach((colIndex, cellIndex) => {
-            const td = document.createElement('td');
-            let link;
-
-            switch (colIndex) {
-                case 3:
-                    link = document.createElement('a');
-                    link.href = "https://geoguessr.com/user/" + row[2];
-                    link.textContent = row[3];
-                    td.appendChild(link);
-                    break;
-                case 4:
-                    const dateStr = PRECOMPUTE['tests'][row[colIndex]].month + ' ' + PRECOMPUTE['tests'][row[colIndex]].year;
-                    const roundStr = " - "+row[colIndex + 1];
-                    link = document.createElement('a');
-                    link.href = row[1];
-                    link.textContent = dateStr + roundStr;
-                    td.appendChild(link);
-                    break;
-                default:
-                    td.textContent = row[colIndex];
-                    break;
-            }
-            if (cellIndex === 0) {  // Apply styling to player names
-                if (index === 0) td.classList.add('top-1');
-                else if (index === 1) td.classList.add('top-2');
-                else if (index === 2) td.classList.add('top-3');
-            }
-            tr.appendChild(td);
-        });
-    });
-}
-
-function displayAggr(table, data, mode) {
-    let SETTINGS;
-    switch(mode){
-        case 'rounds':
-            SETTINGS = AGGR_ROUNDS;
-            document.getElementById('csvTitle').innerHTML = `Rounds aggregate leaderboard`;
-            break;
-        case 'games':
-            SETTINGS = AGGR_GAMES;
-            document.getElementById('csvTitle').innerHTML = `Games aggregate leaderboard`;
-            break;
-    }
-    data = data.slice(1)
-        .filter(row => parseInt(row[2]) >= PRECOMPUTE['seedCount']['all'] * SETTINGS.MIN_THRESHOLD)
-        .sort((a, b) => parseFloat(b[4]) - parseFloat(a[4]));
-
-    const headers = SETTINGS.HEADERS;
-    const tr = table.insertRow();
-    tr.classList.add('header-row-aggr'+mode);
-    headers.forEach(header => {
-        const th = document.createElement('th');
-        th.classList.add('header-aggr'+mode);
-        th.textContent = header;
-        tr.appendChild(th);
-    });
-
-    data.slice(0, SETTINGS.LIMIT).forEach((row, index) => {
-        const tr = table.insertRow();
-        [1, 4, 2].forEach((colIndex, cellIndex) => {
-            const td = document.createElement('td');
-            let link;
-
-            switch (colIndex) {
-                case 1:
-                    link = document.createElement('a');
-                    link.href = "https://geoguessr.com/user/" + row[0];
-                    link.textContent = row[1];
-                    td.appendChild(link);
-                    break;
-                case 4:
-                    td.textContent = Math.round(row[colIndex]);
-                    break;
-                default:
-                    td.textContent = row[colIndex];
-                    break;
-            }
-            if (cellIndex === 0) {  // Apply styling to player names
-                if (index === 0) td.classList.add('top-1');
-                else if (index === 1) td.classList.add('top-2');
-                else if (index === 2) td.classList.add('top-3');
-            }
-            tr.appendChild(td);
-        });
-    });
-}
-
-function displayDefault(table, data) {
-    const tr = table.insertRow();
-    data[0].forEach(header => {
-        const th = document.createElement('th');
-        th.textContent = header;
-        tr.appendChild(th);
-    });
-
-    data.slice(1).forEach(row => {
-        const tr = table.insertRow();
-        row.forEach(cell => {
-            const td = document.createElement('td');
-            td.textContent = cell;
-            tr.appendChild(td);
-        });
-    });
-}
 
 function initializeTabs() {
     const tabs = document.querySelectorAll('.tab');
     
     tabs.forEach(tab => {
         tab.addEventListener('click', function(e) {
-            // Close all other tabs
             tabs.forEach(t => {
                 if (t !== tab) {
                     t.classList.remove('active');
                 }
             });
-            
-            // Toggle current tab
-            this.classList.toggle('active');
+            if(!this.classList.contains('page')){
+                this.classList.toggle('active');
+            }
             e.stopPropagation();
         });
     });
 
     // Close all tabs when clicking outside
     document.addEventListener('click', function() {
-        tabs.forEach(tab => tab.classList.remove('active'));
+        tabs.forEach(tab => {
+            if (!tab.classList.contains('page')) {
+                tab.classList.remove('active');
+            }
+        });
     });
 }
 
@@ -344,16 +367,69 @@ document.querySelectorAll('.submenu-item').forEach(item => {
     item.addEventListener('click', (e) => {
         document.querySelectorAll('.submenu-item').forEach(t => t.classList.remove('active'));
         item.classList.add('active');
-        const file = item.getAttribute('data-file');
-        loadCSV(file);
+       
+        const files = item.getAttribute('data-file').split(',');
+        const activeId = item.getAttribute('id');
         
+        document.querySelector('#playerSearchContainer').style.display = 'none';
+        pageTitle.innerHTML = '';
+        tableContainer.innerHTML = '';
+        
+        // Create and display each CSV in its own table with a title
+        files.forEach((file, index) => {
+            const tableWrapper = document.createElement('div');
+            tableWrapper.className = 'table-wrapper';
+            
+            const title = document.createElement('h2');
+            title.className = 'csv-title';
+            tableWrapper.appendChild(title);
+            
+            const table = document.createElement('table');
+            tableWrapper.appendChild(table);
+            
+            tableContainer.appendChild(tableWrapper);
+            
+            loadCSV(file).then(csv => displayCSV(csv, table, title, activeId, index));
+        });
+       
         closeAllSubmenus();
-
-        e.stopPropagation(); // Prevent the click from closing the submenu immediately
+        e.stopPropagation();
     });
 });
 
+function mySummary() {
+    const mySummaryTab = document.getElementById('my-summary');
+    const playerSearchContainer = document.getElementById('playerSearchContainer');
+    const playerNameInput = document.getElementById('playerNameInput');
+    const searchPlayerButton = document.getElementById('searchPlayerButton');
+
+    mySummaryTab.addEventListener('click', (e) => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.submenu-item').forEach(t => t.classList.remove('active'));
+        tableContainer.innerHTML = '';
+        pageTitle.innerHTML = '';
+        playerSearchContainer.style.display = 'block';
+        e.stopPropagation();
+    });
+
+    searchPlayerButton.addEventListener('click', () => {
+        const playerName = playerNameInput.value.trim();
+        if (playerName) {
+            fetchPlayerStats(playerName);
+        }
+    });
+
+    playerNameInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            searchPlayerButton.click();
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    global();
+    global().then(() => {
+        document.querySelector("#player-lifetime").click(); //default menu
+    });
     initializeTabs();
+    mySummary();
 });

@@ -30,6 +30,10 @@ body {
     transition: background-color 0.3s;
 }
 
+.tab.active {
+    background-color: #f0f0f0;
+}
+
 /* Submenu */
 .submenu {
     display: none;
@@ -74,9 +78,18 @@ body {
 .header-aggrrounds {
     background-color: #9e066b;
 }
+.header-adjusted-all {
+    background-color: #4113ad;
+}
+.header-adjusted-nm {
+    background-color: #f0cc58;
+}
+.header-adjusted-nmpz {
+    background-color: #ac0000;
+}
 
 /* Content */
-#csvTitle {
+#pageTitle {
     font-family: Montserrat, sans-serif;
     font-size: 60px;
     text-align: center;
@@ -126,19 +139,20 @@ td {
 tr:last-child td {
     border-bottom: none;
 }
+tr > th:first-child {
+   width: 30%; 
+}
 
-.top-1 {
+/* Top 3 rows */
+table > tbody > tr:nth-child(2){
     font-weight: 900;
 }
-
-.top-2 {
-    font-weight: 800;
-}
-
-.top-3 {
+table > tbody > tr:nth-child(3){
     font-weight: 700;
 }
-
+table > tbody > tr:nth-child(4){
+    font-weight: 500;
+}
 
 a {
     color: #444444; /* Dark gray color */
