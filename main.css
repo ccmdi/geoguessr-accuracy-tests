@@ -77,7 +77,16 @@ body {
 
 /* Header styles */
 #playerSummaryTable tr > th {
-    background-color: var(--ru-blue);
+    background-color: rgb(40,40,40);
+}
+#playerSummaryTable td {
+    color: rgb(200,200,200);
+}
+.unplayed-seeds-header {
+    background-color: var(--ru-red);
+}
+#unplayedSeedsTable tr > th {
+    background-color: rgb(40,40,40);
 }
 div.table-wrapper:nth-of-type(odd) tr:nth-child(1) > th {
     background-color: var(--ru-blue);
@@ -153,24 +162,27 @@ tr:last-child td {
 tr > th:first-child {
    width: 30%; 
 }
+#unplayedSeedsTable tr > th:first-child {
+    width: 50%;
+}
 
 /* Top 3 rows */
-table:not(#playerSummaryTable) > tbody > tr:nth-child(2){
+div.table-wrapper table > tbody > tr:nth-child(2){
     font-weight: 900;
 }
-table:not(#playerSummaryTable) > tbody > tr:nth-child(3){
+div.table-wrapper table> tbody > tr:nth-child(3){
     font-weight: 700;
 }
-table:not(#playerSummaryTable) > tbody > tr:nth-child(4){
+div.table-wrapper table > tbody > tr:nth-child(4){
     font-weight: 500;
 }
 
-table#playerSummaryTable > tbody > tr:nth-child(2),
+/* table#playerSummaryTable > tbody > tr:nth-child(2),
 table#playerSummaryTable > tbody > tr:nth-child(3),
 table#playerSummaryTable > tbody > tr:nth-child(4),
 table#playerSummaryTable > tbody > tr:nth-child(5) {
     font-weight: 900;
-}
+} */
 
 #playerNameInput {
     background-color: #3a3a3a;
@@ -235,4 +247,11 @@ a:hover {
 a:hover::before {
     transform: scaleX(1);
     transform-origin: left;
+}
+
+
+
+
+.unplayed-seeds {
+    margin-top: 1em;
 }

@@ -445,7 +445,93 @@ function displayPlayerSummary(playerName) {
         });
     });
 
+
     tableContainer.appendChild(table);
+
+    // Add a gap between tables
+    const gap = document.createElement('div');
+    gap.style.height = '30px';
+    tableContainer.appendChild(gap);
+
+    // Create a new table for unplayed seeds
+    const unplayedSeedsTable = document.createElement('table');
+    unplayedSeedsTable.id = 'unplayedSeedsTable';
+    unplayedSeedsTable.style.width = '100%';
+
+    // Add header for unplayed seeds table
+    const headerRow = unplayedSeedsTable.insertRow();
+    const headerCell = headerRow.insertCell();
+    headerCell.classList.add('unplayed-seeds-header');
+    headerCell.colSpan = 3;
+    headerCell.style.cursor = 'pointer';
+    
+    const headerText = document.createElement('span');
+    headerText.textContent = 'Unplayed Seeds ';
+    
+    const toggleIcon = document.createElement('span');
+    toggleIcon.textContent = '▼';  // Start with down arrow (collapsed)
+    toggleIcon.style.float = 'right';
+    
+    headerCell.appendChild(headerText);
+    headerCell.appendChild(toggleIcon);
+
+    const unplayedSeedsBody = document.createElement('tbody');
+    unplayedSeedsBody.style.display = 'none';
+
+    const playedSeeds = playerGames.get(playerName) || new Set();
+
+    const unplayedSeeds = Array.from(seedsMap.entries())
+        .filter(([seedLink, ]) => !playedSeeds.has(seedLink))
+        .map(([seedLink, seedData]) => ({
+            seedLink,
+            ...seedData
+        }));
+
+    if (unplayedSeeds.length > 0) {
+        const subheaderRow = unplayedSeedsBody.insertRow();
+        ['Seed', 'Test date', 'Seed #'].forEach(text => {
+            const th = document.createElement('th');
+            th.textContent = text;
+            subheaderRow.appendChild(th);
+        });
+
+        unplayedSeeds.forEach(seed => {
+            const row = unplayedSeedsBody.insertRow();
+            const seedDetailsCell = row.insertCell();
+            const link = document.createElement('a');
+            link.href = seed.seedLink;
+            link.target = '_blank';
+            link.textContent = `${seed.SEED_MAP} ${seed.SEED_MODE} ${seed.SEED_TIME}s`;
+            seedDetailsCell.appendChild(link);
+
+            const testNameCell = row.insertCell();
+            const testName = PRECOMPUTE.tests[seed.TEST_ID]['month'] + ' ' + PRECOMPUTE.tests[seed.TEST_ID]['year'] || seed.TEST_ID;
+            testNameCell.textContent = testName;
+
+            const seedNumberCell = row.insertCell();
+            seedNumberCell.textContent = seed.SEED_NUMBER;
+        });
+    } else {
+        const row = unplayedSeedsBody.insertRow();
+        const cell = row.insertCell();
+        cell.colSpan = 3;
+        cell.textContent = 'Player is up to date.';
+    }
+
+    unplayedSeedsTable.appendChild(unplayedSeedsBody);
+
+    // Add click event to toggle visibility
+    headerCell.addEventListener('click', () => {
+        if (unplayedSeedsBody.style.display === 'none') {
+            unplayedSeedsBody.style.display = '';
+            toggleIcon.textContent = '▲';
+        } else {
+            unplayedSeedsBody.style.display = 'none';
+            toggleIcon.textContent = '▼';
+        }
+    });
+
+    tableContainer.appendChild(unplayedSeedsTable);
 }
 
 

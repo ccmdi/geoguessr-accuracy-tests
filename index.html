@@ -17,7 +17,7 @@
         <div class="tab-menu">
             <div class="tab" id="modes-tab">Modes
                 <div class="submenu" id="modes-submenu">
-                    <div class="submenu-item active" data-file="PLAYER_LIFETIME.csv,PLAYER_ADJ_STATS.csv" id="player-lifetime">All</div>
+                    <div class="submenu-item active" data-file="PLAYER_LIFETIME.csv,PLAYER_ADJ_STATS.csv" id="player-all">All</div>
                     <div class="submenu-item" data-file="PLAYER_LIFETIME_NM.csv,PLAYER_ADJ_STATS.csv" id="player-nm">NM</div>
                     <div class="submenu-item" data-file="PLAYER_LIFETIME_NMPZ.csv,PLAYER_ADJ_STATS.csv" id="player-nmpz">NMPZ</div>
                 </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="tab" id="records-tab">Records
                 <div class="submenu" id="records-submenu">
-                    <div class="submenu-item" data-file="GAME_SUM.csv" id="high-scores">High scores</div>
+                    <div class="submenu-item" data-file="GAME_SUM.csv" id="high-scores">High scores</div> <!-- Make a view that lowers overhead for this file -->
                     <div class="submenu-item" data-file="TEST_SUM.csv" id="tests">Tests</div>
                 </div>
             </div>
@@ -47,7 +47,8 @@
         </div>
     </div>
     </div>
-    <script src="init.js"></script>
-    <script src="main.js"></script>
+    <!-- <script src="init.js"></script> -->
+    <!-- <script src="main.js"></script> -->
+     <script src="leaderboard.js" type="module"></script>
 </body>
 </html>

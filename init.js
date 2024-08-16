@@ -9,6 +9,8 @@ const searchPlayerButton = document.getElementById('searchPlayerButton');
 let playerLifetime;
 let playerLifetimeArray;
 let sortedPlayerLifetime, sortedPlayerNMLifetime, sortedPlayerNMPZLifetime;
+let seedsMap = new Map();
+let playerGames = new Map();
 
 
 // Pre-compute
@@ -181,10 +183,42 @@ async function mySummary() {
         .sort((a, b) => parseFloat(b['NMPZ_ACCURACY']) - parseFloat(a['NMPZ_ACCURACY']));
 }
 
+async function seeds() {
+    try {
+        const seedsResponse = await fetch(`./static/csv/tables/SEEDS.csv`);
+        const seedsCsv = await seedsResponse.text();
+        
+        seedsCsv.split('\n').slice(1).forEach(row => {
+            const [TEST_ID, SEED_NUMBER, SEED_LINK, SEED_MAP, SEED_TIME, SEED_MODE] = row.split(',');
+            seedsMap.set(SEED_LINK, {
+                TEST_ID,
+                SEED_NUMBER,
+                SEED_MAP,
+                SEED_TIME,
+                SEED_MODE
+            });
+        });
+
+        const gamesResponse = await fetch(`./static/csv/views/GAME_SUM.csv`);
+        const gamesCsv = await gamesResponse.text();
+        
+        gamesCsv.split('\n').slice(1).forEach(row => {
+            const [, SEED_LINK, PLAYER_ID, PLAYER_NAME, , , , ,] = row.split(',');
+            if (!playerGames.has(PLAYER_NAME)) {
+                playerGames.set(PLAYER_NAME, new Set());
+            }
+            playerGames.get(PLAYER_NAME).add(SEED_LINK);
+        });
+    } catch (error) {
+        console.error('Error loading data:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     global().then(() => {
         document.querySelector("#player-lifetime").click(); //default menu
         initializeTabs();
         mySummary();
+        seeds();
     });
 });
