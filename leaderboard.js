@@ -85,7 +85,6 @@ class Leaderboard {
         } else {
             data = await CSVUtil.loadCSV(data);
         }
-        console.log("JOE", data);
         const filteredData = this.filterAndSortData(data);
         filteredData.slice(0, this.config.limit).forEach(row => this.createRow(row));
     }
@@ -317,6 +316,7 @@ class PlayerSummary {
         if (!this.playerData) {
             this.playerData = playerLifetimeArray.find(row => row['PLAYER_ID'].toLowerCase() === playerName.toLowerCase());
         }
+        this.sortOrder = 'desc';
     }
 
     display() {
@@ -325,6 +325,8 @@ class PlayerSummary {
             tableContainer.innerHTML = '<p>Player not found. Please check the name and try again.</p>';
             return;
         }
+
+        tableContainer.innerHTML = '';
 
         this.setRanks();
         this.displayPlayerName();
@@ -541,28 +543,24 @@ class PlayerSummary {
 
         if (unplayedSeeds.length > 0) {
             const subheaderRow = unplayedSeedsBody.insertRow();
-            ['Seed', 'Test date', 'Seed #'].forEach(text => {
+            ['Seed', 'Test date', 'Seed #'].forEach((text, index) => {
                 const th = document.createElement('th');
                 th.textContent = text;
+                if (index === 1) { // Only add sort button to 'Test date' column
+                    const sortButton = document.createElement('button');
+                    sortButton.textContent = '↓'; // Initially descending
+                    sortButton.className = 'sort-button';
+                    sortButton.addEventListener('click', () => {
+                        this.sortOrder = this.sortOrder === 'desc' ? 'asc' : 'desc';
+                        sortButton.textContent = this.sortOrder === 'desc' ? '↓' : '↑';
+                        this.sortUnplayedSeeds(unplayedSeeds, unplayedSeedsBody);
+                    });
+                    th.appendChild(sortButton);
+                }
                 subheaderRow.appendChild(th);
             });
 
-            unplayedSeeds.forEach(seed => {
-                const row = unplayedSeedsBody.insertRow();
-                const seedDetailsCell = row.insertCell();
-                const link = document.createElement('a');
-                link.href = seed.seedLink;
-                link.target = '_blank';
-                link.textContent = `${seed.SEED_MAP} ${seed.SEED_MODE} ${seed.SEED_TIME}s`;
-                seedDetailsCell.appendChild(link);
-
-                const testNameCell = row.insertCell();
-                const testName = PRECOMPUTE.tests[seed.TEST_ID]['month'] + ' ' + PRECOMPUTE.tests[seed.TEST_ID]['year'] || seed.TEST_ID;
-                testNameCell.textContent = testName;
-
-                const seedNumberCell = row.insertCell();
-                seedNumberCell.textContent = seed.SEED_NUMBER;
-            });
+            this.sortUnplayedSeeds(unplayedSeeds, unplayedSeedsBody);
         } else {
             const row = unplayedSeedsBody.insertRow();
             const cell = row.insertCell();
@@ -583,6 +581,53 @@ class PlayerSummary {
         });
 
         tableContainer.appendChild(unplayedSeedsTable);
+    }
+
+    sortUnplayedSeeds(seeds, tableBody) {
+        seeds.sort((a, b) => {
+            const dateA = new Date(PRECOMPUTE.tests[a.TEST_ID].year, this.getMonthNumber(PRECOMPUTE.tests[a.TEST_ID].month));
+            const dateB = new Date(PRECOMPUTE.tests[b.TEST_ID].year, this.getMonthNumber(PRECOMPUTE.tests[b.TEST_ID].month));
+            
+            if (dateA.getTime() !== dateB.getTime()) {
+                return this.sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
+            }
+            
+            const seedNumberA = parseInt(a.SEED_NUMBER);
+            const seedNumberB = parseInt(b.SEED_NUMBER);
+            return this.sortOrder === 'desc' ? seedNumberB - seedNumberA : seedNumberA - seedNumberB;
+        });
+
+        this.populateUnplayedSeedsTable(seeds, tableBody);
+    }
+
+    getMonthNumber(monthName) {
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        return months.indexOf(monthName);
+    }
+
+    populateUnplayedSeedsTable(seeds, tableBody) {
+        // Clear existing rows
+        while (tableBody.rows.length > 1) {
+            tableBody.deleteRow(1);
+        }
+
+        // Populate with sorted data
+        seeds.forEach(seed => {
+            const row = tableBody.insertRow();
+            const seedDetailsCell = row.insertCell();
+            const link = document.createElement('a');
+            link.href = seed.seedLink;
+            link.target = '_blank';
+            link.textContent = `${seed.SEED_MAP} ${seed.SEED_MODE} ${seed.SEED_TIME}s`;
+            seedDetailsCell.appendChild(link);
+
+            const testNameCell = row.insertCell();
+            const testName = PRECOMPUTE.tests[seed.TEST_ID]['month'] + ' ' + PRECOMPUTE.tests[seed.TEST_ID]['year'] || seed.TEST_ID;
+            testNameCell.textContent = testName;
+
+            const seedNumberCell = row.insertCell();
+            seedNumberCell.textContent = seed.SEED_NUMBER;
+        });
     }
 }
 
@@ -680,13 +725,6 @@ function initializePlayerSearch() {
 
 async function displayLeaderboard(container, activeId, dataFiles) {
     const files = dataFiles ? dataFiles.split(',').map(file => file.trim()) : [];
-    if (files.length === 0) {
-        switch(activeId) {
-            case 'high-scores':
-                files.push(playerGames);
-                break;
-        }
-    }
 
     for (const file of files) {
         let leaderboard;
