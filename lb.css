@@ -131,7 +131,9 @@
 .unplayed-seeds {
     margin-top: 1em;
 }
-
+.unplayed-seeds-header {
+    background-color: var(--ru-red);
+}
 .unplayed-seeds-count {
     color: gray;
     font-size: 14px;
