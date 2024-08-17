@@ -2,9 +2,12 @@
 let PRECOMPUTE;
 let playerLifetime;
 let playerLifetimeArray;
-let sortedPlayerLifetime, sortedPlayerNMLifetime, sortedPlayerNMPZLifetime;
+let sortedPlayers;
 let seedsMap = new Map();
 let playerGames = new Map();
+let playerTests = new Map();
+let tests = new Map();
+let records = new Map();
 
 class CSVUtil {
     static async loadCSV(file, type = 'views') {
@@ -80,7 +83,7 @@ class Leaderboard {
         this.titleElement.textContent = this.config.title;
         this.createHeaders();
         
-        if(data instanceof Map || data instanceof Set) {
+        if(data instanceof Map || data instanceof Set || data instanceof Array) {
             data = Array.from(data);
         } else {
             data = await CSVUtil.loadCSV(data);
@@ -221,45 +224,7 @@ class HighScoresLeaderboard extends Leaderboard {
             title: 'High scores',
             limit: 10,
             filterCondition: () => true,
-            sortFunction: (a, b) => parseFloat(b[9]) - parseFloat(a[9]),
-            cellConfigs: [
-                {
-                    display: (td, row) => {
-                        const link = document.createElement('a');
-                        link.href = `https://geoguessr.com/user/${row[2]}`;
-                        link.textContent = row[3];
-                        td.appendChild(link);
-                    }
-                },
-                {
-                    display: (td, row) => {
-                        td.textContent = row[9];
-                    }
-                },
-                {
-                    display: (td, row) => {
-                        const dateStr = PRECOMPUTE['tests'][row[4]].month + ' ' + PRECOMPUTE['tests'][row[4]].year;
-                        const roundStr = ` - ${row[5]}`;
-                        const link = document.createElement('a');
-                        link.href = row[1];
-                        link.textContent = dateStr + roundStr;
-                        td.appendChild(link);
-                    }
-                }
-            ]
-        });
-    }
-}
-
-class TestsLeaderboard extends Leaderboard {
-    constructor() {
-        super({
-            rowClass: 'test',
-            headers: ['Player name', 'Accuracy', 'Test date', 'Test games played'],
-            title: 'Tests',
-            limit: 10,
-            filterCondition: row => parseInt(row[4]) >= parseInt(row[5]) * (1/2),
-            sortFunction: (a, b) => parseFloat(b[6]) - parseFloat(a[6]),
+            sortFunction: (a, b) => parseFloat(b[3]) - parseFloat(a[3]),
             cellConfigs: [
                 {
                     display: (td, row) => {
@@ -271,18 +236,56 @@ class TestsLeaderboard extends Leaderboard {
                 },
                 {
                     display: (td, row) => {
-                        td.textContent = `${Number(row[6] * 100).toFixed(2)}%`;
+                        td.textContent = row[3];
                     }
                 },
                 {
                     display: (td, row) => {
-                        const dateStr = PRECOMPUTE['tests'][row[0]].month + ' ' + PRECOMPUTE['tests'][row[0]].year;
+                        const dateStr = PRECOMPUTE['tests'][row[6]].month + ' ' + PRECOMPUTE['tests'][row[6]].year;
+                        const roundStr = ` - ${row[8]}`;
+                        const link = document.createElement('a');
+                        link.href = row[4];
+                        link.textContent = dateStr + roundStr;
+                        td.appendChild(link);
+                    }
+                }
+            ]
+        });
+    }
+}
+
+class TestsLeaderboard extends Leaderboard {
+    constructor(mode) {
+        super({
+            rowClass: 'test',
+            headers: ['Player name', 'Accuracy', 'Test date', 'Test games played'],
+            title: mode === 'all' ? 'All-time' : mode.toUpperCase(),
+            limit: 10,
+            filterCondition: () => true,
+            sortFunction: (a, b) => parseFloat(b[3]) - parseFloat(a[3]),
+            cellConfigs: [
+                {
+                    display: (td, row) => {
+                        const link = document.createElement('a');
+                        link.href = `https://geoguessr.com/user/${row[1]}`;
+                        link.textContent = row[2];
+                        td.appendChild(link);
+                    }
+                },
+                {
+                    display: (td, row) => {
+                        td.textContent = `${Number(row[3] * 100).toFixed(2)}%`;
+                    }
+                },
+                {
+                    display: (td, row) => {
+                        const dateStr = PRECOMPUTE['tests'][row[6]].month + ' ' + PRECOMPUTE['tests'][row[6]].year;
                         td.textContent = dateStr;
                     }
                 },
                 {
                     display: (td, row) => {
-                        td.textContent = row[4];
+                        td.textContent = row[8];
                     }
                 }
             ]
@@ -302,7 +305,7 @@ class LeaderboardFactory {
             case 'highScores':
                 return new HighScoresLeaderboard();
             case 'tests':
-                return new TestsLeaderboard();
+                return new TestsLeaderboard(mode);
             default:
                 throw new Error(`Unknown leaderboard type: ${type}`);
         }
@@ -312,27 +315,28 @@ class LeaderboardFactory {
 class PlayerSummary {
     constructor(playerName) {
         this.playerName = playerName;
-        this.playerData = playerLifetime[playerName];
-        if (!this.playerData) {
-            this.playerData = playerLifetimeArray.find(row => row['PLAYER_ID'].toLowerCase() === playerName.toLowerCase());
-        }
+        this.playerData = playerLifetime[playerName] || playerLifetimeArray.find(row => row['PLAYER_ID'].toLowerCase() === playerName.toLowerCase());
         this.sortOrder = 'desc';
     }
 
     display() {
         if (!this.playerData) {
-            pageTitle.innerHTML = '';
-            tableContainer.innerHTML = '<p>Player not found. Please check the name and try again.</p>';
+            this.displayError("Player not found. Please check the name and try again.");
             return;
         }
 
         tableContainer.innerHTML = '';
-
         this.setRanks();
         this.displayPlayerName();
-        this.displayLeaderboard();
+        this.displaySections();
         this.displayStatistics();
+        this.displayTestSearch();
         this.displayUnplayedSeeds();
+    }
+
+    displayError(message) {
+        pageTitle.innerHTML = '';
+        tableContainer.innerHTML = `<p>${message}</p>`;
     }
 
     setRanks() {
@@ -340,78 +344,156 @@ class PlayerSummary {
             row['PLAYER_NAME'] === this.playerName || 
             row['PLAYER_ID'].toLowerCase() === this.playerName.toLowerCase();
 
-        this.playerData['RANK_ALL'] = sortedPlayerLifetime.findIndex(compareFunction) + 1 || 'N/A';
-        this.playerData['RANK_NM'] = sortedPlayerNMLifetime.findIndex(compareFunction) + 1 || 'N/A';
-        this.playerData['RANK_NMPZ'] = sortedPlayerNMPZLifetime.findIndex(compareFunction) + 1 || 'N/A';
+        ['ALL', 'NM', 'NMPZ'].forEach(mode => {
+            this.playerData[`RANK_${mode}`] = sortedPlayers[mode.toLowerCase()].findIndex(compareFunction) + 1 || 'N/A';
+        });
     }
 
     displayPlayerName() {
-        const playerNameLink = document.createElement('a');
-        playerNameLink.href = `https://geoguessr.com/user/${this.playerData['PLAYER_ID']}`;
-        playerNameLink.textContent = this.playerData['PLAYER_NAME'];
-        playerNameLink.target = '_blank';
-        playerNameLink.style.color = 'inherit';
-        playerNameLink.style.textDecoration = 'none';
+        const playerNameLink = this.createLink(
+            `https://geoguessr.com/user/${this.playerData['PLAYER_ID']}`,
+            this.playerData['PLAYER_NAME'],
+            { color: 'inherit', textDecoration: 'none', target: '_blank' }
+        );
         pageTitle.innerHTML = '';
         pageTitle.appendChild(playerNameLink);
     }
 
-    displayLeaderboard() {
-        if (this.playerData['RANK_ALL'] !== 'N/A') {
-            const leaderboard = this.createLeaderboard();
-            tableContainer.appendChild(leaderboard);
+    createLink(href, text, styles = {}) {
+        const link = document.createElement('a');
+        link.href = href;
+        link.textContent = text;
+        Object.assign(link.style, styles);
+        return link;
+    }
+
+    displaySections() {
+        const container = this.createFlexContainer();
+        const sections = [
+            { title: 'SUMMARY', data: this.getSummaryData() },
+            { title: 'TESTS', data: this.getImprovementData() }
+        ];
+
+        let hasContent = false;
+
+        sections.forEach(({ title, data }) => {
+            const section = this.createSection(title, data);
+            if (section) {
+                container.appendChild(section);
+                hasContent = true;
+            }
+        });
+
+        if (hasContent) {
+            tableContainer.appendChild(container);
         }
     }
 
-    createLeaderboard() {
-        const leaderboardContainer = document.createElement('div');
-        leaderboardContainer.className = 'leaderboard';
+    createFlexContainer() {
+        const container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.justifyContent = 'center';
+        return container;
+    }
 
-        const title = document.createElement('h2');
-        title.textContent = 'SUMMARY';
-        title.className = 'leaderboard-title';
-        leaderboardContainer.appendChild(title);
+    createSection(title, data) {
+        const section = document.createElement('div');
+        section.className = 'leaderboard';
+        section.style.flex = '1';
+        section.style.margin = '10px';
+        section.style.flexDirection = 'column'
 
-        const modes = [
-            { name: 'ALL-TIME', rank: this.playerData.RANK_ALL, accuracy: this.playerData.OVERALL_ACCURACY, total: playerLifetimeArray.length },
-            { name: 'NM', rank: this.playerData.RANK_NM, accuracy: this.playerData.NM_ACCURACY, total: playerLifetimeArray.length },
-            { name: 'NMPZ', rank: this.playerData.RANK_NMPZ, accuracy: this.playerData.NMPZ_ACCURACY, total: playerLifetimeArray.length }
-        ];
+        const titleElement = document.createElement('h2');
+        titleElement.textContent = title;
+        titleElement.className = 'leaderboard-title';
+        section.appendChild(titleElement);
 
-        modes.forEach((mode, index) => {
-            if (mode.rank === 'N/A') return;
+        let cardCount = 0;
+        data.forEach((item, index) => {
+            if (this.playerData["RANK_"+(item.name === 'ALL-TIME' ? 'all' : item.name).toUpperCase()] === 'N/A') return;
             const card = document.createElement('div');
             card.className = 'leaderboard-card';
             card.style.animationDelay = `${index * 0.1}s`;
-            
-            const gradeLetter = this.calculateGrade(mode.rank, mode.total);
+            card.innerHTML = this.getCardContent(item);
+            section.appendChild(card);
+            cardCount++;
+        });
+        
+        if (cardCount === 0) return null;
+        return section;
+    }
 
-            const content = `
-                <h3>${mode.name}</h3>
-                <p>RANK: ${mode.rank} / ${mode.total}</p>
-                <p>ACCURACY: ${(mode.accuracy * 100).toFixed(2)}%</p>
+    getCardContent(data) {
+        if (data.type === 'summary') {
+            const gradeLetter = this.calculateGrade(data.rank, data.total);
+            return `
+                <h3>${data.name}</h3>
+                <p>RANK: ${data.rank} / ${data.total}</p>
+                <p>ACCURACY: ${(data.accuracy * 100).toFixed(2)}%</p>
                 <div class="grade grade-${gradeLetter.replace('+','-plus')}">${gradeLetter}</div>
             `;
-
-            card.innerHTML = content;
-            leaderboardContainer.appendChild(card);
-        });
-
-        return leaderboardContainer;
+        } else if (data.type === 'improvement') {
+            if (data.isPercentage) {
+                const value = parseFloat(data.value) * 100;
+                const formattedValue = value.toFixed(2);
+                const arrow = value >= 0 ? '↑' : '↓';
+                const color = value >= 0 ? 'green' : 'red';
+                return `
+                    <h3>${data.name}</h3>
+                    <p>ACCURACY CHANGE:</p>
+                    <p style="color: ${color}; font-size: 24px; font-weight: bold;">
+                        ${arrow} ${Math.abs(formattedValue)}%
+                    </p>
+                `;
+            } else {
+                return `
+                    <h3>${data.name}</h3>
+                    <p>${data.value}</p>
+                `;
+            }
+        }
     }
 
     calculateGrade(rank, total) {
         const percentile = (total - rank + 1) / total;
-        if (percentile >= 0.98) return 'S';
-        if (percentile >= 0.94) return 'A+';
-        if (percentile >= 0.9) return 'A';
-        if (percentile >= 0.85) return 'B+';
-        if (percentile >= 0.8) return 'B';
-        if (percentile >= 0.75) return 'C+';
-        if (percentile >= 0.7) return 'C';
-        if (percentile >= 0.65) return 'D+';
-        if (percentile >= 0.6) return 'D';
-        return 'F';
+        const grades = [
+            { threshold: 0.98, grade: 'S' },
+            { threshold: 0.94, grade: 'A+' },
+            { threshold: 0.9, grade: 'A' },
+            { threshold: 0.85, grade: 'B+' },
+            { threshold: 0.8, grade: 'B' },
+            { threshold: 0.75, grade: 'C+' },
+            { threshold: 0.7, grade: 'C' },
+            { threshold: 0.65, grade: 'D+' },
+            { threshold: 0.6, grade: 'D' },
+        ];
+        return grades.find(g => percentile >= g.threshold)?.grade || 'F';
+    }
+
+    getSummaryData() {
+        return ['ALL', 'NM', 'NMPZ'].map(mode => ({
+            type: 'summary',
+            name: mode === 'ALL' ? 'ALL-TIME' : mode,
+            rank: this.playerData[`RANK_${mode}`],
+            accuracy: this.playerData[`${mode === 'ALL' ? 'OVERALL' : mode}_ACCURACY`],
+            total: playerLifetimeArray.length
+        }));
+    }
+
+    getImprovementData() {
+        return [
+            { name: 'TOTAL TESTS', key: 'TOTAL_TESTS', isPercentage: false },
+            { name: 'OVERALL IMPROVEMENT', key: 'OVERALL_IMPROVEMENT', isPercentage: true },
+            { name: 'RECENT IMPROVEMENT', key: 'RECENT_IMPROVEMENT', isPercentage: true },
+            { name: 'RECENT IMPROVEMENT (5)', key: 'RECENT_5_IMPROVEMENT', isPercentage: true },
+            { name: 'FIRST TEST', key: 'FIRST_TEST_NAME', isPercentage: false },
+            { name: 'LATEST TEST', key: 'LAST_TEST_NAME', isPercentage: false }
+        ].map(item => ({
+            type: 'improvement',
+            name: item.name,
+            value: this.playerData[item.key],
+            isPercentage: item.isPercentage
+        }));
     }
 
     displayStatistics() {
@@ -424,13 +506,18 @@ class PlayerSummary {
                 stats: [
                     ['Games played', 'OVERALL_GAMES_PLAYED', 'NM_GAMES_PLAYED', 'NMPZ_GAMES_PLAYED'],
                     ['Rounds played', 'OVERALL_ROUNDS_PLAYED', 'NM_ROUNDS_PLAYED', 'NMPZ_ROUNDS_PLAYED'],
-                    ['Accuracy rank', 'RANK_ALL', 'RANK_NM', 'RANK_NMPZ']
+                    ['Top finishes', 'TOP_FINISHES', 'NM_TOP_FINISHES', 'NMPZ_TOP_FINISHES'],
+                    ['Top 3 finishes', 'TOP3_FINISHES', 'NM_TOP3_FINISHES', 'NMPZ_TOP3_FINISHES'],
+                    ['Top finish rate', 'TOP_FINISH_RATE', 'NM_TOP_FINISH_RATE', 'NMPZ_TOP_FINISH_RATE'],
+                    ['Top 3 finish rate', 'TOP3_FINISH_RATE', 'NM_TOP3_FINISH_RATE', 'NMPZ_TOP3_FINISH_RATE']
                 ]
             },
             {
                 title: 'Accuracy',
                 stats: [
-                    ['Accuracy', 'OVERALL_ACCURACY', 'NM_ACCURACY', 'NMPZ_ACCURACY']
+                    ['Accuracy', 'OVERALL_ACCURACY', 'NM_ACCURACY', 'NMPZ_ACCURACY'],
+                    ['Adjusted accuracy', 'OVERALL_ADJ_ACCURACY', 'NM_ADJ_ACCURACY', 'NMPZ_ADJ_ACCURACY'],
+                    ['Accuracy rank', 'RANK_ALL', 'RANK_NM', 'RANK_NMPZ']
                 ]
             },
             {
@@ -487,7 +574,7 @@ class PlayerSummary {
                 
                 const formatValue = (key) => {
                     let value = this.playerData[key];
-                    if (key.includes('ACCURACY')) {
+                    if (key.includes('ACCURACY') || key.includes('RATE')) {
                         return `${(parseFloat(value) * 100).toFixed(2)}%`;
                     } else if (key.includes('SCORE')) {
                         return Math.round(parseFloat(value));
@@ -542,6 +629,11 @@ class PlayerSummary {
             }));
 
         if (unplayedSeeds.length > 0) {
+            const headerCount = document.createElement('span');
+            headerCount.textContent = `(${unplayedSeeds.length})`;
+            headerCount.classList.add('unplayed-seeds-count');
+            headerText.appendChild(headerCount);
+
             const subheaderRow = unplayedSeedsBody.insertRow();
             ['Seed', 'Test date', 'Seed #'].forEach((text, index) => {
                 const th = document.createElement('th');
@@ -600,6 +692,108 @@ class PlayerSummary {
         this.populateUnplayedSeedsTable(seeds, tableBody);
     }
 
+    displayTestSearch() {
+        const testSearchContainer = document.createElement('div');
+        testSearchContainer.className = 'test-search-container';
+        testSearchContainer.style.marginTop = '30px';
+
+        const title = document.createElement('h2');
+        title.textContent = 'Search by test';
+        title.className = 'leaderboard-title';
+
+        const inputContainer = document.createElement('div');
+        inputContainer.style.display = 'flex';
+        inputContainer.style.justifyContent = 'center';
+        inputContainer.style.marginBottom = '20px';
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.id = 'testNameInput';
+        input.placeholder = 'Enter test name';
+        input.style.marginRight = '10px';
+        input.style.padding = '8px';
+        input.style.width = '250px';
+
+        const button = document.createElement('button');
+        button.textContent = 'Search';
+        button.id = 'searchTestButton';
+        button.style.padding = '8px 16px';
+
+        inputContainer.appendChild(input);
+        inputContainer.appendChild(button);
+
+        const resultContainer = document.createElement('div');
+        resultContainer.id = 'testResultContainer';
+
+        testSearchContainer.appendChild(title);
+        testSearchContainer.appendChild(inputContainer);
+        testSearchContainer.appendChild(resultContainer);
+
+        tableContainer.appendChild(testSearchContainer);
+
+        button.addEventListener('click', () => this.searchTest(input.value));
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                this.searchTest(input.value);
+            }
+        });
+    }
+
+    async searchTest(testName) {
+        const resultContainer = document.getElementById('testResultContainer');
+        resultContainer.innerHTML = 'Searching...';
+
+        try {
+            const testData = await this.fetchTestData(testName);
+            if (testData) {
+                this.displayTestResults(testData);
+            } else {
+                resultContainer.innerHTML = 'Test not found or player did not participate.';
+            }
+        } catch (error) {
+            console.error('Error searching for test:', error);
+            resultContainer.innerHTML = 'An error occurred while searching for the test.';
+        }
+    }
+
+    async fetchTestData(testName) {
+        const testId = Object.keys(PRECOMPUTE.tests).find(key => 
+            `${PRECOMPUTE.tests[key].month} ${PRECOMPUTE.tests[key].year}` === testName
+        );
+        if (!testId) return null;
+
+        const testData = playerTests.get(this.playerName)[testId];
+        console.log(testData[12]);
+        return {
+            testName: testName,
+            accuracy: testData[6],
+            rank: testData[11],
+            totalParticipants: testData[12],
+            gamesPlayed: testData[4],
+            totalSeeds: testData[5]
+        };
+    }
+
+    displayTestResults(testData) {
+        const resultContainer = document.getElementById('testResultContainer');
+        resultContainer.innerHTML = '';
+
+        const card = document.createElement('div');
+        card.className = 'leaderboard-card';
+        card.style.width = '100%';
+        card.style.maxWidth = '500px';
+        card.style.margin = '0 auto';
+
+        card.innerHTML = `
+            <h3>${testData.testName}</h3>
+            <p>${(testData.accuracy * 100).toFixed(2)}%</p>
+            <p>${testData.rank} / ${testData.totalParticipants}</p>
+            <p>${testData.gamesPlayed}/${testData.totalSeeds} games played</p>
+        `;
+
+        resultContainer.appendChild(card);
+    }
+
     getMonthNumber(monthName) {
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         return months.indexOf(monthName);
@@ -611,7 +805,6 @@ class PlayerSummary {
             tableBody.deleteRow(1);
         }
 
-        // Populate with sorted data
         seeds.forEach(seed => {
             const row = tableBody.insertRow();
             const seedDetailsCell = row.insertCell();
@@ -638,17 +831,17 @@ async function initializeData() {
         playerLifetime = await CSVUtil.loadCSVWithHeaders('PLAYER_CARD.csv', 'PLAYER_NAME');
         playerLifetimeArray = Object.values(playerLifetime);
         
-        sortedPlayerLifetime = playerLifetimeArray
-            .filter(row => parseInt(row['OVERALL_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['all'] * 1/4)
-            .sort((a, b) => parseFloat(b['OVERALL_ACCURACY']) - parseFloat(a['OVERALL_ACCURACY']));
-        
-        sortedPlayerNMLifetime = playerLifetimeArray
-            .filter(row => parseInt(row['NM_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['nm'] * 1/4)
-            .sort((a, b) => parseFloat(b['NM_ACCURACY']) - parseFloat(a['NM_ACCURACY']));
-        
-        sortedPlayerNMPZLifetime = playerLifetimeArray
+        sortedPlayers = {
+            "all": playerLifetimeArray
+                .filter(row => parseInt(row['OVERALL_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['all'] * 1/4)
+                .sort((a, b) => parseFloat(b['OVERALL_ACCURACY']) - parseFloat(a['OVERALL_ACCURACY'])),
+            "nm": playerLifetimeArray
+                .filter(row => parseInt(row['NM_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['nm'] * 1/4)
+                .sort((a, b) => parseFloat(b['NM_ACCURACY']) - parseFloat(a['NM_ACCURACY'])),
+            "nmpz": playerLifetimeArray
             .filter(row => parseInt(row['NMPZ_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['nmpz'] * 1/4)
-            .sort((a, b) => parseFloat(b['NMPZ_ACCURACY']) - parseFloat(a['NMPZ_ACCURACY']));
+            .sort((a, b) => parseFloat(b['NMPZ_ACCURACY']) - parseFloat(a['NMPZ_ACCURACY']))
+        }
 
         const seedsData = await CSVUtil.loadCSV('SEEDS.csv', 'tables');
         seedsData.slice(1).forEach(row => {
@@ -669,6 +862,38 @@ async function initializeData() {
                 playerGames.set(PLAYER_NAME, new Set());
             }
             playerGames.get(PLAYER_NAME).add(SEED_LINK);
+        });
+
+        const testsData = await CSVUtil.loadCSV('TEST_SUM.csv');
+        testsData.slice(1).forEach(row => {
+            const testId = row[0];
+            if (!tests.has(testId)) {
+                tests.set(testId, []);
+            }
+
+            tests.get(testId).push(row);
+        });
+
+
+        const playerTestsData = await CSVUtil.loadCSV('PLAYER_TEST_SUM.csv');
+        playerTestsData.slice(1).forEach(row => {
+            const playerName = row[2];
+            if (!playerTests.has(playerName)) {
+                playerTests.set(playerName, {});
+            }
+            
+            playerTests.get(playerName)[row[0]] = Array.from(row.slice(1));
+            playerTests.get(playerName)[row[0]].push(tests.get(row[0])[0][4]);
+        });
+        
+        const recordsData = await CSVUtil.loadCSV('RECORDS.csv');
+        recordsData.slice(1).forEach(row => {
+            const recordType = row[0];
+            if (!records.has(recordType)) {
+                records.set(recordType, []);
+            }
+            
+            records.get(recordType).push(row);
         });
     } catch (error) {
         console.error('Error initializing data:', error);
@@ -724,10 +949,22 @@ function initializePlayerSearch() {
 }
 
 async function displayLeaderboard(container, activeId, dataFiles) {
-    const files = dataFiles ? dataFiles.split(',').map(file => file.trim()) : [];
+    // File assignment
+    let files = dataFiles && dataFiles.includes('.csv') ? dataFiles.split(',').map(file => file.trim()) : null;
+    if (!files && document.querySelector("#records-submenu #"+activeId)) {
+        switch(activeId) {
+            case 'high-scores':
+                files = [records.get('GAME_SCORE')];
+                break;
+            case 'tests':
+                files = [records.get('TEST_ACCURACY'), records.get('TEST_ACCURACY_NM'), records.get('TEST_ACCURACY_NMPZ')];
+                break;
+        }
+    }
 
-    for (const file of files) {
+    for (let file of files) {
         let leaderboard;
+        let mode;
         const tableWrapper = document.createElement('div');
         tableWrapper.className = 'table-wrapper';
 
@@ -735,7 +972,7 @@ async function displayLeaderboard(container, activeId, dataFiles) {
             case 'player-nmpz':
             case 'player-nm':
             case 'player-all':
-                const mode = activeId.split('-')[1];
+                mode = activeId.split('-')[1];
                 leaderboard = LeaderboardFactory.create('accuracy', mode);
                 pageTitle.textContent = mode === 'all' ? 'All-time' : mode.toUpperCase();
                 break;
@@ -745,16 +982,17 @@ async function displayLeaderboard(container, activeId, dataFiles) {
                 break;
             case 'player-games':
             case 'player-rounds':
-                const aggregateMode = activeId.split('-')[1];
-                leaderboard = LeaderboardFactory.create('aggregate', aggregateMode);
-                pageTitle.textContent = aggregateMode === 'rounds' ? 'Rounds' : 'Games';
+                mode = activeId.split('-')[1];
+                leaderboard = LeaderboardFactory.create('aggregate', mode);
+                pageTitle.textContent = mode === 'rounds' ? 'Rounds' : 'Games';
                 break;
             case 'high-scores':
                 leaderboard = LeaderboardFactory.create('highScores');
                 pageTitle.textContent = "High scores";
                 break;
             case 'tests':
-                leaderboard = LeaderboardFactory.create('tests');
+                mode = file[0][0].split('_')[2] || 'all';
+                leaderboard = LeaderboardFactory.create('tests', mode);
                 pageTitle.textContent = "Tests";
                 break;
             default:
@@ -815,47 +1053,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeSubmenuItems();
     initializePlayerSearch();
 
-    // Set default view
-    await loadAndDisplayLeaderboard('player-all');
+    await loadAndDisplayLeaderboard('player-all'); //default page
 });
-
-// Add any additional utility functions or classes here as needed
-
-// Example of how to add a new leaderboard type:
-/*
-class NewLeaderboardType extends Leaderboard {
-    constructor(specificParameter) {
-        super({
-            rowClass: 'new-type',
-            headers: ['Header1', 'Header2', 'Header3'],
-            title: 'New Leaderboard Type',
-            limit: 10,
-            filterCondition: row => true, // Adjust as needed
-            sortFunction: (a, b) => parseFloat(b[1]) - parseFloat(a[1]), // Adjust as needed
-            cellConfigs: [
-                {
-                    display: (td, row) => {
-                        // Custom display logic for each cell
-                    }
-                },
-                // Add more cell configs as needed
-            ]
-        });
-        this.specificParameter = specificParameter;
-    }
-
-    // Add any specific methods for this leaderboard type
-}
-
-// Then add it to the LeaderboardFactory:
-case 'newType':
-    return new NewLeaderboardType(mode);
-*/
-
-// You can also add more global variables, utility functions, or modify existing classes as needed to accommodate new features or data structures.
-
-// Remember to update the initializeData function if you need to load additional data for new features.
-
-// If you need to add new event listeners or initialize new components, you can do so in the DOMContentLoaded event listener or create separate initialization functions.
-
-// This structure allows for easy expansion and modification of the leaderboard system while maintaining a clean and organized codebase.

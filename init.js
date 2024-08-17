@@ -166,21 +166,6 @@ async function mySummary() {
             searchPlayerButton.click();
         }
     });
-
-    playerLifetime = await loadCSVWithHeaders('PLAYER_CARD.csv', 'PLAYER_NAME');
-    playerLifetimeArray = Object.values(playerLifetime);
-    
-    sortedPlayerLifetime = playerLifetimeArray
-        .filter(row => parseInt(row['OVERALL_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['all'] * 1/4)
-        .sort((a, b) => parseFloat(b['OVERALL_ACCURACY']) - parseFloat(a['OVERALL_ACCURACY']));
-    
-    sortedPlayerNMLifetime = playerLifetimeArray
-        .filter(row => parseInt(row['NM_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['nm'] * 1/4)
-        .sort((a, b) => parseFloat(b['NM_ACCURACY']) - parseFloat(a['NM_ACCURACY']));
-    
-    sortedPlayerNMPZLifetime = playerLifetimeArray
-        .filter(row => parseInt(row['NMPZ_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['nmpz'] * 1/4)
-        .sort((a, b) => parseFloat(b['NMPZ_ACCURACY']) - parseFloat(a['NMPZ_ACCURACY']));
 }
 
 async function seeds() {
