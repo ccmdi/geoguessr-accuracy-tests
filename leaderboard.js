@@ -313,9 +313,16 @@ class LeaderboardFactory {
 }
 
 class PlayerSummary {
-    constructor(playerName) {
-        this.playerName = playerName;
-        this.playerData = playerLifetime[playerName] || playerLifetimeArray.find(row => row['PLAYER_ID'].toLowerCase() === playerName.toLowerCase());
+    constructor(player) {
+        this.player = player;
+        if (playerLifetime[player]){
+            this.playerName = player;
+        } else if(playerLifetimeArray.find(row => row['PLAYER_ID'].toLowerCase() === player.toLowerCase())){
+            this.playerName = playerLifetimeArray.find(row => row['PLAYER_ID'].toLowerCase() === player.toLowerCase())['PLAYER_NAME'];
+        } else {
+            return;
+        }
+        this.playerData = playerLifetime[this.playerName];
         this.sortOrder = 'desc';
     }
 
@@ -326,7 +333,17 @@ class PlayerSummary {
         }
 
         tableContainer.innerHTML = '';
-        this.setRanks();
+        this.testIds = Object.keys(playerTests.get(this.playerName));
+
+        // Set ranks
+        const compareFunction = row => 
+            row['PLAYER_NAME'] === this.playerName || 
+            row['PLAYER_ID'].toLowerCase() === this.playerName.toLowerCase();
+
+        ['ALL', 'NM', 'NMPZ'].forEach(mode => {
+            this.playerData[`RANK_${mode}`] = sortedPlayers[mode.toLowerCase()].findIndex(compareFunction) + 1 || 'N/A';
+        });
+
         this.displayPlayerName();
         this.displaySections();
         this.displayStatistics();
@@ -337,16 +354,6 @@ class PlayerSummary {
     displayError(message) {
         pageTitle.innerHTML = '';
         tableContainer.innerHTML = `<p>${message}</p>`;
-    }
-
-    setRanks() {
-        const compareFunction = row => 
-            row['PLAYER_NAME'] === this.playerName || 
-            row['PLAYER_ID'].toLowerCase() === this.playerName.toLowerCase();
-
-        ['ALL', 'NM', 'NMPZ'].forEach(mode => {
-            this.playerData[`RANK_${mode}`] = sortedPlayers[mode.toLowerCase()].findIndex(compareFunction) + 1 || 'N/A';
-        });
     }
 
     displayPlayerName() {
@@ -368,8 +375,13 @@ class PlayerSummary {
         return link;
     }
 
+    
+    // Sections
     displaySections() {
-        const container = this.createFlexContainer();
+        const container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.justifyContent = 'center';
+
         const sections = [
             { title: 'SUMMARY', data: this.getSummaryData() },
             { title: 'TESTS', data: this.getImprovementData() }
@@ -388,13 +400,6 @@ class PlayerSummary {
         if (hasContent) {
             tableContainer.appendChild(container);
         }
-    }
-
-    createFlexContainer() {
-        const container = document.createElement('div');
-        container.style.display = 'flex';
-        container.style.justifyContent = 'center';
-        return container;
     }
 
     createSection(title, data) {
@@ -422,6 +427,32 @@ class PlayerSummary {
         
         if (cardCount === 0) return null;
         return section;
+    }
+
+    getSummaryData() {
+        return ['ALL', 'NM', 'NMPZ'].map(mode => ({
+            type: 'summary',
+            name: mode === 'ALL' ? 'ALL-TIME' : mode,
+            rank: this.playerData[`RANK_${mode}`],
+            accuracy: this.playerData[`${mode === 'ALL' ? 'OVERALL' : mode}_ACCURACY`],
+            total: playerLifetimeArray.length
+        }));
+    }
+
+    getImprovementData() {
+        return [
+            { name: 'TOTAL TESTS', key: 'TOTAL_TESTS', isPercentage: false },
+            { name: 'OVERALL IMPROVEMENT', key: 'OVERALL_IMPROVEMENT', isPercentage: true },
+            { name: 'RECENT IMPROVEMENT', key: 'RECENT_IMPROVEMENT', isPercentage: true },
+            { name: 'RECENT IMPROVEMENT (5)', key: 'RECENT_5_IMPROVEMENT', isPercentage: true },
+            { name: 'FIRST TEST', key: 'FIRST_TEST_NAME', isPercentage: false },
+            { name: 'LATEST TEST', key: 'LAST_TEST_NAME', isPercentage: false }
+        ].map(item => ({
+            type: 'improvement',
+            name: item.name,
+            value: this.playerData[item.key],
+            isPercentage: item.isPercentage
+        }));
     }
 
     getCardContent(data) {
@@ -471,35 +502,10 @@ class PlayerSummary {
         return grades.find(g => percentile >= g.threshold)?.grade || 'F';
     }
 
-    getSummaryData() {
-        return ['ALL', 'NM', 'NMPZ'].map(mode => ({
-            type: 'summary',
-            name: mode === 'ALL' ? 'ALL-TIME' : mode,
-            rank: this.playerData[`RANK_${mode}`],
-            accuracy: this.playerData[`${mode === 'ALL' ? 'OVERALL' : mode}_ACCURACY`],
-            total: playerLifetimeArray.length
-        }));
-    }
-
-    getImprovementData() {
-        return [
-            { name: 'TOTAL TESTS', key: 'TOTAL_TESTS', isPercentage: false },
-            { name: 'OVERALL IMPROVEMENT', key: 'OVERALL_IMPROVEMENT', isPercentage: true },
-            { name: 'RECENT IMPROVEMENT', key: 'RECENT_IMPROVEMENT', isPercentage: true },
-            { name: 'RECENT IMPROVEMENT (5)', key: 'RECENT_5_IMPROVEMENT', isPercentage: true },
-            { name: 'FIRST TEST', key: 'FIRST_TEST_NAME', isPercentage: false },
-            { name: 'LATEST TEST', key: 'LAST_TEST_NAME', isPercentage: false }
-        ].map(item => ({
-            type: 'improvement',
-            name: item.name,
-            value: this.playerData[item.key],
-            isPercentage: item.isPercentage
-        }));
-    }
-
+    // Statistics
     displayStatistics() {
-        const table = document.createElement('table');
-        table.id = 'playerSummaryTable';
+        const tableHTML = document.createElement('table');
+        tableHTML.id = 'playerSummaryTable';
 
         const sections = [
             {
@@ -550,29 +556,23 @@ class PlayerSummary {
             }
         ];
 
+        let tableContent = '';
+
         sections.forEach((section, sectionIndex) => {
             if (sectionIndex > 0) {
-                const gapRow = table.insertRow();
-                gapRow.style.height = '20px';
+                tableContent += '<tr style="height: 20px;"></tr>';
             }
 
-            const sectionHeader = table.insertRow();
-            sectionHeader.classList.add('summary-subsection');
-            ['', 'All-time', 'NM', 'NMPZ'].forEach((header, index) => {
-                const th = document.createElement('th');
-                th.textContent = index === 0 ? section.title : header;
-                sectionHeader.appendChild(th);
-            });
+            tableContent += `
+                <tr class="summary-subsection">
+                    <th>${section.title}</th>
+                    <th>All-time</th>
+                    <th>NM</th>
+                    <th>NMPZ</th>
+                </tr>
+            `;
 
             section.stats.forEach(([statName, allTimeKey, nmKey, nmpzKey]) => {
-                const row = table.insertRow();
-                const cell1 = row.insertCell(0);
-                const cell2 = row.insertCell(1);
-                const cell3 = row.insertCell(2);
-                const cell4 = row.insertCell(3);
-
-                cell1.textContent = statName;
-                
                 const formatValue = (key) => {
                     let value = this.playerData[key];
                     if (key.includes('ACCURACY') || key.includes('RATE')) {
@@ -583,15 +583,22 @@ class PlayerSummary {
                     return value;
                 };
 
-                cell2.textContent = formatValue(allTimeKey);
-                cell3.textContent = formatValue(nmKey);
-                cell4.textContent = formatValue(nmpzKey);
+                tableContent += `
+                    <tr>
+                        <td>${statName}</td>
+                        <td>${formatValue(allTimeKey)}</td>
+                        <td>${formatValue(nmKey)}</td>
+                        <td>${formatValue(nmpzKey)}</td>
+                    </tr>
+                `;
             });
         });
 
-        tableContainer.appendChild(table);
+        tableHTML.innerHTML = tableContent;
+        tableContainer.appendChild(tableHTML);
     }
 
+    // Unplayed seeds
     displayUnplayedSeeds() {
         const gap = document.createElement('div');
         gap.style.height = '30px';
@@ -692,6 +699,29 @@ class PlayerSummary {
 
         this.populateUnplayedSeedsTable(seeds, tableBody);
     }
+    
+    populateUnplayedSeedsTable(seeds, tableBody) {
+        while (tableBody.rows.length > 1) {
+            tableBody.deleteRow(1);
+        }
+
+        seeds.forEach(seed => {
+            const row = tableBody.insertRow();
+            const seedDetailsCell = row.insertCell();
+            const link = document.createElement('a');
+            link.href = seed.seedLink;
+            link.target = '_blank';
+            link.textContent = `${seed.SEED_MAP} ${seed.SEED_MODE} ${seed.SEED_TIME}s`;
+            seedDetailsCell.appendChild(link);
+
+            const testNameCell = row.insertCell();
+            const testName = PRECOMPUTE.tests[seed.TEST_ID]['month'] + ' ' + PRECOMPUTE.tests[seed.TEST_ID]['year'] || seed.TEST_ID;
+            testNameCell.textContent = testName;
+
+            const seedNumberCell = row.insertCell();
+            seedNumberCell.textContent = seed.SEED_NUMBER;
+        });
+    }
 
     displayTestSearch() {
         const testSearchContainer = document.createElement('div');
@@ -702,41 +732,34 @@ class PlayerSummary {
         title.textContent = 'Search by test';
         title.className = 'leaderboard-title';
 
-        const inputContainer = document.createElement('div');
-        inputContainer.style.display = 'flex';
-        inputContainer.style.justifyContent = 'center';
-        inputContainer.style.marginBottom = '20px';
+        const dropdownContainer = document.createElement('div');
+        dropdownContainer.style.display = 'flex';
+        dropdownContainer.style.justifyContent = 'center';
+        dropdownContainer.style.marginBottom = '10px';
 
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.id = 'testNameInput';
-        input.placeholder = 'Enter test name';
-        input.style.marginRight = '10px';
-        input.style.padding = '8px';
-        input.style.width = '250px';
+        const dropdown = document.createElement('select');
 
-        const button = document.createElement('button');
-        button.textContent = 'Search';
-        button.id = 'searchTestButton';
-        button.style.padding = '8px 16px';
+        this.testIds
+            .sort((a, b) => PRECOMPUTE['tests'][a].order - PRECOMPUTE['tests'][b].order)
+            .forEach(testId => {
+                const test = PRECOMPUTE['tests'][testId];
+                dropdown.appendChild(new Option(`${test.month} ${test.year}`, testId));
+            });
 
-        inputContainer.appendChild(input);
-        inputContainer.appendChild(button);
+        dropdownContainer.appendChild(dropdown);
 
         const resultContainer = document.createElement('div');
         resultContainer.id = 'testResultContainer';
 
         testSearchContainer.appendChild(title);
-        testSearchContainer.appendChild(inputContainer);
+        testSearchContainer.appendChild(dropdownContainer);
         testSearchContainer.appendChild(resultContainer);
 
         tableContainer.appendChild(testSearchContainer);
+        this.searchTest(dropdown.value);
 
-        button.addEventListener('click', () => this.searchTest(input.value));
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                this.searchTest(input.value);
-            }
+        dropdown.addEventListener('change', (e) => {
+            this.searchTest(dropdown.value);
         });
     }
 
@@ -757,13 +780,9 @@ class PlayerSummary {
         }
     }
 
-    async fetchTestData(testName) {
-        const testId = Object.keys(PRECOMPUTE.tests).find(key => 
-            `${PRECOMPUTE.tests[key].month} ${PRECOMPUTE.tests[key].year}` === testName
-        );
-        if (!testId) return null;
-
+    async fetchTestData(testId) {
         const testData = playerTests.get(this.playerName)[testId];
+        const testName = PRECOMPUTE.tests[testId].month + ' ' + PRECOMPUTE.tests[testId].year;
         if(!testData) return null;
 
         return {
@@ -801,32 +820,9 @@ class PlayerSummary {
         return months.indexOf(monthName);
     }
 
-    populateUnplayedSeedsTable(seeds, tableBody) {
-        // Clear existing rows
-        while (tableBody.rows.length > 1) {
-            tableBody.deleteRow(1);
-        }
-
-        seeds.forEach(seed => {
-            const row = tableBody.insertRow();
-            const seedDetailsCell = row.insertCell();
-            const link = document.createElement('a');
-            link.href = seed.seedLink;
-            link.target = '_blank';
-            link.textContent = `${seed.SEED_MAP} ${seed.SEED_MODE} ${seed.SEED_TIME}s`;
-            seedDetailsCell.appendChild(link);
-
-            const testNameCell = row.insertCell();
-            const testName = PRECOMPUTE.tests[seed.TEST_ID]['month'] + ' ' + PRECOMPUTE.tests[seed.TEST_ID]['year'] || seed.TEST_ID;
-            testNameCell.textContent = testName;
-
-            const seedNumberCell = row.insertCell();
-            seedNumberCell.textContent = seed.SEED_NUMBER;
-        });
-    }
 }
 
-// Main functions
+// Initialization functions
 async function initializeData() {
     try {
         PRECOMPUTE = await fetch(`./static/json/precomp.json`).then(response => response.json());
@@ -859,12 +855,13 @@ async function initializeData() {
 
         const gamesData = await CSVUtil.loadCSV('GAME_SUM.csv');
         gamesData.slice(1).forEach(row => {
-            const [, SEED_LINK, PLAYER_ID, PLAYER_NAME, , , ,] = row;
+            const SEED_LINK = row[1], PLAYER_ID = row[2], PLAYER_NAME = row[3];
             if (!playerGames.has(PLAYER_NAME)) {
                 playerGames.set(PLAYER_NAME, new Set());
             }
             playerGames.get(PLAYER_NAME).add(SEED_LINK);
         });
+        console.log(playerGames);
 
         const testsData = await CSVUtil.loadCSV('TEST_SUM.csv');
         testsData.slice(1).forEach(row => {
@@ -901,7 +898,6 @@ async function initializeData() {
         console.error('Error initializing data:', error);
     }
 }
-
 
 function initializeTabs() {
     const tabs = document.querySelectorAll('.tab');
@@ -1049,7 +1045,7 @@ function closeAllSubmenus() {
     document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
 }
 
-// Main initialization
+// Main
 document.addEventListener('DOMContentLoaded', async () => {
     await initializeData();
     initializeTabs();

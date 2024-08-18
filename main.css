@@ -208,6 +208,15 @@ button:hover, button:active {
     background-color: var(--ru-blue-light);
 }
 
+select {
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
 a {
     color: #e0e0e0;
     text-decoration: none;
