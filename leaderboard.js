@@ -356,6 +356,7 @@ class PlayerSummary {
             { color: 'inherit', textDecoration: 'none', target: '_blank' }
         );
         pageTitle.innerHTML = '';
+        pageTitle.classList.remove('russiacord');
         pageTitle.appendChild(playerNameLink);
     }
 
@@ -763,7 +764,8 @@ class PlayerSummary {
         if (!testId) return null;
 
         const testData = playerTests.get(this.playerName)[testId];
-        console.log(testData[12]);
+        if(!testData) return null;
+
         return {
             testName: testName,
             accuracy: testData[6],
@@ -967,6 +969,7 @@ async function displayLeaderboard(container, activeId, dataFiles) {
         let mode;
         const tableWrapper = document.createElement('div');
         tableWrapper.className = 'table-wrapper';
+        pageTitle.classList.add('russiacord');
 
         switch (activeId) {
             case 'player-nmpz':
