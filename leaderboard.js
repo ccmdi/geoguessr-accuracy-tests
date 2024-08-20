@@ -742,7 +742,6 @@ class PlayerSummary {
         const resultContainer = document.getElementById('testResultContainer');
         resultContainer.innerHTML = 'Searching...';
         if (testName === 'shownone') {
-            document.querySelector(".test-search-container select").classList.add('show-none');
             resultContainer.innerHTML = '';
             return;
         } else document.querySelector(".test-search-container select").classList.remove('show-none');
@@ -865,8 +864,159 @@ class PlayerSummary {
 }
 
 class TestSummary {
-    constructor() {
+    constructor(testId) {
+        this.testId = testId;
+        this.testData = PRECOMPUTE.tests[testId];
+        this.overallTestData = tests.get(testId)[0];
+        this.testDetails = this.getTestDetails();
+    }
 
+    getTestDetails() {
+        const seedData = Array.from(seedsMap.values()).find(seed => seed.TEST_ID === this.testId);
+        console.log(this.overallTestData);
+        return {
+            map: seedData ? seedData.SEED_MAP : 'N/A',
+            mode: seedData ? seedData.SEED_MODE : 'N/A',
+            time: seedData ? seedData.SEED_TIME : 'N/A',
+            seedCount: this.overallTestData[9]
+        };
+    }
+
+    displayTitle() {
+        pageTitle.innerHTML = this.testData.month + ' ' + this.testData.year;
+        
+        if (this.testDetails) {
+            const detailsBox = document.createElement('div');
+            detailsBox.className = 'test-details-box';
+            detailsBox.innerHTML = `
+                <span>${this.testDetails.map}</span>
+                <span>${this.testDetails.mode}</span>
+                <span>${this.testDetails.time}s</span> |
+                <span>${this.testDetails.seedCount} seeds</span> |
+                <span>#${this.testData.order}</span>
+            `;
+            pageTitle.appendChild(detailsBox);
+        }
+    }
+
+    displayOverallStats() {
+        const statsTable = document.createElement('table');
+        statsTable.classList.add('test-summary-table');
+        statsTable.innerHTML = `
+            <thead>
+                <tr>
+                    <th colspan="2">Overall Statistics</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Average accuracy</td>
+                    <td>${(parseFloat(this.overallTestData[5]) * 100).toFixed(2)}%</td>
+                </tr>
+                <tr>
+                    <td>Median round score</td>
+                    <td>${Math.round(parseFloat(this.overallTestData[8]))}</td>
+                </tr>
+                <tr>
+                    <td>Average standard deviation</td>
+                    <td>${Math.round(parseFloat(this.overallTestData[6]))}</td>
+                </tr>
+            </tbody>
+        `;
+        tableContainer.appendChild(statsTable);
+    }
+
+    display() {
+        tableContainer.innerHTML = '';
+        this.displayTitle();
+        this.displayOverallStats();
+        this.displayTop('accuracy', 'Accuracy', 'Accuracy', value => (value * 100).toFixed(2) + '%', true, true);
+        this.displayTop('medianScore', 'Median round score', 'Median Score', value => Math.round(value), true, true);
+        this.displayTop('standardDeviation', 'Consistency', 'Standard Deviation', value => Math.round(value), false, true);
+        this.displayTop('improvementPercent', 'Improvement', 'Improvement', value => value.toFixed(2) + '%', true, false);
+        this.displayTop('topFinishRate', 'Top finish rate', 'Top Finish Rate', value => {
+            const percentage = value * 100;
+            return percentage % 1 === 0 ? percentage + '%' : percentage.toFixed(2) + '%';
+        }, true, false);
+        this.displayTop('roundsAbove4k', 'Hedge', 'Rounds Above 4k', value => Math.round(value), true, false);
+    }
+
+    displayTop(attribute, tableTitle, attributeLabel, formatFunction, highestIsBest, showSeedsPlayed = true) {
+        const topSection = document.createElement('div');
+        topSection.classList.add('top-section');
+
+        const title = document.createElement('h2');
+        title.textContent = tableTitle;
+        title.classList.add('top-section-title');
+        topSection.appendChild(title);
+
+        const performanceTable = document.createElement('table');
+        performanceTable.classList.add('test-summary-table');
+        const top = this.getTop(attribute, formatFunction, highestIsBest, showSeedsPlayed);
+        
+        performanceTable.innerHTML = `
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>${attributeLabel}</th>
+                    ${showSeedsPlayed ? '<th>Seeds Played</th>' : ''}
+                </tr>
+            </thead>
+            <tbody>
+                ${top}
+            </tbody>
+        `;
+        
+        if (top) {
+            topSection.appendChild(performanceTable);
+            tableContainer.appendChild(topSection);
+        } else {
+            const noDataMessage = document.createElement('p');
+            noDataMessage.textContent = `No players have completed at least half of the seeds in this test for ${attributeLabel.toLowerCase()}.`;
+            topSection.appendChild(noDataMessage);
+            tableContainer.appendChild(topSection);
+        }
+    }
+
+    getTop(attribute, formatFunction, highestIsBest, showSeedsPlayed) {
+        const minimumSeedsRequired = Math.floor(this.testDetails.seedCount / 2);
+        
+        const attributeIndex = {
+            'accuracy': 6,
+            'medianScore': 15,
+            'standardDeviation': 8,
+            'improvementPercent': 7,
+            'topFinishRate': 12,
+            'roundsAbove4k': 14
+        };
+
+        const eligiblePlayers = Array.from(playerTests.entries())
+            .filter(([, tests]) => {
+                const playerTestData = tests[this.testId];
+                return playerTestData && parseInt(playerTestData[4]) >= minimumSeedsRequired;
+            })
+            .map(([player, tests]) => ({
+                player,
+                playerId: tests[this.testId][0],
+                value: parseFloat(tests[this.testId][attributeIndex[attribute]]),
+                seedsPlayed: parseInt(tests[this.testId][4])
+            }))
+            .sort((a, b) => highestIsBest ? b.value - a.value : a.value - b.value);
+
+        if (eligiblePlayers.length === 0) {
+            return null;
+        }
+
+        return eligiblePlayers
+            .slice(0, 10)
+            .map((entry, index) => `
+                <tr>
+                    <td><a href="https://geoguessr.com/user/${entry.playerId}" target="_blank">${entry.player}</a></td>
+                    <td>${formatFunction(entry.value)}</td>
+                    ${showSeedsPlayed ? `<td>${entry.seedsPlayed}</td>` : ''}
+                </tr>
+            `)
+            .join('');
     }
 }
 
@@ -905,18 +1055,19 @@ function initializePlayerSummary() {
 function initializeTestSummary() {
     const testSummaryTab = document.getElementById('test-summary');
     const testSelect = document.getElementById('testSelect');
-    const testSelectContainer = document.getElementById('testSelectContainer');
 
     testSummaryTab.addEventListener('click', (e) => {
-        hideContainers('tableContainer');
+        hideContainers(['testSelectContainer', 'tableContainer']);
         tableContainer.innerHTML = '';
-        pageTitle.innerHTML = 'Test summary';
+        pageTitle.innerHTML = '';
         pageTitle.classList.remove('russiacord');
-        showContainer('tableContainer');
         showContainer('testSelectContainer');
+        showContainer('tableContainer');
+
+        testSelect.innerHTML = '<option value="shownone">Select a test</option>';
 
         Array.from(tests.keys())
-            .sort((a, b) => PRECOMPUTE['tests'][a].order - PRECOMPUTE['tests'][b].order)
+            .sort((a, b) => PRECOMPUTE['tests'][b].order - PRECOMPUTE['tests'][a].order)
             .forEach(testId => {
                 const test = PRECOMPUTE['tests'][testId];
                 testSelect.appendChild(new Option(`${test.month} ${test.year}`, testId));
@@ -925,6 +1076,31 @@ function initializeTestSummary() {
         e.stopPropagation();
     });
 
+    testSelect.addEventListener('change', (e) => {
+        const selectedTestId = e.target.value;
+        if (selectedTestId === 'shownone') {
+            pageTitle.innerHTML = '';
+            tableContainer.innerHTML = '';
+            return;
+        }
+        else if (selectedTestId) {
+            const testSummary = new TestSummary(selectedTestId);
+            testSummary.display();
+        }
+    });
+
+    testSelect.addEventListener('wheel', function(event) {
+        event.preventDefault();
+
+        const direction = event.deltaY > 0 ? 1 : -1;
+        const currentIndex = this.selectedIndex;
+        const newIndex = Math.max(1, Math.min(currentIndex + direction, this.options.length - 1));
+
+        if (newIndex !== currentIndex) {
+            this.selectedIndex = newIndex;
+            this.dispatchEvent(new Event('change'));
+        }
+    });
 }
 
 function initializeAbout() {
