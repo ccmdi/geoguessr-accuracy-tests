@@ -1,57 +1,3 @@
-// Global variables
-let PRECOMPUTE;
-let playerLifetime;
-let playerLifetimeArray;
-let sortedPlayers;
-let seedsMap = new Map();
-let playerGames = new Map();
-let playerTests = new Map();
-let tests = new Map();
-let records = new Map();
-
-class CSVUtil {
-    static async loadCSV(file, type = 'views') {
-        try {
-            let response = await fetch(`./static/csv/${type}/${file}`);
-            const csv = await response.text();
-            return csv.split('\n').map(row => row.split(','));
-        } catch (error) {
-            console.error('Error fetching CSV:', error);
-        }
-    }
-
-    static async loadCSVWithHeaders(file, keyColumn) {
-        try {
-            const data = await this.loadCSV(file);
-            if (data.length < 2) {
-                throw new Error('CSV file must have at least a header row and one data row');
-            }
-
-            const headers = data[0];
-            const rows = data.slice(1);
-            const keyIndex = headers.findIndex(header => header.trim() === keyColumn);
-
-            if (keyIndex === -1) {
-                throw new Error(`Key column "${keyColumn}" not found in CSV headers`);
-            }
-
-            const result = {};
-
-            rows.forEach(row => {
-                const obj = {};
-                headers.forEach((header, index) => {
-                    obj[header.trim()] = row[index] ? row[index].trim() : '';
-                });
-                const key = row[keyIndex].trim();
-                result[key] = obj;
-            });
-
-            return result;
-        } catch (error) {
-            console.error('Error parsing CSV with headers:', error);
-        }
-    }
-}
 
 
 // Base Leaderboard class
@@ -421,7 +367,13 @@ class PlayerSummary {
             card.className = 'leaderboard-card';
             card.style.animationDelay = `${index * 0.1}s`;
             card.innerHTML = this.getCardContent(item);
+            if (card.innerHTML === '') return;
             section.appendChild(card);
+            tippy(card.querySelector(".leaderboard-card-total-counted"), {
+                content: "Total rank number only includes eligible players",
+                placement: 'right',
+                followCursor: true
+            })
             cardCount++;
         });
         
@@ -434,8 +386,10 @@ class PlayerSummary {
             type: 'summary',
             name: mode === 'ALL' ? 'ALL-TIME' : mode,
             rank: this.playerData[`RANK_${mode}`],
+            mode: mode,
             accuracy: this.playerData[`${mode === 'ALL' ? 'OVERALL' : mode}_ACCURACY`],
-            total: playerLifetimeArray.length
+            total: playerLifetimeArray.length,
+            totalCounted: sortedPlayers[mode.toLowerCase()].length
         }));
     }
 
@@ -457,14 +411,18 @@ class PlayerSummary {
 
     getCardContent(data) {
         if (data.type === 'summary') {
-            const gradeLetter = this.calculateGrade(data.rank, data.total);
+            const { gradeLetter, adjustedPercentage } = this.calculateGrade(data.accuracy, data.mode);
             return `
                 <h3>${data.name}</h3>
-                <p>RANK: ${data.rank} / ${data.total}</p>
+                <p>RANK: ${data.rank} / <span class='leaderboard-card-total-counted'>${data.totalCounted}</span></p>
                 <p>ACCURACY: ${(data.accuracy * 100).toFixed(2)}%</p>
-                <div class="grade grade-${gradeLetter.replace('+','-plus')}">${gradeLetter}</div>
+                <div class="grade-container">
+                    <div class="grade grade-${gradeLetter.replace('+','-plus')}">${gradeLetter}</div>
+                    <div class="adjusted-percentage grade-${gradeLetter.replace('+','-plus')}">${adjustedPercentage.toFixed(2)}%</div>
+                </div>
             `;
         } else if (data.type === 'improvement') {
+            if (data.value == null || data.value == '') return '';
             if (data.isPercentage) {
                 const value = parseFloat(data.value) * 100;
                 const formattedValue = value.toFixed(2);
@@ -486,8 +444,11 @@ class PlayerSummary {
         }
     }
 
-    calculateGrade(rank, total) {
-        const percentile = (total - rank + 1) / total;
+    calculateGrade(number, mode) {
+        let max = sortedPlayers[mode.toLowerCase()][0][mode === 'ALL' ? 'OVERALL_ACCURACY' : `${mode}_ACCURACY`];
+
+        const percent = 1 - (max - number);
+        const adjustedPercentage = percent * 100;
         const grades = [
             { threshold: 0.98, grade: 'S' },
             { threshold: 0.94, grade: 'A+' },
@@ -496,10 +457,11 @@ class PlayerSummary {
             { threshold: 0.8, grade: 'B' },
             { threshold: 0.75, grade: 'C+' },
             { threshold: 0.7, grade: 'C' },
-            { threshold: 0.65, grade: 'D+' },
-            { threshold: 0.6, grade: 'D' },
+            { threshold: 0.6, grade: 'D+' },
+            { threshold: 0.5, grade: 'D' },
         ];
-        return grades.find(g => percentile >= g.threshold)?.grade || 'F';
+        const gradeLetter = grades.find(g => percent >= g.threshold)?.grade || 'F';
+        return { gradeLetter, adjustedPercentage };
     }
 
     // Statistics
@@ -729,7 +691,7 @@ class PlayerSummary {
         testSearchContainer.style.marginTop = '30px';
 
         const title = document.createElement('h2');
-        title.textContent = 'Search by test';
+        title.textContent = 'Find test';
         title.className = 'leaderboard-title';
 
         const dropdownContainer = document.createElement('div');
@@ -738,6 +700,19 @@ class PlayerSummary {
         dropdownContainer.style.marginBottom = '10px';
 
         const dropdown = document.createElement('select');
+        dropdown.addEventListener('wheel', function(event) {
+            event.preventDefault();
+    
+            const direction = event.deltaY > 0 ? 1 : -1;
+            const currentIndex = this.selectedIndex;
+            const newIndex = Math.max(1, Math.min(currentIndex + direction, this.options.length - 1));
+    
+            if (newIndex !== currentIndex) {
+                this.selectedIndex = newIndex;
+                this.dispatchEvent(new Event('change'));
+            }
+        });
+        dropdown.appendChild(new Option('Show none', 'shownone'));
 
         this.testIds
             .sort((a, b) => PRECOMPUTE['tests'][a].order - PRECOMPUTE['tests'][b].order)
@@ -766,6 +741,11 @@ class PlayerSummary {
     async searchTest(testName) {
         const resultContainer = document.getElementById('testResultContainer');
         resultContainer.innerHTML = 'Searching...';
+        if (testName === 'shownone') {
+            document.querySelector(".test-search-container select").classList.add('show-none');
+            resultContainer.innerHTML = '';
+            return;
+        } else document.querySelector(".test-search-container select").classList.remove('show-none');
 
         try {
             const testData = await this.fetchTestData(testName);
@@ -785,13 +765,22 @@ class PlayerSummary {
         const testName = PRECOMPUTE.tests[testId].month + ' ' + PRECOMPUTE.tests[testId].year;
         if(!testData) return null;
 
+        // Fetch overall test statistics TODO
+        const overallTestData = tests.get(testId)[0];
+        console.log(overallTestData);
+
         return {
             testName: testName,
-            accuracy: testData[6],
-            rank: testData[11],
-            totalParticipants: testData[12],
-            gamesPlayed: testData[4],
-            totalSeeds: testData[5]
+            accuracy: parseFloat(testData[6]),
+            averageAccuracy: parseFloat(overallTestData[5]),
+            rank: parseInt(testData[11]),
+            totalParticipants: parseInt(testData[12]),
+            gamesPlayed: parseInt(testData[4]),
+            totalSeeds: parseInt(testData[5]),
+            medianScore: parseFloat(testData[13]),
+            stdev: parseFloat(testData[8]),
+            overallMedian: parseFloat(overallTestData[8]),
+            overallStdev: parseFloat(overallTestData[6])
         };
     }
 
@@ -799,20 +788,73 @@ class PlayerSummary {
         const resultContainer = document.getElementById('testResultContainer');
         resultContainer.innerHTML = '';
 
-        const card = document.createElement('div');
-        card.className = 'leaderboard-card';
-        card.style.width = '100%';
-        card.style.maxWidth = '500px';
-        card.style.margin = '0 auto';
+        const table = document.createElement('table');
+        table.id = 'testResultTable';
 
-        card.innerHTML = `
-            <h3>${testData.testName}</h3>
-            <p>${(testData.accuracy * 100).toFixed(2)}%</p>
-            <p>${testData.rank} / ${testData.totalParticipants}</p>
-            <p>${testData.gamesPlayed}/${testData.totalSeeds} games played</p>
+        const playerScoreColor = this.getScoreColor(testData.accuracy * 100);
+        const playerRankColor = this.getRankColor(testData.rank, testData.totalParticipants);
+
+        table.innerHTML = `
+            <thead>
+                <tr>
+                    <th>Statistic</th>
+                    <th>${this.playerData['PLAYER_NAME']}</th>
+                    <th>Overall</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accuracy</td>
+                    <td style="color: ${playerScoreColor}">${(testData.accuracy * 100).toFixed(2)}%</td>
+                    <td>${(testData.averageAccuracy * 100).toFixed(2)}%</td>
+                </tr>
+                <tr>
+                    <td>Rank</td>
+                    <td style="color: ${playerRankColor}">${testData.rank}</td>
+                    <td>${testData.totalParticipants}</td>
+                </tr>
+                <tr>
+                    <td>Games played</td>
+                    <td>${testData.gamesPlayed}</td>
+                    <td>${testData.totalSeeds}</td>
+                </tr>
+                <tr>
+                    <td>Median score</td>
+                    <td>${testData.medianScore.toFixed(2)}</td>
+                    <td>${testData.overallMedian.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Standard deviation</td>
+                    <td>${Math.round(testData.stdev)}</td>
+                    <td>${Math.round(testData.overallStdev)}</td>
+                </tr>
+            </tbody>
         `;
 
-        resultContainer.appendChild(card);
+        resultContainer.appendChild(table);
+    }
+
+    getScoreColor(score) {
+        if (score >= 95) return 'gold';
+        if (score >= 90) return '#00ff00';
+        if (score >= 85) return '#40ff00';
+        if (score >= 80) return '#80ff00';
+        if (score >= 75) return '#ffff00';
+        if (score >= 70) return '#ffc000';
+        if (score >= 65) return '#ff8000';
+        return '#ff0000';
+    }
+
+    getRankColor(rank, total) {
+        const percentile = (total - rank + 1) / total * 100;
+        if (percentile >= 99) return 'gold';
+        if (percentile >= 95) return '#00ff00';
+        if (percentile >= 90) return '#40ff00';
+        if (percentile >= 80) return '#80ff00';
+        if (percentile >= 70) return '#ffff00';
+        if (percentile >= 60) return '#ffc000';
+        if (percentile >= 50) return '#ff8000';
+        return '#ff0000';
     }
 
     getMonthNumber(monthName) {
@@ -822,112 +864,26 @@ class PlayerSummary {
 
 }
 
-// Initialization functions
-async function initializeData() {
-    try {
-        PRECOMPUTE = await fetch(`./static/json/precomp.json`).then(response => response.json());
-        playerLifetime = await CSVUtil.loadCSVWithHeaders('PLAYER_CARD.csv', 'PLAYER_NAME');
-        playerLifetimeArray = Object.values(playerLifetime);
-        
-        sortedPlayers = {
-            "all": playerLifetimeArray
-                .filter(row => parseInt(row['OVERALL_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['all'] * 1/4)
-                .sort((a, b) => parseFloat(b['OVERALL_ACCURACY']) - parseFloat(a['OVERALL_ACCURACY'])),
-            "nm": playerLifetimeArray
-                .filter(row => parseInt(row['NM_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['nm'] * 1/4)
-                .sort((a, b) => parseFloat(b['NM_ACCURACY']) - parseFloat(a['NM_ACCURACY'])),
-            "nmpz": playerLifetimeArray
-            .filter(row => parseInt(row['NMPZ_GAMES_PLAYED']) >= PRECOMPUTE['seedCount']['nmpz'] * 1/4)
-            .sort((a, b) => parseFloat(b['NMPZ_ACCURACY']) - parseFloat(a['NMPZ_ACCURACY']))
-        }
+class TestSummary {
+    constructor() {
 
-        const seedsData = await CSVUtil.loadCSV('SEEDS.csv', 'tables');
-        seedsData.slice(1).forEach(row => {
-            const [TEST_ID, SEED_NUMBER, SEED_LINK, SEED_MAP, SEED_TIME, SEED_MODE] = row;
-            seedsMap.set(SEED_LINK, {
-                TEST_ID,
-                SEED_NUMBER,
-                SEED_MAP,
-                SEED_TIME,
-                SEED_MODE
-            });
-        });
-
-        const gamesData = await CSVUtil.loadCSV('GAME_SUM.csv');
-        gamesData.slice(1).forEach(row => {
-            const SEED_LINK = row[1], PLAYER_ID = row[2], PLAYER_NAME = row[3];
-            if (!playerGames.has(PLAYER_NAME)) {
-                playerGames.set(PLAYER_NAME, new Set());
-            }
-            playerGames.get(PLAYER_NAME).add(SEED_LINK);
-        });
-        console.log(playerGames);
-
-        const testsData = await CSVUtil.loadCSV('TEST_SUM.csv');
-        testsData.slice(1).forEach(row => {
-            const testId = row[0];
-            if (!tests.has(testId)) {
-                tests.set(testId, []);
-            }
-
-            tests.get(testId).push(row);
-        });
-
-
-        const playerTestsData = await CSVUtil.loadCSV('PLAYER_TEST_SUM.csv');
-        playerTestsData.slice(1).forEach(row => {
-            const playerName = row[2];
-            if (!playerTests.has(playerName)) {
-                playerTests.set(playerName, {});
-            }
-            
-            playerTests.get(playerName)[row[0]] = Array.from(row.slice(1));
-            playerTests.get(playerName)[row[0]].push(tests.get(row[0])[0][4]);
-        });
-        
-        const recordsData = await CSVUtil.loadCSV('RECORDS.csv');
-        recordsData.slice(1).forEach(row => {
-            const recordType = row[0];
-            if (!records.has(recordType)) {
-                records.set(recordType, []);
-            }
-            
-            records.get(recordType).push(row);
-        });
-    } catch (error) {
-        console.error('Error initializing data:', error);
     }
 }
 
-function initializeTabs() {
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function(e) {
-            tabs.forEach(t => t !== tab && t.classList.remove('active'));
-            if (!this.classList.contains('page')) {
-                this.classList.toggle('active');
-            }
-            e.stopPropagation();
-        });
-    });
-
-    document.addEventListener('click', () => {
-        tabs.forEach(tab => !tab.classList.contains('page') && tab.classList.remove('active'));
-    });
-}
-
-function initializePlayerSearch() {
+// Unique pages
+function initializePlayerSummary() {
     const mySummaryTab = document.getElementById('my-summary');
-    const playerSearchContainer = document.getElementById('playerSearchContainer');
     const playerNameInput = document.getElementById('playerNameInput');
     const searchPlayerButton = document.getElementById('searchPlayerButton');
 
     mySummaryTab.addEventListener('click', (e) => {
+        hideContainers(['playerSearchContainer', 'tableContainer']);
         document.querySelectorAll('.tab, .submenu-item').forEach(t => t.classList.remove('active'));
         tableContainer.innerHTML = '';
         pageTitle.innerHTML = '';
         pageTitle.classList.remove('russiacord');
-        playerSearchContainer.style.display = 'block';
+        showContainer('playerSearchContainer')
+        showContainer('tableContainer');
         e.stopPropagation();
     });
 
@@ -946,7 +902,50 @@ function initializePlayerSearch() {
     });
 }
 
+function initializeTestSummary() {
+    const testSummaryTab = document.getElementById('test-summary');
+    const testSelect = document.getElementById('testSelect');
+    const testSelectContainer = document.getElementById('testSelectContainer');
+
+    testSummaryTab.addEventListener('click', (e) => {
+        hideContainers('tableContainer');
+        tableContainer.innerHTML = '';
+        pageTitle.innerHTML = 'Test summary';
+        pageTitle.classList.remove('russiacord');
+        showContainer('tableContainer');
+        showContainer('testSelectContainer');
+
+        Array.from(tests.keys())
+            .sort((a, b) => PRECOMPUTE['tests'][a].order - PRECOMPUTE['tests'][b].order)
+            .forEach(testId => {
+                const test = PRECOMPUTE['tests'][testId];
+                testSelect.appendChild(new Option(`${test.month} ${test.year}`, testId));
+            });
+
+        e.stopPropagation();
+    });
+
+}
+
+function initializeAbout() {
+    const aboutTab = document.getElementById('about');
+
+    aboutTab.addEventListener('click', (e) => {
+        hideContainers('aboutContainer');
+        document.querySelectorAll('.tab, .submenu-item').forEach(t => t.classList.remove('active'));
+        tableContainer.innerHTML = '';
+        pageTitle.innerHTML = 'About';
+        pageTitle.classList.remove('russiacord');
+        showContainer('aboutContainer');
+        
+        e.stopPropagation();
+    });
+}
+
 async function displayLeaderboard(container, activeId, dataFiles) {
+    hideContainers('tableContainer')
+    tableContainer.innerHTML = '';
+
     // File assignment
     let files = dataFiles && dataFiles.includes('.csv') ? dataFiles.split(',').map(file => file.trim()) : null;
     if (!files && document.querySelector("#records-submenu #"+activeId)) {
@@ -1011,46 +1010,15 @@ async function displayLeaderboard(container, activeId, dataFiles) {
     }
 }
 
-async function loadAndDisplayLeaderboard(activeId) {
-    const item = document.querySelector(`#${activeId}`);
-    if (!item) {
-        console.error(`Element with id ${activeId} not found`);
-        return;
-    }
-
-    const dataFiles = item.getAttribute('data-file');
-    const container = document.getElementById('tableContainer');
-    
-    document.querySelector('#playerSearchContainer').style.display = 'none';
-    container.innerHTML = '';
-    
-    await displayLeaderboard(container, activeId, dataFiles);
-    
-    document.querySelectorAll('.submenu-item').forEach(t => t.classList.remove('active'));
-    item.classList.add('active');
-}
-
-function initializeSubmenuItems() {
-    document.querySelectorAll('.submenu-item').forEach(item => {
-        item.addEventListener('click', async (e) => {
-            const activeId = item.getAttribute('id');
-            await loadAndDisplayLeaderboard(activeId);
-            closeAllSubmenus();
-            e.stopPropagation();
-        });
-    });
-}
-
-function closeAllSubmenus() {
-    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-}
-
 // Main
 document.addEventListener('DOMContentLoaded', async () => {
     await initializeData();
     initializeTabs();
     initializeSubmenuItems();
-    initializePlayerSearch();
+    initializePlayerSummary();
+    initializeTestSummary();
+    initializeAbout();
 
-    await loadAndDisplayLeaderboard('player-all'); //default page
+    origMenu = document.querySelector('#player-all');
+    await displayLeaderboard(tableContainer, origMenu.id, origMenu.getAttribute('data-file'));
 });

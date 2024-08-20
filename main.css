@@ -82,7 +82,7 @@ body {
 #playerSummaryTable td {
     color: rgb(200,200,200);
 }
-#unplayedSeedsTable tr > th {
+#unplayedSeedsTable tr > th, #testResultTable tr > th {
     background-color: rgb(40,40,40);
 }
 div.table-wrapper:nth-of-type(odd) tr:nth-child(1) > th {
@@ -240,6 +240,10 @@ a::before {
     transition: transform 0.3s ease;
 }
 
+li > a {
+    transform: translateY(4px);
+}
+
 a:hover {
     color: #fff;
 }
@@ -250,3 +254,15 @@ a:hover::before {
 }
 
 
+
+#about {
+    color: rgb(145, 145, 145);
+}
+
+
+.tippy-content {
+    padding: 2px 5px;
+}
+.tippy-arrow {
+    display: none;
+}

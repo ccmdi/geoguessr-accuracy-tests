@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
     
 
 </head>
@@ -36,17 +38,30 @@
                 </div>
             </div>
             <div class="tab page" id="my-summary">My Summary</div>
+            <div class="tab page" id="test-summary">Test Summary</div>
+            <div class="tab page" id="about">About</div>
         </div>
-        <div class="content">
-            <div id="playerSearchContainer" style="display: none;">
+        <div class="content" id="content">
+            <div id="testSelectContainer" class="container" style="display: none;">
+                <select id="testSelect"></select>
+            </div>
+            <div id="playerSearchContainer" class="container" style="display: none;">
                 <input type="text" id="playerNameInput" placeholder="Enter player name">
                 <button id="searchPlayerButton">Search</button>
             </div>
             <h1 id="pageTitle"></h1>
-            <div id="tableContainer"></div>
+            <div id="tableContainer" class="container"></div>
+            <div id="aboutContainer" class="container" style="display: none;">
+                <p>This site is a leaderboard display for Russiacord's monthly GeoGuessr accuracy test.</p>
+                <ul>
+                    <li><a href="https://github.com/ccmdi/geoguessr-accuracy-tests/">GitHub repository</a></li>
+                    <li><a href="https://discord.gg/JQEM6kKR9W">Russiacord Discord link</a> - join to participate!</li>
+                </ul>
+            </div>
         </div>
     </div>
     </div>
-     <script src="leaderboard.js" type="module"></script>
+     <script src="init.js"></script>
+     <script src="leaderboard.js"></script>
 </body>
 </html>
