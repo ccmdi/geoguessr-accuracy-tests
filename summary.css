@@ -117,32 +117,19 @@
 
 
 
-
-
-.table-wrapper {
-    opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.table-wrapper.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.table-wrapper.removing {
-    opacity: 0;
-    transform: translateY(-20px);
-    pointer-events: none;
-}
-
-
-
 /* Unplayed seeds table */
+#unplayedSeedsTable tr > th, #testResultTable tr > th {
+    background-color: rgb(40,40,40);
+}
+#unplayedSeedsTable tr > th:first-child {
+    width: 50%;
+}
 .unplayed-seeds {
     margin-top: 1em;
 }
 .unplayed-seeds-header {
     background-color: var(--ru-red);
+    -webkit-user-select: none;
 }
 .unplayed-seeds-count {
     color: gray;
@@ -172,7 +159,7 @@
 
 
 
-.test-result-table {
+/* .test-result-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
@@ -218,7 +205,27 @@
 
 .test-result-table tbody tr:last-child td {
     border-bottom: none;
+} */
+
+/* Test details */
+.test-details {
+    font-size: 18px;
+    background-color: var(--ru-blue);
+    color: var(--ru-white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
 }
+
+.test-details span {
+    margin: 0 0px;
+}
+
+.test-summary-table tr:first-child > th {
+    background-color: rgb(40, 40, 40);
+}
+
+
 
 select option[value="shownone"], select:has(option[value="shownone"]:checked)  {
     color: #888;

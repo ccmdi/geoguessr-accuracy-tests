@@ -54,7 +54,7 @@ class AccuracyLeaderboard extends Leaderboard {
             headers: ['Player name', 'Accuracy', 'Games played'],
             title: 'Accuracy leaderboard',
             limit: 10,
-            filterCondition: row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode] * (1/3),
+            filterCondition: row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode.replace('adj_','')] * (1/3),
             sortFunction: (a, b) => parseFloat(b[5]) - parseFloat(a[5]),
             cellConfigs: [
                 {
@@ -72,7 +72,18 @@ class AccuracyLeaderboard extends Leaderboard {
                 },
                 {
                     display: (td, row) => {
-                        td.textContent = row[4];
+                        console.log(mode);
+                        if(mode.includes('adj')) {
+                            if(mode.includes('all')){
+                                td.textContent = row[2];
+                            } if (mode.includes('nm')) {
+                                td.textContent = row[7];
+                            } if (mode.includes('nmpz')) {
+                                td.textContent = row[10];
+                            } // TODO: Logic for handling adjusted accuracy is garbage
+                        } else {
+                            td.textContent = row[4];
+                        }
                     }
                 }
             ]
@@ -345,6 +356,12 @@ class PlayerSummary {
 
         if (hasContent) {
             tableContainer.appendChild(container);
+
+            tippy(document.querySelectorAll(".leaderboard-card-total-counted"), {
+                content: "Total rank number only includes eligible players",
+                placement: 'right',
+                followCursor: true
+            });
         }
     }
 
@@ -369,15 +386,10 @@ class PlayerSummary {
             card.innerHTML = this.getCardContent(item);
             if (card.innerHTML === '') return;
             section.appendChild(card);
-            tippy(card.querySelector(".leaderboard-card-total-counted"), {
-                content: "Total rank number only includes eligible players",
-                placement: 'right',
-                followCursor: true
-            })
             cardCount++;
         });
-        
         if (cardCount === 0) return null;
+
         return section;
     }
 
@@ -773,7 +785,8 @@ class PlayerSummary {
             accuracy: parseFloat(testData[6]),
             averageAccuracy: parseFloat(overallTestData[5]),
             rank: parseInt(testData[11]),
-            totalParticipants: parseInt(testData[12]),
+            totalParticipants: parseInt(overallTestData[4]),
+            hasAccurateRank: parseInt(testData[4]) >= parseInt(testData[5]) * 0.5,
             gamesPlayed: parseInt(testData[4]),
             totalSeeds: parseInt(testData[5]),
             medianScore: parseFloat(testData[13]),
@@ -809,7 +822,9 @@ class PlayerSummary {
                 </tr>
                 <tr>
                     <td>Rank</td>
-                    <td style="color: ${playerRankColor}">${testData.rank}</td>
+                    <td style="color: ${testData.hasAccurateRank ? playerRankColor : 'inherit'}">
+                        <span id="playerRank">${testData.hasAccurateRank ? testData.rank : '-'}</span>
+                    </td>
                     <td>${testData.totalParticipants}</td>
                 </tr>
                 <tr>
@@ -819,8 +834,8 @@ class PlayerSummary {
                 </tr>
                 <tr>
                     <td>Median score</td>
-                    <td>${testData.medianScore.toFixed(2)}</td>
-                    <td>${testData.overallMedian.toFixed(2)}</td>
+                    <td>${testData.medianScore}</td>
+                    <td>${testData.overallMedian}</td>
                 </tr>
                 <tr>
                     <td>Standard deviation</td>
@@ -831,6 +846,13 @@ class PlayerSummary {
         `;
 
         resultContainer.appendChild(table);
+
+        if (!testData.hasAccurateRank) {
+            tippy('#playerRank', {
+                content: 'Not enough games played',
+                placement: 'right'
+            });
+        }
     }
 
     getScoreColor(score) {
@@ -846,6 +868,7 @@ class PlayerSummary {
 
     getRankColor(rank, total) {
         const percentile = (total - rank + 1) / total * 100;
+        console.log(percentile);
         if (percentile >= 99) return 'gold';
         if (percentile >= 95) return '#00ff00';
         if (percentile >= 90) return '#40ff00';
@@ -868,12 +891,12 @@ class TestSummary {
         this.testId = testId;
         this.testData = PRECOMPUTE.tests[testId];
         this.overallTestData = tests.get(testId)[0];
+        console.log(this.overallTestData)
         this.testDetails = this.getTestDetails();
     }
 
     getTestDetails() {
         const seedData = Array.from(seedsMap.values()).find(seed => seed.TEST_ID === this.testId);
-        console.log(this.overallTestData);
         return {
             map: seedData ? seedData.SEED_MAP : 'N/A',
             mode: seedData ? seedData.SEED_MODE : 'N/A',
@@ -887,7 +910,7 @@ class TestSummary {
         
         if (this.testDetails) {
             const detailsBox = document.createElement('div');
-            detailsBox.className = 'test-details-box';
+            detailsBox.className = 'test-details';
             detailsBox.innerHTML = `
                 <span>${this.testDetails.map}</span>
                 <span>${this.testDetails.mode}</span>
@@ -930,67 +953,52 @@ class TestSummary {
         tableContainer.innerHTML = '';
         this.displayTitle();
         this.displayOverallStats();
-        this.displayTop('accuracy', 'Accuracy', 'Accuracy', value => (value * 100).toFixed(2) + '%', true, true);
-        this.displayTop('medianScore', 'Median round score', 'Median Score', value => Math.round(value), true, true);
-        this.displayTop('standardDeviation', 'Consistency', 'Standard Deviation', value => Math.round(value), false, true);
-        this.displayTop('improvementPercent', 'Improvement', 'Improvement', value => value.toFixed(2) + '%', true, false);
-        this.displayTop('topFinishRate', 'Top finish rate', 'Top Finish Rate', value => {
-            const percentage = value * 100;
-            return percentage % 1 === 0 ? percentage + '%' : percentage.toFixed(2) + '%';
-        }, true, false);
-        this.displayTop('roundsAbove4k', 'Hedge', 'Rounds Above 4k', value => Math.round(value), true, false);
+        this.displayCustomTable('Accuracy', this.getAccuracyConfig());
+        this.displayCustomTable('Median round score', this.getMedianScoreConfig());
+        this.displayCustomTable('Consistency', this.getConsistencyConfig());
+        this.displayCustomTable('Improvement', this.getImprovementConfig());
+        this.displayCustomTable('Top finishes', this.getFinishes());
+        // this.displayCustomTable('Hedge', this.getHedgeConfig());
     }
 
-    displayTop(attribute, tableTitle, attributeLabel, formatFunction, highestIsBest, showSeedsPlayed = true) {
-        const topSection = document.createElement('div');
-        topSection.classList.add('top-section');
+    displayCustomTable(title, config) {
+        const section = document.createElement('div');
+        section.classList.add('top-section');
 
-        const title = document.createElement('h2');
-        title.textContent = tableTitle;
-        title.classList.add('top-section-title');
-        topSection.appendChild(title);
+        const sectionTitle = document.createElement('h2');
+        sectionTitle.textContent = title;
+        sectionTitle.classList.add('top-section-title');
+        section.appendChild(sectionTitle);
 
-        const performanceTable = document.createElement('table');
-        performanceTable.classList.add('test-summary-table');
-        const top = this.getTop(attribute, formatFunction, highestIsBest, showSeedsPlayed);
-        
-        performanceTable.innerHTML = `
-            <thead>
-                <tr>
-                    <th>Player</th>
-                    <th>${attributeLabel}</th>
-                    ${showSeedsPlayed ? '<th>Seeds Played</th>' : ''}
-                </tr>
-            </thead>
-            <tbody>
-                ${top}
-            </tbody>
-        `;
-        
-        if (top) {
-            topSection.appendChild(performanceTable);
-            tableContainer.appendChild(topSection);
-        } else {
-            const noDataMessage = document.createElement('p');
-            noDataMessage.textContent = `No players have completed at least half of the seeds in this test for ${attributeLabel.toLowerCase()}.`;
-            topSection.appendChild(noDataMessage);
-            tableContainer.appendChild(topSection);
+        const table = document.createElement('table');
+        table.classList.add('test-summary-table');
+
+        const headerRow = table.insertRow();
+        config.columns.forEach(column => {
+            const th = document.createElement('th');
+            th.textContent = column.header;
+            headerRow.appendChild(th);
+        });
+
+        const data = this.getTableData(config);
+        if(data.length > 0) {
+            data.forEach(rowData => {
+                const row = table.insertRow();
+                config.columns.forEach(column => {
+                    const cell = row.insertCell();
+                    cell.innerHTML = column.cellContent(rowData);
+                });
+            });
+ 
+            section.appendChild(table);
+            tableContainer.appendChild(section);
         }
     }
 
-    getTop(attribute, formatFunction, highestIsBest, showSeedsPlayed) {
+    getTableData(config) {
         const minimumSeedsRequired = Math.floor(this.testDetails.seedCount / 2);
         
-        const attributeIndex = {
-            'accuracy': 6,
-            'medianScore': 15,
-            'standardDeviation': 8,
-            'improvementPercent': 7,
-            'topFinishRate': 12,
-            'roundsAbove4k': 14
-        };
-
-        const eligiblePlayers = Array.from(playerTests.entries())
+        let eligiblePlayers = Array.from(playerTests.entries())
             .filter(([, tests]) => {
                 const playerTestData = tests[this.testId];
                 return playerTestData && parseInt(playerTestData[4]) >= minimumSeedsRequired;
@@ -998,26 +1006,116 @@ class TestSummary {
             .map(([player, tests]) => ({
                 player,
                 playerId: tests[this.testId][0],
-                value: parseFloat(tests[this.testId][attributeIndex[attribute]]),
-                seedsPlayed: parseInt(tests[this.testId][4])
+                ...config.dataExtractor(tests[this.testId])
             }))
-            .sort((a, b) => highestIsBest ? b.value - a.value : a.value - b.value);
+            .filter(config.dataFilter || (() => true))
+            .sort(config.dataSorter);
 
-        if (eligiblePlayers.length === 0) {
-            return null;
-        }
-
-        return eligiblePlayers
-            .slice(0, 10)
-            .map((entry, index) => `
-                <tr>
-                    <td><a href="https://geoguessr.com/user/${entry.playerId}" target="_blank">${entry.player}</a></td>
-                    <td>${formatFunction(entry.value)}</td>
-                    ${showSeedsPlayed ? `<td>${entry.seedsPlayed}</td>` : ''}
-                </tr>
-            `)
-            .join('');
+        return eligiblePlayers.slice(0, config.limit || 10);
     }
+
+    getAccuracyConfig() {
+        return {
+            columns: [
+                { header: 'Player', cellContent: row => `<a href="https://geoguessr.com/user/${row.playerId}" target="_blank">${row.player}</a>` },
+                { header: 'Accuracy', cellContent: row => `${(row.accuracy * 100).toFixed(2)}%` },
+                { header: 'Seeds Played', cellContent: row => row.seedsPlayed }
+            ],
+            dataExtractor: (testData) => ({
+                accuracy: parseFloat(testData[6]),
+                seedsPlayed: parseInt(testData[4])
+            }),
+            dataSorter: (a, b) => b.accuracy - a.accuracy
+        };
+    }
+
+    getMedianScoreConfig() {
+        return {
+            columns: [
+                { header: 'Player', cellContent: row => `<a href="https://geoguessr.com/user/${row.playerId}" target="_blank">${row.player}</a>` },
+                { header: 'Median Score', cellContent: row => Math.round(row.medianScore) },
+                { header: 'Seeds Played', cellContent: row => row.seedsPlayed }
+            ],
+            dataExtractor: (testData) => ({
+                medianScore: parseFloat(testData[13]),
+                seedsPlayed: parseInt(testData[4])
+            }),
+            dataSorter: (a, b) => b.medianScore - a.medianScore
+        };
+    }
+
+    getConsistencyConfig() {
+        return {
+            columns: [
+                { header: 'Player', cellContent: row => `<a href="https://geoguessr.com/user/${row.playerId}" target="_blank">${row.player}</a>` },
+                { header: 'Standard Deviation', cellContent: row => Math.round(row.standardDeviation) },
+                { header: 'Seeds Played', cellContent: row => row.seedsPlayed }
+            ],
+            dataExtractor: (testData) => ({
+                standardDeviation: parseFloat(testData[8]),
+                seedsPlayed: parseInt(testData[4])
+            }),
+            dataSorter: (a, b) => a.standardDeviation - b.standardDeviation
+        };
+    }
+
+    getImprovementConfig() {
+        return {
+            columns: [
+                { header: 'Player', cellContent: row => `<a href="https://geoguessr.com/user/${row.playerId}" target="_blank">${row.player}</a>` },
+                { header: 'Improvement', cellContent: row => `${(row.improvement * 100).toFixed(2)}%` },
+                { header: 'Comparing to', cellContent: row => `${row.pastSeed}`}
+            ],
+            dataExtractor: (testData) => {
+                const pastTestId = testData[14];
+                let pastSeed = 'Unknown';
+                
+                if (pastTestId && PRECOMPUTE['tests'][pastTestId]) {
+                    pastSeed = PRECOMPUTE['tests'][pastTestId]['month'] + ' ' + PRECOMPUTE['tests'][pastTestId]['year'];
+                }
+    
+                return {
+                    improvement: parseFloat(testData[16]),
+                    seedsPlayed: parseInt(testData[4]),
+                    pastSeed: pastSeed
+                };
+            },
+            dataSorter: (a, b) => b.improvement - a.improvement,
+            dataFilter: row => row.improvement > 0//TODO: Add green up arrow?
+        };
+    }
+
+    getFinishes() {
+        return {
+            columns: [
+                { header: 'Player', cellContent: row => `<a href="https://geoguessr.com/user/${row.playerId}" target="_blank">${row.player}</a>` },
+                { header: 'Top Finishes', cellContent: row => row.topFinishes },
+                { header: 'Top 3 Finishes', cellContent: row => row.top3Finishes },
+            ],
+            dataExtractor: (testData) => ({
+                topFinishes: parseFloat(testData[9]),
+                top3Finishes: parseFloat(testData[10]),
+                seedsPlayed: parseInt(testData[4])
+            }),
+            dataSorter: (a, b) => b.topFinishes - a.topFinishes || b.top3Finishes - a.top3Finishes,
+            dataFilter: row => row.topFinishes > 0 || row.top3Finishes > 0
+        };
+    }
+
+    // getHedgeConfig() {
+    //     return {
+    //         columns: [
+    //             { header: 'Player', cellContent: row => `<a href="https://geoguessr.com/user/${row.playerId}" target="_blank">${row.player}</a>` },
+    //             { header: 'Rounds Above 4k', cellContent: row => Math.round(row.roundsAbove4k) },
+    //             { header: 'Seeds Played', cellContent: row => row.seedsPlayed }
+    //         ],
+    //         dataExtractor: (testData) => ({
+    //             roundsAbove4k: parseFloat(testData[14]),
+    //             seedsPlayed: parseInt(testData[4])
+    //         }),
+    //         dataSorter: (a, b) => b.roundsAbove4k - a.roundsAbove4k
+    //     };
+    // }
 }
 
 // Unique pages
@@ -1147,8 +1245,9 @@ async function displayLeaderboard(container, activeId, dataFiles) {
             case 'player-nm':
             case 'player-all':
                 mode = activeId.split('-')[1];
-                leaderboard = LeaderboardFactory.create('accuracy', mode);
                 pageTitle.textContent = mode === 'all' ? 'All-time' : mode.toUpperCase();
+                if(file.includes('ADJ')) mode = 'adj_' + mode;
+                leaderboard = LeaderboardFactory.create('accuracy', mode);
                 break;
             case 'player-hedge':
                 leaderboard = LeaderboardFactory.create('streak');
