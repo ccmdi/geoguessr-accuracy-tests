@@ -1,0 +1,328 @@
+{
+    "subdivisions": {
+        "Sakhalin Oblast": {
+            "name": "Sakhalin Oblast",
+            "area": 87100
+        },
+        "Moscow Oblast": {
+            "name": "Moscow Oblast",
+            "area": 44300
+        },
+        "Leningradskaya Oblast'": {
+            "name": "Leningrad Oblast",
+            "area": 84500
+        },
+        "Buryatiya Republic": {
+            "name": "Republic of Buryatia",
+            "area": 351300
+        },
+        "Primorye": {
+            "name": "Primorsky Krai",
+            "area": 164700
+        },
+        "Yamalo-Nenets": {
+            "name": "Yamalo-Nenets Autonomous Okrug",
+            "area": 769250
+        },
+        "Karelia": {
+            "name": "Republic of Karelia",
+            "area": 180500
+        },
+        "Nizhny Novgorod Oblast": {
+            "name": "Nizhny Novgorod Oblast",
+            "area": 76600
+        },
+        "Komi": {
+            "name": "Komi Republic",
+            "area": 416800
+        },
+        "Murmansk": {
+            "name": "Murmansk Oblast",
+            "area": 144900
+        },
+        "Bashkortostan Republic": {
+            "name": "Republic of Bashkortostan",
+            "area": 142900
+        },
+        "Kuzbass": {
+            "name": "Kemerovo Oblast",
+            "area": 95700
+        },
+        "Saratov Oblast": {
+            "name": "Saratov Oblast",
+            "area": 101200
+        },
+        "Krasnoyarsk Krai": {
+            "name": "Krasnoyarsk Krai",
+            "area": 2366800
+        },
+        "Zabaykalskiy (Transbaikal) Kray": {
+            "name": "Zabaykalsky Krai",
+            "area": 431500
+        },
+        "Rostov": {
+            "name": "Rostov Oblast",
+            "area": 100800
+        },
+        "Sakha": {
+            "name": "Sakha Republic",
+            "area": 3083500
+        },
+        "Krasnodar Krai": {
+            "name": "Krasnodar Krai",
+            "area": 75500
+        },
+        "Kamchatka": {
+            "name": "Kamchatka Krai",
+            "area": 464300
+        },
+        "Perm Krai": {
+            "name": "Perm Krai",
+            "area": 160600
+        },
+        "Volgograd Oblast": {
+            "name": "Volgograd Oblast",
+            "area": 112900
+        },
+        "Orenburg Oblast": {
+            "name": "Orenburg Oblast",
+            "area": 123700
+        },
+        "Smolensk Oblast": {
+            "name": "Smolensk Oblast",
+            "area": 49800
+        },
+        "Omsk Oblast": {
+            "name": "Omsk Oblast",
+            "area": 141100
+        },
+        "Tver Oblast": {
+            "name": "Tver Oblast",
+            "area": 84100
+        },
+        "Amur Oblast": {
+            "name": "Amur Oblast",
+            "area": 361900
+        },
+        "Irkutsk Oblast": {
+            "name": "Irkutsk Oblast",
+            "area": 767900
+        },
+        "Kostroma Oblast": {
+            "name": "Kostroma Oblast",
+            "area": 60200
+        },
+        "Arkhangelskaya": {
+            "name": "Arkhangelsk Oblast",
+            "area": 589900
+        },
+        "Kirov Oblast": {
+            "name": "Kirov Oblast",
+            "area": 120400
+        },
+        "Voronezh Oblast": {
+            "name": "Voronezh Oblast",
+            "area": 52200
+        },
+        "Stavropol Kray": {
+            "name": "Stavropol Krai",
+            "area": 66200
+        },
+        "Altai": {
+            "name": "Altai Republic",
+            "area": 92900
+        },
+        "Dagestan": {
+            "name": "Republic of Dagestan",
+            "area": 50300
+        },
+        "Khabarovsk": {
+            "name": "Khabarovsk Krai",
+            "area": 787600
+        },
+        "Khanty-Mansia": {
+            "name": "Khanty-Mansi Autonomous Okrug",
+            "area": 534800
+        },
+        "Vladimir Oblast": {
+            "name": "Vladimir Oblast",
+            "area": 29100
+        },
+        "Chelyabinsk": {
+            "name": "Chelyabinsk Oblast",
+            "area": 88500
+        },
+        "Sverdlovsk Oblast": {
+            "name": "Sverdlovsk Oblast",
+            "area": 194300
+        },
+        "Republic of Tyva": {
+            "name": "Tuva Republic",
+            "area": 168600
+        },
+        "Ulyanovsk": {
+            "name": "Ulyanovsk Oblast",
+            "area": 37200
+        },
+        "Astrakhan Oblast": {
+            "name": "Astrakhan Oblast",
+            "area": 49000
+        },
+        "Magadan Oblast": {
+            "name": "Magadan Oblast",
+            "area": 462500
+        },
+        "Altai Krai": {
+            "name": "Altai Krai",
+            "area": 168000
+        },
+        "Novosibirsk Oblast": {
+            "name": "Novosibirsk Oblast",
+            "area": 177800
+        },
+        "Jewish Autonomous Oblast": {
+            "name": "Jewish Autonomous Oblast",
+            "area": 36300
+        },
+        "Tatarstan Republic": {
+            "name": "Republic of Tatarstan",
+            "area": 67800
+        },
+        "Vologda Oblast": {
+            "name": "Vologda Oblast",
+            "area": 144500
+        },
+        "Bryansk Oblast": {
+            "name": "Bryansk Oblast",
+            "area": 34900
+        },
+        "Tomsk Oblast": {
+            "name": "Tomsk Oblast",
+            "area": 314400
+        },
+        "Tula Oblast": {
+            "name": "Tula Oblast",
+            "area": 25700
+        },
+        "Samara Oblast": {
+            "name": "Samara Oblast",
+            "area": 53600
+        },
+        "Khakasiya Republic": {
+            "name": "Republic of Khakassia",
+            "area": 61600
+        },
+        "Novgorod Oblast": {
+            "name": "Novgorod Oblast",
+            "area": 54500
+        },
+        "Kalmykiya Republic": {
+            "name": "Republic of Kalmykia",
+            "area": 74700
+        },
+        "Yaroslavl Oblast": {
+            "name": "Yaroslavl Oblast",
+            "area": 36200
+        },
+        "Kaliningrad Oblast": {
+            "name": "Kaliningrad Oblast",
+            "area": 15100
+        },
+        "Pskov Oblast": {
+            "name": "Pskov Oblast",
+            "area": 55400
+        },
+        "Tambov Oblast": {
+            "name": "Tambov Oblast",
+            "area": 34300
+        },
+        "Udmurtiya Republic": {
+            "name": "Udmurt Republic",
+            "area": 42100
+        },
+        "Kabardino-Balkariya Republic": {
+            "name": "Kabardino-Balkar Republic",
+            "area": 12500
+        },
+        "Tyumen Oblast": {
+            "name": "Tyumen Oblast",
+            "area": 160100
+        },
+        "Chuvash Republic": {
+            "name": "Chuvash Republic",
+            "area": 18300
+        },
+        "Belgorod Oblast": {
+            "name": "Belgorod Oblast",
+            "area": 27100
+        },
+        "Ivanovo Oblast": {
+            "name": "Ivanovo Oblast",
+            "area": 21400
+        },
+        "Kurgan Oblast": {
+            "name": "Kurgan Oblast",
+            "area": 71500
+        },
+        "Penza Oblast": {
+            "name": "Penza Oblast",
+            "area": 43400
+        },
+        "Chechnya": {
+            "name": "Chechen Republic",
+            "area": 15600
+        },
+        "Lipetsk Oblast": {
+            "name": "Lipetsk Oblast",
+            "area": 24000
+        },
+        "Mordoviya Republic": {
+            "name": "Republic of Mordovia",
+            "area": 26100
+        },
+        "Mariy-El Republic": {
+            "name": "Mari El Republic",
+            "area": 23400
+        },
+        "Oryol oblast": {
+            "name": "Oryol Oblast",
+            "area": 24700
+        },
+        "Ryazan Oblast": {
+            "name": "Ryazan Oblast",
+            "area": 39600
+        },
+        "North Ossetia–Alania": {
+            "name": "Republic of North Ossetia–Alania",
+            "area": 8000
+        },
+        "Karachayevo-Cherkesiya Republic": {
+            "name": "Karachay-Cherkess Republic",
+            "area": 14300
+        },
+        "Kaluga Oblast": {
+            "name": "Kaluga Oblast",
+            "area": 29800
+        },
+        "Kursk Oblast": {
+            "name": "Kursk Oblast",
+            "area": 30000
+        },
+        "Adygeya Republic": {
+            "name": "Republic of Adygea",
+            "area": 7800
+        },
+        "Moscow": {
+            "name": "Moscow",
+            "area": 2561
+        },
+        "Ingushetiya Republic": {
+            "name": "Republic of Ingushetia",
+            "area": 3600
+        },
+        "St.-Petersburg": {
+            "name": "Saint Petersburg",
+            "area": 1439
+        }
+    }
+}

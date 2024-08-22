@@ -1,5 +1,5 @@
 // Global variables
-let PRECOMPUTE;
+let PRECOMPUTE, SUBDIVISIONS;
 let playerLifetime;
 let playerLifetimeArray;
 let sortedPlayers;
@@ -60,6 +60,7 @@ class CSVUtil {
 async function initializeData() {
     try {
         PRECOMPUTE = await fetch(`./static/json/precomp.json`).then(response => response.json());
+        SUBDIVISIONS = await fetch(`./static/json/subdivisions.json`).then(response => response.json());
         playerLifetime = await CSVUtil.loadCSVWithHeaders('PLAYER_CARD.csv', 'PLAYER_NAME');
         playerLifetimeArray = Object.values(playerLifetime);
         

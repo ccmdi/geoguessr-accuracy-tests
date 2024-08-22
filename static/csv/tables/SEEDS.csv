@@ -1,251 +1,251 @@
-TEST_ID,SEED_NUMBER,SEED_LINK,SEED_MAP,SEED_TIME,SEED_MODE
-MAY_24,1,https://www.geoguessr.com/challenge/jVr5gC0odqT8TgTe,An Arbitrary Russia,20,NMPZ
-MAY_24,2,https://www.geoguessr.com/challenge/OIfhjPia3PYaOIsC,An Arbitrary Russia,20,NMPZ
-MAY_24,3,https://www.geoguessr.com/challenge/hDAxlye1PyInlelk,An Arbitrary Russia,20,NMPZ
-MAY_24,4,https://www.geoguessr.com/challenge/mdOwyeDKMAS1LDMZ,An Arbitrary Russia,20,NMPZ
-MAY_24,5,https://www.geoguessr.com/challenge/SZCwVhCiRtPD9a8x,An Arbitrary Russia,20,NMPZ
-MAY_24,6,https://www.geoguessr.com/challenge/2izFv6jzPr8dr0ZK,An Arbitrary Russia,20,NMPZ
-MAY_24,7,https://www.geoguessr.com/challenge/HvaTakXfMFGtcI5q,An Arbitrary Russia,20,NMPZ
-MAY_24,8,https://www.geoguessr.com/challenge/BwmVevM1DGNkAwu8,An Arbitrary Russia,20,NMPZ
-MAY_24,9,https://www.geoguessr.com/challenge/kw06tCDMJGpPpo1w,An Arbitrary Russia,20,NMPZ
-MAY_24,10,https://www.geoguessr.com/challenge/HtbadmlVi0hlRiR2,An Arbitrary Russia,20,NMPZ
-MAY_24,11,https://www.geoguessr.com/challenge/RVtlNlIELGt1AMev,An Arbitrary Russia,20,NMPZ
-MAY_24,12,https://www.geoguessr.com/challenge/UPE8Wkh3Cwk5HsY8,An Arbitrary Russia,20,NMPZ
-MAY_24,13,https://www.geoguessr.com/challenge/Aj1ZxLEHiQOzYr9G,An Arbitrary Russia,20,NMPZ
-MAY_24,14,https://www.geoguessr.com/challenge/dak2du82ZxpboYlr,An Arbitrary Russia,20,NMPZ
-MAY_24,15,https://www.geoguessr.com/challenge/9edNFc9mNobvMQYE,An Arbitrary Russia,20,NMPZ
-MAY_24,16,https://www.geoguessr.com/challenge/ia8PZ0d1XK43n1bV,An Arbitrary Russia,20,NMPZ
-MAY_24,17,https://www.geoguessr.com/challenge/kuqSFdeZMxp9ZZE1,An Arbitrary Russia,20,NMPZ
-MAY_24,18,https://www.geoguessr.com/challenge/mRcoAuwT89S0JamE,An Arbitrary Russia,20,NMPZ
-MAY_24,19,https://www.geoguessr.com/challenge/7XxKsiRfXc9FRCGP,An Arbitrary Russia,20,NMPZ
-MAY_24,20,https://www.geoguessr.com/challenge/HbBrMP1uSSIQg4DE,An Arbitrary Russia,20,NMPZ
-APR_24,1,https://www.geoguessr.com/challenge/TLcNVW5aeWMoXYED,An Arbitrary Russia,30,NM
-APR_24,2,https://www.geoguessr.com/challenge/x7m1s1CMbGYlV1Bz,An Arbitrary Russia,30,NM
-APR_24,3,https://www.geoguessr.com/challenge/Yf5ym0V4gYgydB6D,An Arbitrary Russia,30,NM
-APR_24,4,https://www.geoguessr.com/challenge/Rz7nuJkeupfJtMf5,An Arbitrary Russia,30,NM
-APR_24,5,https://www.geoguessr.com/challenge/6KeLIhq2DOq1WxF8,An Arbitrary Russia,30,NM
-APR_24,6,https://www.geoguessr.com/challenge/BZxSqCccjBT6xvB7,An Arbitrary Russia,30,NM
-APR_24,7,https://www.geoguessr.com/challenge/xd9YvMkbSYjSmwn2,An Arbitrary Russia,30,NM
-APR_24,8,https://www.geoguessr.com/challenge/0hxo00KmKkuYv7DJ,An Arbitrary Russia,30,NM
-APR_24,9,https://www.geoguessr.com/challenge/HLzAcEYMMWAHr3w5,An Arbitrary Russia,30,NM
-APR_24,10,https://www.geoguessr.com/challenge/pbUF2cEWO4wwWSRf,An Arbitrary Russia,30,NM
-APR_24,11,https://www.geoguessr.com/challenge/BLQUyKLd5bJw3Lwt,An Arbitrary Russia,30,NM
-APR_24,12,https://www.geoguessr.com/challenge/4KhZbS7d99pwgssR,An Arbitrary Russia,30,NM
-APR_24,13,https://www.geoguessr.com/challenge/7AoPpDhdJ0wfXN9X,An Arbitrary Russia,30,NM
-APR_24,14,https://www.geoguessr.com/challenge/MtjFj3uovbuffmAs,An Arbitrary Russia,30,NM
-APR_24,15,https://www.geoguessr.com/challenge/hg0NZfPLmxwUwWmO,An Arbitrary Russia,30,NM
-APR_24,16,https://www.geoguessr.com/challenge/eBu9ZXjikZRXeP7Y,An Arbitrary Russia,30,NM
-APR_24,17,https://www.geoguessr.com/challenge/LKpsvwp18qnzCj3a,An Arbitrary Russia,30,NM
-APR_24,18,https://www.geoguessr.com/challenge/vYD9dUwoGtMZx7Xt,An Arbitrary Russia,30,NM
-APR_24,19,https://www.geoguessr.com/challenge/D6gaZmfQU8D4GdHV,An Arbitrary Russia,30,NM
-APR_24,20,https://www.geoguessr.com/challenge/hxpgSreZn31OlJ5q,An Arbitrary Russia,30,NM
-MAR_24,1,https://www.geoguessr.com/challenge/KEX2aGAVT00bF2o5,An Arbitrary Russia,60,NMPZ
-MAR_24,2,https://www.geoguessr.com/challenge/FtMbgjzWhFAS6OLB,An Arbitrary Russia,60,NMPZ
-MAR_24,3,https://www.geoguessr.com/challenge/M2iocZqbysYq6Rfi,An Arbitrary Russia,60,NMPZ
-MAR_24,4,https://www.geoguessr.com/challenge/d1GTdgzphcOdnQnb,An Arbitrary Russia,60,NMPZ
-MAR_24,5,https://www.geoguessr.com/challenge/LyCWys2ao7598wGT,An Arbitrary Russia,60,NMPZ
-MAR_24,6,https://www.geoguessr.com/challenge/S422hWbFPr8Jl1l2,An Arbitrary Russia,60,NMPZ
-MAR_24,7,https://www.geoguessr.com/challenge/sOsj7MXN7Qq9C6c8,An Arbitrary Russia,60,NMPZ
-MAR_24,8,https://www.geoguessr.com/challenge/uTWuaov5bk7KFRrJ,An Arbitrary Russia,60,NMPZ
-MAR_24,9,https://www.geoguessr.com/challenge/3CZG9lyg8fVgqrJ8,An Arbitrary Russia,60,NMPZ
-MAR_24,10,https://www.geoguessr.com/challenge/wZeKLCuzOcfKg9Dl,An Arbitrary Russia,60,NMPZ
-MAR_24,11,https://www.geoguessr.com/challenge/nmNT3TOe9QIftpkr,An Arbitrary Russia,60,NMPZ
-MAR_24,12,https://www.geoguessr.com/challenge/acSLl6agdYQUyl2G,An Arbitrary Russia,60,NMPZ
-MAR_24,13,https://www.geoguessr.com/challenge/4AJEkIcOQCXOZBd3,An Arbitrary Russia,60,NMPZ
-MAR_24,14,https://www.geoguessr.com/challenge/vgjo9c3zCheuxsJB,An Arbitrary Russia,60,NMPZ
-MAR_24,15,https://www.geoguessr.com/challenge/8BMENAU7QaCgzsya,An Arbitrary Russia,60,NMPZ
-MAR_24,16,https://www.geoguessr.com/challenge/F95Rnn7xIgbbmHH7,An Arbitrary Russia,60,NMPZ
-MAR_24,17,https://www.geoguessr.com/challenge/Z7V3QsHN3sV3fU1r,An Arbitrary Russia,60,NMPZ
-MAR_24,18,https://www.geoguessr.com/challenge/waaEaMncfHxgpfEz,An Arbitrary Russia,60,NMPZ
-MAR_24,19,https://www.geoguessr.com/challenge/K9RglrVMJgEVgnwb,An Arbitrary Russia,60,NMPZ
-MAR_24,20,https://www.geoguessr.com/challenge/moFFy1J89AxTkLGX,An Arbitrary Russia,60,NMPZ
-FEB_24,1,https://www.geoguessr.com/challenge/VfHvA8SLGRJLReKo,An Arbitrary Russia,60,NM
-FEB_24,2,https://www.geoguessr.com/challenge/6xWaHWLvGbSkNZ2G,An Arbitrary Russia,60,NM
-FEB_24,3,https://www.geoguessr.com/challenge/ddIRkLHVpPD52liJ,An Arbitrary Russia,60,NM
-FEB_24,4,https://www.geoguessr.com/challenge/6q4d4G1z8BXN21HU,An Arbitrary Russia,60,NM
-FEB_24,5,https://www.geoguessr.com/challenge/KVDD4jj7OUygZSmS,An Arbitrary Russia,60,NM
-FEB_24,6,https://www.geoguessr.com/challenge/6jGa3cbSWJeu3KfW,An Arbitrary Russia,60,NM
-FEB_24,7,https://www.geoguessr.com/challenge/1h1uMYxTR8JFIyPh,An Arbitrary Russia,60,NM
-FEB_24,8,https://www.geoguessr.com/challenge/t9ixeFxGjCNLVAIG,An Arbitrary Russia,60,NM
-FEB_24,9,https://www.geoguessr.com/challenge/l5ySDgm2wFqQ1HUQ,An Arbitrary Russia,60,NM
-FEB_24,10,https://www.geoguessr.com/challenge/3V4hPLLODvUMciea,An Arbitrary Russia,60,NM
-FEB_24,11,https://www.geoguessr.com/challenge/F8ClTgDaUmlB45Zx,An Arbitrary Russia,60,NM
-FEB_24,12,https://www.geoguessr.com/challenge/cPsxZbMKgRxSv0Io,An Arbitrary Russia,60,NM
-FEB_24,13,https://www.geoguessr.com/challenge/Ddym0q5zJjUo1n1W,An Arbitrary Russia,60,NM
-FEB_24,14,https://www.geoguessr.com/challenge/s7v4XF44sbi88mAS,An Arbitrary Russia,60,NM
-FEB_24,15,https://www.geoguessr.com/challenge/kUC230R3g6nZ7b47,An Arbitrary Russia,60,NM
-FEB_24,16,https://www.geoguessr.com/challenge/YmAHNPnmgctioR4O,An Arbitrary Russia,60,NM
-FEB_24,17,https://www.geoguessr.com/challenge/4K78by6nK7tIZ8zD,An Arbitrary Russia,60,NM
-FEB_24,18,https://www.geoguessr.com/challenge/8Y3qRw3dUchSAGaz,An Arbitrary Russia,60,NM
-FEB_24,19,https://www.geoguessr.com/challenge/vdZ5bFTTkI7v20nW,An Arbitrary Russia,60,NM
-FEB_24,20,https://www.geoguessr.com/challenge/8Sv1SltwtC3PMZ9m,An Arbitrary Russia,60,NM
-JAN_24,1,https://www.geoguessr.com/challenge/aACtNePbMh0Cl1bA,An Arbitrary Russia,60,NM
-JAN_24,2,https://www.geoguessr.com/challenge/RRHGmxbDynwnafum,An Arbitrary Russia,60,NM
-JAN_24,3,https://www.geoguessr.com/challenge/dQH09mPxrD8kX0cU,An Arbitrary Russia,60,NM
-JAN_24,4,https://www.geoguessr.com/challenge/1ToXWNKeKyZ5Vlzc,An Arbitrary Russia,60,NM
-JAN_24,5,https://www.geoguessr.com/challenge/dcXQq0f0su52soND,An Arbitrary Russia,60,NM
-JAN_24,6,https://www.geoguessr.com/challenge/oDwKBXWohsIJCQC8,An Arbitrary Russia,60,NM
-JAN_24,7,https://www.geoguessr.com/challenge/sHAaJzTxda3ioalZ,An Arbitrary Russia,60,NM
-JAN_24,8,https://www.geoguessr.com/challenge/AymI7ZgHcstnIn3G,An Arbitrary Russia,60,NM
-JAN_24,9,https://www.geoguessr.com/challenge/PK913dw0PyatBVmt,An Arbitrary Russia,60,NM
-JAN_24,10,https://www.geoguessr.com/challenge/FwHxOYOepUzG6rHF,An Arbitrary Russia,60,NM
-JAN_24,11,https://www.geoguessr.com/challenge/yFTm2bcPwCMXzQ0U,An Arbitrary Russia,60,NM
-JAN_24,12,https://www.geoguessr.com/challenge/iwZ3wfbs1GTNcfWE,An Arbitrary Russia,60,NM
-JAN_24,13,https://www.geoguessr.com/challenge/d0CwrEkbJCVfL0Qw,An Arbitrary Russia,60,NM
-JAN_24,14,https://www.geoguessr.com/challenge/YZJYdAHj9wo1t9PT,An Arbitrary Russia,60,NM
-JAN_24,15,https://www.geoguessr.com/challenge/lccU419EFj6j4hiw,An Arbitrary Russia,60,NM
-JAN_24,16,https://www.geoguessr.com/challenge/B2KFXaAaXG7DwMrp,An Arbitrary Russia,60,NM
-JAN_24,17,https://www.geoguessr.com/challenge/PjDfXKWt5YMuwOiK,An Arbitrary Russia,60,NM
-JAN_24,18,https://www.geoguessr.com/challenge/iQTBVwixhqBrfPqA,An Arbitrary Russia,60,NM
-JAN_24,19,https://www.geoguessr.com/challenge/TYVujVfnYt4REWcv,An Arbitrary Russia,60,NM
-JAN_24,20,https://www.geoguessr.com/challenge/CPcgqi0bcxxz3BYV,An Arbitrary Russia,60,NM
-DEC_23,1,https://www.geoguessr.com/challenge/1Akh3VRAZIUF2chj,An Arbitrary Russia,30,NMPZ
-DEC_23,2,https://www.geoguessr.com/challenge/8PqYimUGoPeOmN8a,An Arbitrary Russia,30,NMPZ
-DEC_23,3,https://www.geoguessr.com/challenge/9K1rJigQT1lyhGbe,An Arbitrary Russia,30,NMPZ
-DEC_23,4,https://www.geoguessr.com/challenge/s41JLWatbAqfnFq7,An Arbitrary Russia,30,NMPZ
-DEC_23,5,https://www.geoguessr.com/challenge/vF2IEKlpKK8hrAIg,An Arbitrary Russia,30,NMPZ
-DEC_23,6,https://www.geoguessr.com/challenge/azQL6SIGmI6sijYx,An Arbitrary Russia,30,NMPZ
-DEC_23,7,https://www.geoguessr.com/challenge/BsUyXDkqN9NJlqS3,An Arbitrary Russia,30,NMPZ
-DEC_23,8,https://www.geoguessr.com/challenge/jrBu97ea9sCmD90Q,An Arbitrary Russia,30,NMPZ
-DEC_23,9,https://www.geoguessr.com/challenge/Jql3EYGHhOSoTKzj,An Arbitrary Russia,30,NMPZ
-DEC_23,10,https://www.geoguessr.com/challenge/n5HUk7k8nhcewJhN,An Arbitrary Russia,30,NMPZ
-DEC_23,11,https://www.geoguessr.com/challenge/Eu3QDmJavz32pcex,An Arbitrary Russia,30,NMPZ
-DEC_23,12,https://www.geoguessr.com/challenge/Nc6B9wtMFBJWFUrT,An Arbitrary Russia,30,NMPZ
-DEC_23,13,https://www.geoguessr.com/challenge/nR7hDNFvxfQmbbyR,An Arbitrary Russia,30,NMPZ
-DEC_23,14,https://www.geoguessr.com/challenge/EqUtUXwV56PMTzXY,An Arbitrary Russia,30,NMPZ
-DEC_23,15,https://www.geoguessr.com/challenge/4z4TYH0CdIoTJwou,An Arbitrary Russia,30,NMPZ
-DEC_23,16,https://www.geoguessr.com/challenge/TCFIWX8iERLRRUbR,An Arbitrary Russia,30,NMPZ
-DEC_23,17,https://www.geoguessr.com/challenge/vgK1Y5r00FAxFVl2,An Arbitrary Russia,30,NMPZ
-DEC_23,18,https://www.geoguessr.com/challenge/LCEvynboLXjOyucC,An Arbitrary Russia,30,NMPZ
-DEC_23,19,https://www.geoguessr.com/challenge/cGmLT2nn7QOIDvTX,An Arbitrary Russia,30,NMPZ
-DEC_23,20,https://www.geoguessr.com/challenge/QZ9P7VOdnIMoArLe,An Arbitrary Russia,30,NMPZ
-NOV_23,1,https://www.geoguessr.com/challenge/uh1digUN6Dw7nj55,A Balanced Russia,60,NM
-NOV_23,2,https://www.geoguessr.com/challenge/TVH2dC78h8tniodV,A Balanced Russia,60,NM
-NOV_23,3,https://www.geoguessr.com/challenge/XpPIG7pBX0n6XdnW,A Balanced Russia,60,NM
-NOV_23,4,https://www.geoguessr.com/challenge/kUwyEq0qUnWiUyJ7,A Balanced Russia,60,NM
-NOV_23,5,https://www.geoguessr.com/challenge/HCTNRaU52erH1WQl,A Balanced Russia,60,NM
-NOV_23,6,https://www.geoguessr.com/challenge/DlCEPbJAEm69hfMi,A Balanced Russia,60,NM
-NOV_23,7,https://www.geoguessr.com/challenge/hsYpglAwhgUkhF3e,A Balanced Russia,60,NM
-NOV_23,8,https://www.geoguessr.com/challenge/s8bJxhLpJrDRPbja,A Balanced Russia,60,NM
-NOV_23,9,https://www.geoguessr.com/challenge/yuHIQDQ3uAHOsJ9h,A Balanced Russia,60,NM
-NOV_23,10,https://www.geoguessr.com/challenge/5RjBbU6rbB7u232v,A Balanced Russia,60,NM
-NOV_23,11,https://www.geoguessr.com/challenge/9kcj8CWOVFMqbMpu,A Balanced Russia,60,NM
-NOV_23,12,https://www.geoguessr.com/challenge/7RMyo5vYAYuQQjP0,A Balanced Russia,60,NM
-NOV_23,13,https://www.geoguessr.com/challenge/pbjlKgvsKeOTWSTg,A Balanced Russia,60,NM
-NOV_23,14,https://www.geoguessr.com/challenge/8H9dcyGs9MRPMV2r,A Balanced Russia,60,NM
-NOV_23,15,https://www.geoguessr.com/challenge/rcyLnaDtyugzoVGO,A Balanced Russia,60,NM
-NOV_23,16,https://www.geoguessr.com/challenge/2EguUoSLUHR9C2fB,A Balanced Russia,60,NM
-NOV_23,17,https://www.geoguessr.com/challenge/B4ELPBHzjO2pv0Ud,A Balanced Russia,60,NM
-NOV_23,18,https://www.geoguessr.com/challenge/y8VEYDcMPkfeaqpu,A Balanced Russia,60,NM
-NOV_23,19,https://www.geoguessr.com/challenge/ZEsREqT4Ex2EhmJb,A Balanced Russia,60,NM
-NOV_23,20,https://www.geoguessr.com/challenge/Zx1SS78KzAQXrncR,A Balanced Russia,60,NM
-OCT_23,1,https://www.geoguessr.com/challenge/cAtsUKBRQlirtq2H,An Arbitrary Russia,60,NM
-OCT_23,2,https://www.geoguessr.com/challenge/JkmNmiCMfAxbDdbR,An Arbitrary Russia,60,NM
-OCT_23,3,https://www.geoguessr.com/challenge/ACQiD4ptG8fH1HYC,An Arbitrary Russia,60,NM
-OCT_23,4,https://www.geoguessr.com/challenge/bH7f8hMgdyjTiHZJ,An Arbitrary Russia,60,NM
-OCT_23,5,https://www.geoguessr.com/challenge/adDMGj1AumCl107w,An Arbitrary Russia,60,NM
-OCT_23,6,https://www.geoguessr.com/challenge/Y4qU1HKqCRuMTsZp,An Arbitrary Russia,60,NM
-OCT_23,7,https://www.geoguessr.com/challenge/RLyOgvpG5QoKqo88,An Arbitrary Russia,60,NM
-OCT_23,8,https://www.geoguessr.com/challenge/YBJH3BtoAX9wg1Pv,An Arbitrary Russia,60,NM
-OCT_23,9,https://www.geoguessr.com/challenge/H9UrMERVfUuMcQyM,An Arbitrary Russia,60,NM
-OCT_23,10,https://www.geoguessr.com/challenge/Qx9h91mFFZBmNDIQ,An Arbitrary Russia,60,NM
-OCT_23,11,https://www.geoguessr.com/challenge/TSU9AQaLeeLOBk79,An Arbitrary Russia,60,NM
-OCT_23,12,https://www.geoguessr.com/challenge/6L8V5fiFV3FRNKGx,An Arbitrary Russia,60,NM
-OCT_23,13,https://www.geoguessr.com/challenge/VkoMCtJxU1vIKyau,An Arbitrary Russia,60,NM
-OCT_23,14,https://www.geoguessr.com/challenge/j1wbn0qXLJXmIt3u,An Arbitrary Russia,60,NM
-OCT_23,15,https://www.geoguessr.com/challenge/WeB388aRpsir2agy,An Arbitrary Russia,60,NM
-OCT_23,16,https://www.geoguessr.com/challenge/IxzhHyNw22MGtUuT,An Arbitrary Russia,60,NM
-OCT_23,17,https://www.geoguessr.com/challenge/GPuTKv262ur5rOwI,An Arbitrary Russia,60,NM
-OCT_23,18,https://www.geoguessr.com/challenge/IFd4eE0N0qdGs5W6,An Arbitrary Russia,60,NM
-OCT_23,19,https://www.geoguessr.com/challenge/poFmPANg114Hx7Tk,An Arbitrary Russia,60,NM
-OCT_23,20,https://www.geoguessr.com/challenge/LJkOQ1QWyqLgJL6Q,An Arbitrary Russia,60,NM
-OCT_23,21,https://www.geoguessr.com/challenge/rrAIuUcMil2rh1jT,An Arbitrary Russia,60,NM
-OCT_23,22,https://www.geoguessr.com/challenge/y0H9ffGqtOCKmWQU,An Arbitrary Russia,60,NM
-OCT_23,23,https://www.geoguessr.com/challenge/92UUR3gJPke3ImJc,An Arbitrary Russia,60,NM
-OCT_23,24,https://www.geoguessr.com/challenge/xaI3o2NjAV05MljS,An Arbitrary Russia,60,NM
-OCT_23,25,https://www.geoguessr.com/challenge/k8WIqEoK7iEriWu8,An Arbitrary Russia,60,NM
-OCT_23,26,https://www.geoguessr.com/challenge/KG8x54MS1lBszXuv,An Arbitrary Russia,60,NM
-OCT_23,27,https://www.geoguessr.com/challenge/a6WXmTvDdTsbzMlz,An Arbitrary Russia,60,NM
-OCT_23,28,https://www.geoguessr.com/challenge/SvyNDlo2Wc5JMjr9,An Arbitrary Russia,60,NM
-OCT_23,29,https://www.geoguessr.com/challenge/ONwuXLo0gEk8vMbu,An Arbitrary Russia,60,NM
-OCT_23,30,https://www.geoguessr.com/challenge/5XQT2u8HOkuPSWj4,An Arbitrary Russia,60,NM
-SEP_23,1,https://www.geoguessr.com/challenge/XMlVwaWoCxuQYCb2,An Arbitrary Russia,60,NM
-SEP_23,2,https://www.geoguessr.com/challenge/tPRIWHAk5ZvlnOV0,An Arbitrary Russia,60,NM
-SEP_23,3,https://www.geoguessr.com/challenge/BivYE3LJc6fYk8OV,An Arbitrary Russia,60,NM
-SEP_23,4,https://www.geoguessr.com/challenge/U2UBnq2Fm468SLop,An Arbitrary Russia,60,NM
-SEP_23,5,https://www.geoguessr.com/challenge/lUWeVhrFpPLs6Mjp,An Arbitrary Russia,60,NM
-SEP_23,6,https://www.geoguessr.com/challenge/gIqsbICTOyuz2wCu,An Arbitrary Russia,60,NM
-SEP_23,7,https://www.geoguessr.com/challenge/5rEy5z18Ky0q5A2y,An Arbitrary Russia,60,NM
-SEP_23,8,https://www.geoguessr.com/challenge/ZgCyeeXiphPMq7w6,An Arbitrary Russia,60,NM
-SEP_23,9,https://www.geoguessr.com/challenge/Jbf3TckVmyuA5Yrk,An Arbitrary Russia,60,NM
-SEP_23,10,https://www.geoguessr.com/challenge/8jaQDg1oHOBGaEkB,An Arbitrary Russia,60,NM
-SEP_23,11,https://www.geoguessr.com/challenge/raefbYhUPeJUpTJ1,An Arbitrary Russia,60,NM
-SEP_23,12,https://www.geoguessr.com/challenge/GO1aRffxYrx9MSHl,An Arbitrary Russia,60,NM
-SEP_23,13,https://www.geoguessr.com/challenge/GZjk4NjCxuWSGQ3S,An Arbitrary Russia,60,NM
-SEP_23,14,https://www.geoguessr.com/challenge/yBmn7p4rAPBU8AZY,An Arbitrary Russia,60,NM
-SEP_23,15,https://www.geoguessr.com/challenge/Cf1TZFQBGk4s8h4v,An Arbitrary Russia,60,NM
-SEP_23,16,https://www.geoguessr.com/challenge/74DpMHvAjBRk9UZa,An Arbitrary Russia,60,NM
-SEP_23,17,https://www.geoguessr.com/challenge/zVNQ0PNK30oJrTal,An Arbitrary Russia,60,NM
-SEP_23,18,https://www.geoguessr.com/challenge/2fCruNOimGRGlG2a,An Arbitrary Russia,60,NM
-SEP_23,19,https://www.geoguessr.com/challenge/U9TCg8lbk4rVoZZJ,An Arbitrary Russia,60,NM
-SEP_23,20,https://www.geoguessr.com/challenge/p0gWXj7Rb55LkVtD,An Arbitrary Russia,60,NM
-AUG_23,1,https://www.geoguessr.com/challenge/ALEg8jlU30s4IhKF,A Balanced Russia,60,NM
-AUG_23,2,https://www.geoguessr.com/challenge/roEDrgQM0ek3Kfmo,A Balanced Russia,60,NM
-AUG_23,3,https://www.geoguessr.com/challenge/HSBU0Unm4TpPP1oH,A Balanced Russia,60,NM
-AUG_23,4,https://www.geoguessr.com/challenge/dDUKhgo7EUYKYRwh,A Balanced Russia,60,NM
-AUG_23,5,https://www.geoguessr.com/challenge/hfdMRDq9MNYsW3lp,A Balanced Russia,60,NM
-AUG_23,6,https://www.geoguessr.com/challenge/Cnvijcfi1uqDYPaL,A Balanced Russia,60,NM
-AUG_23,7,https://www.geoguessr.com/challenge/h2AIlr19rhd889Am,A Balanced Russia,60,NM
-AUG_23,8,https://www.geoguessr.com/challenge/USm3EDV02wwTPDZ8,A Balanced Russia,60,NM
-AUG_23,9,https://www.geoguessr.com/challenge/JNJpPdnU7mGtteNG,A Balanced Russia,60,NM
-AUG_23,10,https://www.geoguessr.com/challenge/GF1oNSDpa5b9Ygzs,A Balanced Russia,60,NM
-AUG_23,11,https://www.geoguessr.com/challenge/y6BlDTeZ9YlZJVKa,A Balanced Russia,60,NM
-AUG_23,12,https://www.geoguessr.com/challenge/ROdFnXZca4tkWfDY,A Balanced Russia,60,NM
-AUG_23,13,https://www.geoguessr.com/challenge/X7GLF4cYtKUBJez9,A Balanced Russia,60,NM
-AUG_23,14,https://www.geoguessr.com/challenge/d4UxGB5WShS2yzz9,A Balanced Russia,60,NM
-AUG_23,15,https://www.geoguessr.com/challenge/ZCVqzEMZwnnOlPIJ,A Balanced Russia,60,NM
-AUG_23,16,https://www.geoguessr.com/challenge/ja2FkZy61TWoXC91,A Balanced Russia,60,NM
-AUG_23,17,https://www.geoguessr.com/challenge/wJE2xBBTxVIY9XtL,A Balanced Russia,60,NM
-AUG_23,18,https://www.geoguessr.com/challenge/nKjjphFfK1aAvIhM,A Balanced Russia,60,NM
-AUG_23,19,https://www.geoguessr.com/challenge/sk6UaW1w8a5nusV7,A Balanced Russia,60,NM
-AUG_23,20,https://www.geoguessr.com/challenge/fLptz3zrIDUAdgs4,A Balanced Russia,60,NM
-JUN_24,1,https://www.geoguessr.com/challenge/NuxhLCzhlA4XLrcR,An Arbitrary Russia,60,NM
-JUN_24,2,https://www.geoguessr.com/challenge/4jfXLs1xtZ8X4O3h,An Arbitrary Russia,60,NM
-JUN_24,3,https://www.geoguessr.com/challenge/o19RToFzcJSWF8Ky,An Arbitrary Russia,60,NM
-JUN_24,4,https://www.geoguessr.com/challenge/O9yXCiJbXLxZ4v3B,An Arbitrary Russia,60,NM
-JUN_24,5,https://www.geoguessr.com/challenge/kKyUoCMexxO5pUN6,An Arbitrary Russia,60,NM
-JUN_24,6,https://www.geoguessr.com/challenge/lS527K3EVDRM0vml,An Arbitrary Russia,60,NM
-JUN_24,7,https://www.geoguessr.com/challenge/JcyXCChj7ApSYUPz,An Arbitrary Russia,60,NM
-JUN_24,8,https://www.geoguessr.com/challenge/KQoY68uTyr4xxq3K,An Arbitrary Russia,60,NM
-JUN_24,9,https://www.geoguessr.com/challenge/e4zOIbyaezWBERl8,An Arbitrary Russia,60,NM
-JUN_24,10,https://www.geoguessr.com/challenge/QBG8kt9AZUUitbKa,An Arbitrary Russia,60,NM
-JUN_24,11,https://www.geoguessr.com/challenge/1LvlLviiOvRxaP1s,An Arbitrary Russia,60,NM
-JUN_24,12,https://www.geoguessr.com/challenge/i8TVElKSR8XpSOBL,An Arbitrary Russia,60,NM
-JUN_24,13,https://www.geoguessr.com/challenge/ugt2CbYrpol1QemH,An Arbitrary Russia,60,NM
-JUN_24,14,https://www.geoguessr.com/challenge/aPcRDCdeLETrdT8W,An Arbitrary Russia,60,NM
-JUN_24,15,https://www.geoguessr.com/challenge/yysA6KhJYluqaJ9W,An Arbitrary Russia,60,NM
-JUN_24,16,https://www.geoguessr.com/challenge/2Yb4Alt0Gyup3Ozg,An Arbitrary Russia,60,NM
-JUN_24,17,https://www.geoguessr.com/challenge/t3UBzChLuQhqPuxD,An Arbitrary Russia,60,NM
-JUN_24,18,https://www.geoguessr.com/challenge/OFBijiu2ll007xuP,An Arbitrary Russia,60,NM
-JUN_24,19,https://www.geoguessr.com/challenge/NiUcybzOLvvLyhTw,An Arbitrary Russia,60,NM
-JUN_24,20,https://www.geoguessr.com/challenge/686TLTfBCEU8c2At,An Arbitrary Russia,60,NM
-JUL_24,1,https://www.geoguessr.com/challenge/N1dHsZkZ28zXY7hG,An Arbitrary Russia,30,NM
-JUL_24,2,https://www.geoguessr.com/challenge/oTZ45Fz6SXkTxamx,An Arbitrary Russia,30,NM
-JUL_24,3,https://www.geoguessr.com/challenge/m9vlExdQUamBw93o,An Arbitrary Russia,30,NM
-JUL_24,4,https://www.geoguessr.com/challenge/GC3HSXwBQYWgzzLS,An Arbitrary Russia,30,NM
-JUL_24,5,https://www.geoguessr.com/challenge/W6YMGkiKSEuXJL02,An Arbitrary Russia,30,NM
-JUL_24,6,https://www.geoguessr.com/challenge/v7rOMVTUaTrXhHaM,An Arbitrary Russia,30,NM
-JUL_24,7,https://www.geoguessr.com/challenge/YyBquU5OqcXuE04V,An Arbitrary Russia,30,NM
-JUL_24,8,https://www.geoguessr.com/challenge/O1d5XmN8OUzqyFZm,An Arbitrary Russia,30,NM
-JUL_24,9,https://www.geoguessr.com/challenge/yyS1HazL35zBbjPp,An Arbitrary Russia,30,NM
-JUL_24,10,https://www.geoguessr.com/challenge/SkmEMPqdfbogsUi2,An Arbitrary Russia,30,NM
-JUL_24,11,https://www.geoguessr.com/challenge/ZmWzrp69ZU4F2KsW,An Arbitrary Russia,30,NM
-JUL_24,12,https://www.geoguessr.com/challenge/Az2kHNOAvO17SoVw,An Arbitrary Russia,30,NM
-JUL_24,13,https://www.geoguessr.com/challenge/QMACVSeLnXzjzSqW,An Arbitrary Russia,30,NM
-JUL_24,14,https://www.geoguessr.com/challenge/k3qDIgr9sitetfSY,An Arbitrary Russia,30,NM
-JUL_24,15,https://www.geoguessr.com/challenge/Q9bCMb2aoA6QVNeH,An Arbitrary Russia,30,NM
-JUL_24,16,https://www.geoguessr.com/challenge/ysD8DkbIlAfvs7fI,An Arbitrary Russia,30,NM
-JUL_24,17,https://www.geoguessr.com/challenge/chNH2VxcaxLqDL5N,An Arbitrary Russia,30,NM
-JUL_24,18,https://www.geoguessr.com/challenge/NCYI7tcBRZ2mMfer,An Arbitrary Russia,30,NM
-JUL_24,19,https://www.geoguessr.com/challenge/damCFIYoa0whjnlv,An Arbitrary Russia,30,NM
-JUL_24,20,https://www.geoguessr.com/challenge/ZzXXHFyLyqb9PBBU,An Arbitrary Russia,30,NM
+TEST_ID,SEED_NUMBER,SEED_LINK,SEED_MAP,SEED_TIME,SEED_MODE,ROUND_1_LAT,ROUND_1_LNG,ROUND_1_SUBDIVISION,ROUND_2_LAT,ROUND_2_LNG,ROUND_2_SUBDIVISION,ROUND_3_LAT,ROUND_3_LNG,ROUND_3_SUBDIVISION,ROUND_4_LAT,ROUND_4_LNG,ROUND_4_SUBDIVISION,ROUND_5_LAT,ROUND_5_LNG,ROUND_5_SUBDIVISION
+MAY_24,1,https://www.geoguessr.com/challenge/jVr5gC0odqT8TgTe,An Arbitrary Russia,20,NMPZ,58.15344,57.76521,Perm Krai,57.632931,85.42461,Tomsk Oblast,56.2537,95.74711,Krasnoyarsk Krai,54.55143,21.66424,Kaliningrad Oblast,61.762268,130.348432,Sakha
+MAY_24,2,https://www.geoguessr.com/challenge/OIfhjPia3PYaOIsC,An Arbitrary Russia,20,NMPZ,47.85074,142.51382,Sakhalin Oblast,49.082489,140.263393,Khabarovsk,62.132177,129.79126,Sakha,52.00672,44.46059,Saratov Oblast,47.80055,46.72619,Kalmykiya Republic
+MAY_24,3,https://www.geoguessr.com/challenge/hDAxlye1PyInlelk,An Arbitrary Russia,20,NMPZ,48.87618,44.77374,Volgograd Oblast,53.033258,35.928731,Oryol oblast,51.53901,55.0308,Orenburg Oblast,54.25329,57.47463,Bashkortostan Republic,67.525591,30.682157,Murmansk
+MAY_24,4,https://www.geoguessr.com/challenge/mdOwyeDKMAS1LDMZ,An Arbitrary Russia,20,NMPZ,51.66243,101.96637,Buryatiya Republic,51.96132,115.02798,Zabaykalskiy (Transbaikal) Kray,55.47618,86.12686,Kuzbass,56.204664,43.752201,Nizhny Novgorod Oblast,52.9669,158.69566,Kamchatka
+MAY_24,5,https://www.geoguessr.com/challenge/SZCwVhCiRtPD9a8x,An Arbitrary Russia,20,NMPZ,48.75771,132.9605,Jewish Autonomous Oblast,64.297553,31.920007,Karelia,48.60983,133.82598,Jewish Autonomous Oblast,52.61719,111.59615,Buryatiya Republic,60.18415,29.49558,St.-Petersburg
+MAY_24,6,https://www.geoguessr.com/challenge/2izFv6jzPr8dr0ZK,An Arbitrary Russia,20,NMPZ,55.52087,85.69646,Kuzbass,55.456877,43.874896,Nizhny Novgorod Oblast,54.477,53.83186,Bashkortostan Republic,55.178785,47.062894,Chuvash Republic,54.61533,62.51064,Kurgan Oblast
+MAY_24,7,https://www.geoguessr.com/challenge/HvaTakXfMFGtcI5q,An Arbitrary Russia,20,NMPZ,56.54908,53.58014,Udmurtiya Republic,58.517737,31.291645,Novgorod Oblast,59.2966,29.13614,Leningradskaya Oblast',62.15251,74.0279,Khanty-Mansia,48.79634,132.94636,Jewish Autonomous Oblast
+MAY_24,8,https://www.geoguessr.com/challenge/BwmVevM1DGNkAwu8,An Arbitrary Russia,20,NMPZ,48.5914,133.78377,Jewish Autonomous Oblast,51.6139,114.00227,Zabaykalskiy (Transbaikal) Kray,47.01547,142.28449,Sakhalin Oblast,50.32167,38.81027,Belgorod Oblast,58.71159,52.27874,Kirov Oblast
+MAY_24,9,https://www.geoguessr.com/challenge/kw06tCDMJGpPpo1w,An Arbitrary Russia,20,NMPZ,50.363795,136.85807,Khabarovsk,53.83882,33.53977,Bryansk Oblast,55.875936,83.58402,Novosibirsk Oblast,47.02275,142.63051,Sakhalin Oblast,54.655806,100.638299,Irkutsk Oblast
+MAY_24,10,https://www.geoguessr.com/challenge/HtbadmlVi0hlRiR2,An Arbitrary Russia,20,NMPZ,54.844203,124.564401,Amur Oblast,56.0708,63.49198,Kurgan Oblast,65.87167864532113,74.71107824008311,Yamalo-Nenets,54.857337,39.428229,Moscow Oblast,54.83307,34.91342,Smolensk Oblast
+MAY_24,11,https://www.geoguessr.com/challenge/RVtlNlIELGt1AMev,An Arbitrary Russia,20,NMPZ,53.33732,37.70113,Tula Oblast,44.11716,46.55192,Dagestan,56.9988,65.44194,Tyumen Oblast,63.15998,75.07117,Yamalo-Nenets,51.515379,104.124421,Irkutsk Oblast
+MAY_24,12,https://www.geoguessr.com/challenge/UPE8Wkh3Cwk5HsY8,An Arbitrary Russia,20,NMPZ,43.55519,44.10558,Kabardino-Balkariya Republic,56.343363,29.733743,Pskov Oblast,56.034953,29.257477,Pskov Oblast,55.43895,37.62547,Moscow Oblast,58.05912,55.93594,Perm Krai
+MAY_24,13,https://www.geoguessr.com/challenge/Aj1ZxLEHiQOzYr9G,An Arbitrary Russia,20,NMPZ,55.35967,69.22436,Tyumen Oblast,53.16985,40.36214,Tambov Oblast,57.497964,80.849487,Tomsk Oblast,64.17929,75.40774,Yamalo-Nenets,47.40123,141.98742,Sakhalin Oblast
+MAY_24,14,https://www.geoguessr.com/challenge/dak2du82ZxpboYlr,An Arbitrary Russia,20,NMPZ,69.429625,30.845845,Murmansk,43.277004,45.615103,Chechnya,55.846654,44.127618,Nizhny Novgorod Oblast,51.73326,45.22153,Saratov Oblast,57.60889,53.50648,Udmurtiya Republic
+MAY_24,15,https://www.geoguessr.com/challenge/9edNFc9mNobvMQYE,An Arbitrary Russia,20,NMPZ,55.57572,41.96182,Vladimir Oblast,48.64929,142.28235,Sakhalin Oblast,54.040886,124.229138,Amur Oblast,53.491538,50.256581,Samara Oblast,52.736075,103.636205,Irkutsk Oblast
+MAY_24,16,https://www.geoguessr.com/challenge/ia8PZ0d1XK43n1bV,An Arbitrary Russia,20,NMPZ,66.50467,67.17039,Yamalo-Nenets,51.6764,102.09726,Buryatiya Republic,56.724109,41.038057,Ivanovo Oblast,66.341205,36.639384,Karelia,53.85804,74.05973,Omsk Oblast
+MAY_24,17,https://www.geoguessr.com/challenge/kuqSFdeZMxp9ZZE1,An Arbitrary Russia,20,NMPZ,56.809571,44.467982,Nizhny Novgorod Oblast,51.86827,107.71133,Buryatiya Republic,56.48421,73.58153,Omsk Oblast,53.87851,34.03786,Bryansk Oblast,53.02463,40.56937,Tambov Oblast
+MAY_24,18,https://www.geoguessr.com/challenge/mRcoAuwT89S0JamE,An Arbitrary Russia,20,NMPZ,57.094989,39.498518,Yaroslavl Oblast,68.651877,31.847266,Murmansk,52.52874,32.05875,Bryansk Oblast,61.61637,45.609007,Arkhangelskaya,55.383739,32.298392,Smolensk Oblast
+MAY_24,19,https://www.geoguessr.com/challenge/7XxKsiRfXc9FRCGP,An Arbitrary Russia,20,NMPZ,53.74893,87.36387,Kuzbass,47.40158,41.24244,Rostov,52.42416,116.85026,Zabaykalskiy (Transbaikal) Kray,50.3873,38.32369,Belgorod Oblast,65.219898,33.782555,Karelia
+MAY_24,20,https://www.geoguessr.com/challenge/HbBrMP1uSSIQg4DE,An Arbitrary Russia,20,NMPZ,53.09612,158.4263,Kamchatka,62.092319,131.40146,Sakha,50.13407,45.85234,Volgograd Oblast,43.65332,46.79507,Dagestan,51.18828,38.23783,Belgorod Oblast
+APR_24,1,https://www.geoguessr.com/challenge/TLcNVW5aeWMoXYED,An Arbitrary Russia,30,NM,52.64929,34.80458,Bryansk Oblast,44.6157,40.74459,Krasnodar Krai,53.625204,125.327773,Amur Oblast,56.473298,43.781368,Nizhny Novgorod Oblast,58.570592,35.654416,Novgorod Oblast
+APR_24,2,https://www.geoguessr.com/challenge/x7m1s1CMbGYlV1Bz,An Arbitrary Russia,30,NM,50.90037,106.1175,Buryatiya Republic,43.19929,46.71604,Dagestan,51.65143,45.68297,Saratov Oblast,48.2507,46.57695,Astrakhan Oblast,52.930481,105.858458,Irkutsk Oblast
+APR_24,3,https://www.geoguessr.com/challenge/Yf5ym0V4gYgydB6D,An Arbitrary Russia,30,NM,65.259813,30.884643,Karelia,60.726562,115.076953,Sakha,57.805672,42.387791,Kostroma Oblast,50.757762,128.713984,Amur Oblast,57.11918,57.30886,Perm Krai
+APR_24,4,https://www.geoguessr.com/challenge/Rz7nuJkeupfJtMf5,An Arbitrary Russia,30,NM,54.85344,38.41498,Moscow Oblast,41.94008,48.32638,Dagestan,47.96631,46.11372,Astrakhan Oblast,60.91,35.1334,Leningradskaya Oblast',53.09539,158.53608,Kamchatka
+APR_24,5,https://www.geoguessr.com/challenge/6KeLIhq2DOq1WxF8,An Arbitrary Russia,30,NM,58.858198,33.242642,Novgorod Oblast,53.506557,48.349609,Ulyanovsk,66.14638,68.72053,Yamalo-Nenets,57.67939,39.267674,Yaroslavl Oblast,56.88648,41.396478,Ivanovo Oblast
+APR_24,6,https://www.geoguessr.com/challenge/BZxSqCccjBT6xvB7,An Arbitrary Russia,30,NM,62.765181,129.662751,Sakha,50.230222,136.901369,Khabarovsk,57.408624,85.847226,Tomsk Oblast,44.20312,42.05398,Karachayevo-Cherkesiya Republic,58.133597,29.399895,Pskov Oblast
+APR_24,7,https://www.geoguessr.com/challenge/xd9YvMkbSYjSmwn2,An Arbitrary Russia,30,NM,61.880029,130.540983,Sakha,53.81446,58.97752,Bashkortostan Republic,49.465684,137.609881,Khabarovsk,59.21224,39.74204,Vologda Oblast,59.660267,60.322078,Sverdlovsk Oblast
+APR_24,8,https://www.geoguessr.com/challenge/0hxo00KmKkuYv7DJ,An Arbitrary Russia,30,NM,53.24351,82.73699,Altai Krai,46.0625,41.92579,Kalmykiya Republic,55.023638,34.425843,Smolensk Oblast,51.90483,107.88102,Buryatiya Republic,48.79005,44.39288,Volgograd Oblast
+APR_24,9,https://www.geoguessr.com/challenge/HLzAcEYMMWAHr3w5,An Arbitrary Russia,30,NM,54.677212,100.63042,Irkutsk Oblast,46.74003,142.89611,Sakhalin Oblast,43.33005,132.08703,Primorye,56.21402,95.80081,Krasnoyarsk Krai,52.68756,86.13603,Altai Krai
+APR_24,10,https://www.geoguessr.com/challenge/pbUF2cEWO4wwWSRf,An Arbitrary Russia,30,NM,55.20697,73.21456,Omsk Oblast,51.01157,55.62874,Orenburg Oblast,52.16297,106.50309,Buryatiya Republic,51.97256,110.80631,Zabaykalskiy (Transbaikal) Kray,53.131088,48.287391,Samara Oblast
+APR_24,11,https://www.geoguessr.com/challenge/BLQUyKLd5bJw3Lwt,An Arbitrary Russia,30,NM,52.939367,48.306155,Samara Oblast,56.09818,63.88006,Kurgan Oblast,61.738454,34.443381,Karelia,55.70098,86.24689,Kuzbass,54.44798,80.29331,Novosibirsk Oblast
+APR_24,12,https://www.geoguessr.com/challenge/4KhZbS7d99pwgssR,An Arbitrary Russia,30,NM,54.36395,21.5723,Warmia-Masuria,44.22922,43.2153,Stavropol Kray,57.67107,47.95741,Kirov Oblast,53.80695,55.99498,Bashkortostan Republic,52.28762,45.32,Saratov Oblast
+APR_24,13,https://www.geoguessr.com/challenge/7AoPpDhdJ0wfXN9X,An Arbitrary Russia,30,NM,52.113131,39.710106,Lipetsk Oblast,58.970354,126.237667,Sakha,57.15315,47.57127,Kirov Oblast,58.46296,56.55948,Perm Krai,53.25159,45.5004,Penza Oblast
+APR_24,14,https://www.geoguessr.com/challenge/MtjFj3uovbuffmAs,An Arbitrary Russia,30,NM,54.7903,31.959497,Smolensk Oblast,53.997392,48.135624,Ulyanovsk,52.3213,89.83484,Khakasiya Republic,55.59152,37.13571,Moscow,61.37221,72.97434,Khanty-Mansia
+APR_24,15,https://www.geoguessr.com/challenge/hg0NZfPLmxwUwWmO,An Arbitrary Russia,30,NM,62.208315,34.101144,Karelia,66.38844,35.582907,Murmansk,52.20554,45.0299,Penza Oblast,67.956113,32.852684,Murmansk,52.19052,47.75155,Saratov Oblast
+APR_24,16,https://www.geoguessr.com/challenge/eBu9ZXjikZRXeP7Y,An Arbitrary Russia,30,NM,67.940001,32.825323,Murmansk,48.72131,44.51276,Volgograd Oblast,55.17888,159.04624,Kamchatka,52.02246,48.87749,Saratov Oblast,47.15502,39.87315,Rostov
+APR_24,17,https://www.geoguessr.com/challenge/LKpsvwp18qnzCj3a,An Arbitrary Russia,30,NM,44.85078,133.1568,Primorye,62.081489,129.788398,Sakha,53.09115,35.01353,Bryansk Oblast,64.47297,76.88158,Yamalo-Nenets,53.70028,91.72469,Krasnoyarsk Krai
+APR_24,18,https://www.geoguessr.com/challenge/vYD9dUwoGtMZx7Xt,An Arbitrary Russia,30,NM,58.173292,31.021226,Novgorod Oblast,53.268561,40.018682,Lipetsk Oblast,56.19843,87.6991,Kuzbass,53.780734,40.455906,Ryazan Oblast,51.78835,87.23275,Altai
+APR_24,19,https://www.geoguessr.com/challenge/D6gaZmfQU8D4GdHV,An Arbitrary Russia,30,NM,54.25075,52.84412,Tatarstan Republic,47.3828,40.11299,Rostov,43.106541,45.585508,Chechnya,61.726271,34.429207,Karelia,54.091814,50.08837,Ulyanovsk
+APR_24,20,https://www.geoguessr.com/challenge/hxpgSreZn31OlJ5q,An Arbitrary Russia,30,NM,55.59794,39.23221,Moscow Oblast,65.263696,33.741436,Karelia,55.40423,85.99791,Kuzbass,54.9876,83.42347,Novosibirsk Oblast,45.33102,42.81975,Stavropol Kray
+MAR_24,1,https://www.geoguessr.com/challenge/KEX2aGAVT00bF2o5,An Arbitrary Russia,60,NMPZ,57.11245,65.67882,Tyumen Oblast,54.72448,20.40019,Kaliningrad Oblast,57.21064,51.8,Udmurtiya Republic,56.32827,62.15734,Sverdlovsk Oblast,54.78251,38.64788,Moscow Oblast
+MAR_24,2,https://www.geoguessr.com/challenge/FtMbgjzWhFAS6OLB,An Arbitrary Russia,60,NMPZ,44.05279,43.0764,Stavropol Kray,43.82708,131.95873,Primorye,46.32305,46.31549,Astrakhan Oblast,64.05538,42.54891,Arkhangelskaya,54.409907,45.303314,Mordoviya Republic
+MAR_24,3,https://www.geoguessr.com/challenge/M2iocZqbysYq6Rfi,An Arbitrary Russia,60,NMPZ,55.10215,81.65607,Novosibirsk Oblast,52.650024,38.438632,Lipetsk Oblast,61.0994,29.97341,Leningradskaya Oblast',60.59627397189426,151.5663559117848,Magadan Oblast,62.26102374978836,151.6840023757831,Magadan Oblast
+MAR_24,4,https://www.geoguessr.com/challenge/d1GTdgzphcOdnQnb,An Arbitrary Russia,60,NMPZ,50.635567,40.962165,Voronezh Oblast,53.96492,58.39544,Bashkortostan Republic,62.84417,42.86242,Arkhangelskaya,53.8171,46.461979,Ulyanovsk,44.59625,132.80529,Primorye
+MAR_24,5,https://www.geoguessr.com/challenge/LyCWys2ao7598wGT,An Arbitrary Russia,60,NMPZ,55.31491,89.23354,Krasnoyarsk Krai,52.77522,52.04597,Orenburg Oblast,57.04263,65.69885,Tyumen Oblast,55.940219,31.093031,Smolensk Oblast,46.07824,45.3964,Kalmykiya Republic
+MAR_24,6,https://www.geoguessr.com/challenge/S422hWbFPr8Jl1l2,An Arbitrary Russia,60,NMPZ,47.25796,38.90542,Rostov,55.379366,45.617009,Nizhny Novgorod Oblast,56.392687,44.086914,Nizhny Novgorod Oblast,63.9862368302392,141.0977154284766,Sakha,60.93383,46.46712,Vologda Oblast
+MAR_24,7,https://www.geoguessr.com/challenge/sOsj7MXN7Qq9C6c8,An Arbitrary Russia,60,NMPZ,54.65368,55.67649,Bashkortostan Republic,65.7698,71.60778,Yamalo-Nenets,46.12456,39.91236,Krasnodar Krai,61.33436,73.37823,Khanty-Mansia,63.36894,66.99823,Khanty-Mansia
+MAR_24,8,https://www.geoguessr.com/challenge/uTWuaov5bk7KFRrJ,An Arbitrary Russia,60,NMPZ,51.78966,58.09315,Bashkortostan Republic,43.57527,39.97557,Krasnodar Krai,55.9611,92.90604,Krasnoyarsk Krai,53.31786,37.81619,Tula Oblast,55.35336,36.89963,Moscow Oblast
+MAR_24,9,https://www.geoguessr.com/challenge/3CZG9lyg8fVgqrJ8,An Arbitrary Russia,60,NMPZ,53.41908,83.92866,Altai Krai,44.53955,41.53715,Krasnodar Krai,56.2309,38.11429,Moscow Oblast,49.73884,43.65617,Volgograd Oblast,59.11267,37.40824,Vologda Oblast
+MAR_24,10,https://www.geoguessr.com/challenge/wZeKLCuzOcfKg9Dl,An Arbitrary Russia,60,NMPZ,63.51025,53.39716,Komi,51.85101,107.65263,Buryatiya Republic,58.69148,52.19411,Kirov Oblast,53.666729,47.414239,Ulyanovsk,63.23406,76.02833,Yamalo-Nenets
+MAR_24,11,https://www.geoguessr.com/challenge/nmNT3TOe9QIftpkr,An Arbitrary Russia,60,NMPZ,58.16767,55.01927,Perm Krai,56.277458,30.434562,Pskov Oblast,46.72723,142.51865,Sakhalin Oblast,61.93926,32.71442,Karelia,46.56715,48.26013,Astrakhan Oblast
+MAR_24,12,https://www.geoguessr.com/challenge/acSLl6agdYQUyl2G,An Arbitrary Russia,60,NMPZ,53.2336,38.08139,Tula Oblast,51.55384,142.85671,Sakhalin Oblast,59.71205356705775,150.009502914835,Magadan Oblast,59.59639947764801,151.1035031437111,Magadan Oblast,61.06096,50.03918,Komi
+MAR_24,13,https://www.geoguessr.com/challenge/4AJEkIcOQCXOZBd3,An Arbitrary Russia,60,NMPZ,47.32305,142.81256,Sakhalin Oblast,57.07431,34.94365,Tver Oblast,63.70656957631603,121.5060337440075,Sakha,55.082965,47.574631,Chuvash Republic,59.29729,38.22183,Vologda Oblast
+MAR_24,14,https://www.geoguessr.com/challenge/vgjo9c3zCheuxsJB,An Arbitrary Russia,60,NMPZ,62.99862,76.9261,Khanty-Mansia,48.1691,46.30147,Astrakhan Oblast,55.41283,64.72809,Kurgan Oblast,57.94391,56.42004,Perm Krai,52.31429,110.48451,Buryatiya Republic
+MAR_24,15,https://www.geoguessr.com/challenge/8BMENAU7QaCgzsya,An Arbitrary Russia,60,NMPZ,58.6109,49.43435,Kirov Oblast,59.61860138048952,150.8032196302769,Magadan Oblast,54.69935,82.64829,Novosibirsk Oblast,55.43603,61.29901,Chelyabinsk,52.45957,53.14686,Orenburg Oblast
+MAR_24,16,https://www.geoguessr.com/challenge/F95Rnn7xIgbbmHH7,An Arbitrary Russia,60,NMPZ,51.11448,111.91604,Zabaykalskiy (Transbaikal) Kray,54.86511,73.77002,Omsk Oblast,55.6938,38.79954,Moscow Oblast,63.57196,54.06172,Komi,50.1657,88.27583,Altai
+MAR_24,17,https://www.geoguessr.com/challenge/Z7V3QsHN3sV3fU1r,An Arbitrary Russia,60,NMPZ,57.14942,73.10316,Omsk Oblast,55.35923,85.57334,Kuzbass,53.81918,53.1445,Orenburg Oblast,52.71662,32.48101,Bryansk Oblast,51.89046,44.89743,Saratov Oblast
+MAR_24,18,https://www.geoguessr.com/challenge/waaEaMncfHxgpfEz,An Arbitrary Russia,60,NMPZ,54.92983,36.87545,Kaluga Oblast,51.26177,114.89618,Zabaykalskiy (Transbaikal) Kray,52.77572,143.0738,Sakhalin Oblast,49.28602,142.94385,Sakhalin Oblast,56.8658,36.70286,Tver Oblast
+MAR_24,19,https://www.geoguessr.com/challenge/K9RglrVMJgEVgnwb,An Arbitrary Russia,60,NMPZ,60.63984704933352,150.5328778983845,Magadan Oblast,54.053218,121.800797,Amur Oblast,51.672084,36.696334,Kursk Oblast,51.54045,85.90364,Altai,46.46352,39.70971,Krasnodar Krai
+MAR_24,20,https://www.geoguessr.com/challenge/moFFy1J89AxTkLGX,An Arbitrary Russia,60,NMPZ,56.69736,104.35898,Irkutsk Oblast,47.35499,40.00363,Rostov,52.961484,37.17146,Oryol oblast,56.34035,38.25981,Moscow Oblast,55.36907,159.25851,Kamchatka
+FEB_24,1,https://www.geoguessr.com/challenge/VfHvA8SLGRJLReKo,An Arbitrary Russia,60,NM,50.04847,39.11214,Belgorod Oblast,51.11174,114.45562,Zabaykalskiy (Transbaikal) Kray,53.410102,51.623511,Samara Oblast,58.95675,36.95741,Vologda Oblast,55.381475,43.831686,Nizhny Novgorod Oblast
+FEB_24,2,https://www.geoguessr.com/challenge/6xWaHWLvGbSkNZ2G,An Arbitrary Russia,60,NM,49.79777,89.00164,Altai,58.02319,49.12066,Kirov Oblast,53.85184,91.37818,Khakasiya Republic,47.30635,39.5419,Rostov,61.44146,29.97861,Karelia
+FEB_24,3,https://www.geoguessr.com/challenge/ddIRkLHVpPD52liJ,An Arbitrary Russia,60,NM,42.81771,133.0415,Primorye,64.67554,55.87092,Komi,53.13349,91.32546,Khakasiya Republic,57.881127,43.785726,Kostroma Oblast,53.07318,43.77163,Penza Oblast
+FEB_24,4,https://www.geoguessr.com/challenge/6q4d4G1z8BXN21HU,An Arbitrary Russia,60,NM,64.41176,40.57201,Arkhangelskaya,54.63217,85.53918,Kuzbass,53.66094,53.65705,Orenburg Oblast,57.905793,41.182366,Kostroma Oblast,56.1026,37.53845,Moscow Oblast
+FEB_24,5,https://www.geoguessr.com/challenge/KVDD4jj7OUygZSmS,An Arbitrary Russia,60,NM,51.983228,127.837852,Amur Oblast,56.48319,43.992982,Nizhny Novgorod Oblast,53.850916,50.861652,Samara Oblast,54.661133,40.002216,Ryazan Oblast,56.614943,45.934098,Mariy-El Republic
+FEB_24,6,https://www.geoguessr.com/challenge/6jGa3cbSWJeu3KfW,An Arbitrary Russia,60,NM,57.24902,67.0806,Tyumen Oblast,57.01587,34.84627,Tver Oblast,59.15142,37.91852,Vologda Oblast,57.464551,28.093699,Pskov Oblast,50.01057,95.48894,Republic of Tyva
+FEB_24,7,https://www.geoguessr.com/challenge/1h1uMYxTR8JFIyPh,An Arbitrary Russia,60,NM,46.96851,142.65581,Sakhalin Oblast,48.2424,44.59605,Volgograd Oblast,58.1464,56.47774,Perm Krai,51.73467,113.98805,Zabaykalskiy (Transbaikal) Kray,53.07725,118.21296,Zabaykalskiy (Transbaikal) Kray
+FEB_24,8,https://www.geoguessr.com/challenge/t9ixeFxGjCNLVAIG,An Arbitrary Russia,60,NM,58.985155,42.368071,Kostroma Oblast,48.9879,131.66986,Jewish Autonomous Oblast,45.27911,39.56658,Adygeya Republic,63.60561,53.86529,Komi,43.56542,41.28709,Karachayevo-Cherkesiya Republic
+FEB_24,9,https://www.geoguessr.com/challenge/l5ySDgm2wFqQ1HUQ,An Arbitrary Russia,60,NM,59.48598,30.25661,Leningradskaya Oblast',68.10526,33.495093,Murmansk,43.59808,44.05993,Kabardino-Balkariya Republic,52.42481,55.78791,Bashkortostan Republic,61.26209,50.67178,Komi
+FEB_24,10,https://www.geoguessr.com/challenge/3V4hPLLODvUMciea,An Arbitrary Russia,60,NM,52.49868,93.4435,Republic of Tyva,52.03614,115.29725,Zabaykalskiy (Transbaikal) Kray,55.82348,74.12968,Omsk Oblast,51.99173,48.74356,Saratov Oblast,43.39984,47.14461,Dagestan
+FEB_24,11,https://www.geoguessr.com/challenge/F8ClTgDaUmlB45Zx,An Arbitrary Russia,60,NM,56.767,52.37305,Udmurtiya Republic,56.14671,97.25709,Krasnoyarsk Krai,61.07832,48.21849,Arkhangelskaya,53.9562,58.43039,Bashkortostan Republic,50.75652,42.49764,Volgograd Oblast
+FEB_24,12,https://www.geoguessr.com/challenge/cPsxZbMKgRxSv0Io,An Arbitrary Russia,60,NM,54.49265,22.19948,Kaliningrad Oblast,48.70781,44.57249,Volgograd Oblast,50.64227,137.07475,Khabarovsk,63.83161,75.36147,Yamalo-Nenets,57.77884,35.59304,Tver Oblast
+FEB_24,13,https://www.geoguessr.com/challenge/Ddym0q5zJjUo1n1W,An Arbitrary Russia,60,NM,51.53874,107.0099,Buryatiya Republic,57.589633,41.045475,Kostroma Oblast,55.37275,34.013458,Smolensk Oblast,58.02597,60.49935,Sverdlovsk Oblast,47.09055,39.46586,Rostov
+FEB_24,14,https://www.geoguessr.com/challenge/s7v4XF44sbi88mAS,An Arbitrary Russia,60,NM,55.45792,65.29695,Kurgan Oblast,53.367537,48.387086,Samara Oblast,54.023034,44.262307,Mordoviya Republic,54.94205,36.43224,Kaluga Oblast,58.498678,35.265016,Tver Oblast
+FEB_24,15,https://www.geoguessr.com/challenge/kUC230R3g6nZ7b47,An Arbitrary Russia,60,NM,53.986368,121.984579,Amur Oblast,57.917294,38.599139,Yaroslavl Oblast,56.76332,52.47527,Udmurtiya Republic,51.64036,101.36664,Khövsgöl Province,58.960098,42.393549,Kostroma Oblast
+FEB_24,16,https://www.geoguessr.com/challenge/YmAHNPnmgctioR4O,An Arbitrary Russia,60,NM,54.848997,31.797617,Smolensk Oblast,43.48441,44.75703,Ingushetiya Republic,58.06499,57.59842,Perm Krai,55.27592,36.89013,Moscow Oblast,43.18729,44.43696,North Ossetia–Alania
+FEB_24,17,https://www.geoguessr.com/challenge/4K78by6nK7tIZ8zD,An Arbitrary Russia,60,NM,59.97814,30.94052,Leningradskaya Oblast',48.17273,40.78213,Rostov,52.06737,87.09587,Altai,51.89708,110.33399,Buryatiya Republic,54.0475,55.88754,Bashkortostan Republic
+FEB_24,18,https://www.geoguessr.com/challenge/8Y3qRw3dUchSAGaz,An Arbitrary Russia,60,NM,54.45325,36.83695,Kaluga Oblast,56.969384,41.69211,Ivanovo Oblast,52.803832,48.229499,Saratov Oblast,59.68108,60.21946,Sverdlovsk Oblast,52.36367,60.85721,Qostanay
+FEB_24,19,https://www.geoguessr.com/challenge/vdZ5bFTTkI7v20nW,An Arbitrary Russia,60,NM,56.29956,43.930452,Nizhny Novgorod Oblast,56.92366,60.47747,Sverdlovsk Oblast,53.33697,51.400759,Samara Oblast,55.3025,40.07816,Moscow Oblast,57.83731,63.13273,Sverdlovsk Oblast
+FEB_24,20,https://www.geoguessr.com/challenge/8Sv1SltwtC3PMZ9m,An Arbitrary Russia,60,NM,50.75576,86.14072,Altai,62.43555,65.5959,Khanty-Mansia,55.94107,38.7938,Moscow Oblast,50.96056,95.18258,Republic of Tyva,53.751735,49.179359,Samara Oblast
+JAN_24,1,https://www.geoguessr.com/challenge/aACtNePbMh0Cl1bA,An Arbitrary Russia,60,NM,44.85012,42.82634,Stavropol Kray,51.98293,48.69742,Saratov Oblast,52.57836,42.22227,Tambov Oblast,56.04549,63.67544,Kurgan Oblast,67.59689,30.47778,Murmansk
+JAN_24,2,https://www.geoguessr.com/challenge/RRHGmxbDynwnafum,An Arbitrary Russia,60,NM,54.0157,86.59351,Kuzbass,67.01923,30.8208,Murmansk,59.5653,49.40581,Komi,50.9436,115.85254,Zabaykalskiy (Transbaikal) Kray,60.73393,29.96364,Leningradskaya Oblast'
+JAN_24,3,https://www.geoguessr.com/challenge/dQH09mPxrD8kX0cU,An Arbitrary Russia,60,NM,57.05398,42.45338,Ivanovo Oblast,43.41231,46.23196,Chechnya,54.87477,56.09452,Bashkortostan Republic,49.06597,139.60016,Khabarovsk,49.50031,136.92928,Khabarovsk
+JAN_24,4,https://www.geoguessr.com/challenge/1ToXWNKeKyZ5Vlzc,An Arbitrary Russia,60,NM,48.24743,45.84089,Astrakhan Oblast,55.36032,47.24171,Chuvash Republic,48.64081,142.79316,Sakhalin Oblast,46.55506,39.47981,Krasnodar Krai,51.34784,46.41017,Saratov Oblast
+JAN_24,5,https://www.geoguessr.com/challenge/dcXQq0f0su52soND,An Arbitrary Russia,60,NM,54.35145,113.45186,Buryatiya Republic,51.4801,106.76943,Buryatiya Republic,53.10586,157.78767,Kamchatka,54.21867,86.65907,Kuzbass,56.48716,65.32944,Tyumen Oblast
+JAN_24,6,https://www.geoguessr.com/challenge/oDwKBXWohsIJCQC8,An Arbitrary Russia,60,NM,51.8988,50.85181,Saratov Oblast,53.57948,142.93113,Sakhalin Oblast,55.96124,43.09504,Nizhny Novgorod Oblast,49.34423,137.81011,Khabarovsk,51.429,48.23182,Saratov Oblast
+JAN_24,7,https://www.geoguessr.com/challenge/sHAaJzTxda3ioalZ,An Arbitrary Russia,60,NM,62.25333,35.06225,Karelia,57.82808,43.31746,Kostroma Oblast,55.19003,82.92403,Novosibirsk Oblast,56.83839,35.84473,Tver Oblast,51.70004,89.96317,Republic of Tyva
+JAN_24,8,https://www.geoguessr.com/challenge/AymI7ZgHcstnIn3G,An Arbitrary Russia,60,NM,56.44738,52.28937,Udmurtiya Republic,58.2018,32.64727,Novgorod Oblast,54.6254,21.6066,Kaliningrad Oblast,61.50878,44.25623,Arkhangelskaya,51.99647,39.38799,Voronezh Oblast
+JAN_24,9,https://www.geoguessr.com/challenge/PK913dw0PyatBVmt,An Arbitrary Russia,60,NM,51.51454,40.43519,Voronezh Oblast,57.30097,28.27788,Pskov Oblast,56.03962,92.82144,Krasnoyarsk Krai,45.00245,41.9048,Stavropol Kray,50.10624,45.41283,Volgograd Oblast
+JAN_24,10,https://www.geoguessr.com/challenge/FwHxOYOepUzG6rHF,An Arbitrary Russia,60,NM,56.51247,46.22182,Mariy-El Republic,54.77652,31.79081,Smolensk Oblast,55.91991,46.40021,Chuvash Republic,53.95852,75.28898,Pavlodar Region,47.86877,40.03327,Rostov
+JAN_24,11,https://www.geoguessr.com/challenge/yFTm2bcPwCMXzQ0U,An Arbitrary Russia,60,NM,54.34524,46.9977,Ulyanovsk,52.42114,50.33869,Samara Oblast,52.5555,44.17585,Penza Oblast,55.02656,32.89861,Smolensk Oblast,51.56759,90.11191,Republic of Tyva
+JAN_24,12,https://www.geoguessr.com/challenge/iwZ3wfbs1GTNcfWE,An Arbitrary Russia,60,NM,58.04484,38.82911,Yaroslavl Oblast,54.88599,80.27967,Novosibirsk Oblast,44.29474,40.927,Krasnodar Krai,63.76557,39.21662,Arkhangelskaya,43.29928,133.85493,Primorye
+JAN_24,13,https://www.geoguessr.com/challenge/d0CwrEkbJCVfL0Qw,An Arbitrary Russia,60,NM,51.42839,58.41983,Orenburg Oblast,54.67954,39.60748,Ryazan Oblast,56.82102,62.70802,Sverdlovsk Oblast,55.38513,159.26299,Kamchatka,58.57434,35.71543,Novgorod Oblast
+JAN_24,14,https://www.geoguessr.com/challenge/YZJYdAHj9wo1t9PT,An Arbitrary Russia,60,NM,51.54626,112.83204,Zabaykalskiy (Transbaikal) Kray,62.70854,43.31471,Arkhangelskaya,50.3018,127.48379,Heilongjiang,55.05724,33.05736,Smolensk Oblast,58.19107,44.53204,Kostroma Oblast
+JAN_24,15,https://www.geoguessr.com/challenge/lccU419EFj6j4hiw,An Arbitrary Russia,60,NM,57.80624,42.39754,Kostroma Oblast,66.89132,32.35501,Murmansk,58.04837,30.461,Novgorod Oblast,50.93165,44.83673,Volgograd Oblast,54.79163,89.90778,Khakasiya Republic
+JAN_24,16,https://www.geoguessr.com/challenge/B2KFXaAaXG7DwMrp,An Arbitrary Russia,60,NM,64.06005,31.83262,Karelia,54.35814,86.34585,Kuzbass,50.6271,36.65368,Belgorod Oblast,54.92055,56.16021,Bashkortostan Republic,61.70687,50.71741,Komi
+JAN_24,17,https://www.geoguessr.com/challenge/PjDfXKWt5YMuwOiK,An Arbitrary Russia,60,NM,50.74707,40.49617,Voronezh Oblast,48.50429,44.56723,Volgograd Oblast,65.30828,77.78767,Yamalo-Nenets,57.03591,37.94831,Tver Oblast,52.75102,41.40073,Tambov Oblast
+JAN_24,18,https://www.geoguessr.com/challenge/iQTBVwixhqBrfPqA,An Arbitrary Russia,60,NM,59.20563,39.81337,Vologda Oblast,44.34927,42.49925,Karachayevo-Cherkesiya Republic,49.25043,138.86025,Khabarovsk,55.01321,86.29006,Kuzbass,55.81692,159.41556,Kamchatka
+JAN_24,19,https://www.geoguessr.com/challenge/TYVujVfnYt4REWcv,An Arbitrary Russia,60,NM,47.53409,42.17772,Rostov,56.31246,43.83889,Nizhny Novgorod Oblast,50.25029,129.4051,Amur Oblast,67.19099,56.67029,Komi,52.33432,33.00543,Bryansk Oblast
+JAN_24,20,https://www.geoguessr.com/challenge/CPcgqi0bcxxz3BYV,An Arbitrary Russia,60,NM,55.33892,41.00411,Vladimir Oblast,56.4856,56.03952,Perm Krai,53.36587,157.48773,Kamchatka,53.73163,87.29432,Kuzbass,53.91099,58.88873,Bashkortostan Republic
+DEC_23,1,https://www.geoguessr.com/challenge/1Akh3VRAZIUF2chj,An Arbitrary Russia,30,NMPZ,59.968311,33.890819,Leningradskaya Oblast',54.614318,50.62522,Tatarstan Republic,57.240826,85.788132,Tomsk Oblast,62.479207,149.723565,Magadan Oblast,64.490969,55.008319,Komi
+DEC_23,2,https://www.geoguessr.com/challenge/8PqYimUGoPeOmN8a,An Arbitrary Russia,30,NMPZ,46.856624,142.761583,Sakhalin Oblast,60.906058,34.624957,Leningradskaya Oblast',58.378713,51.205102,Kirov Oblast,51.992782,115.459933,Zabaykalskiy (Transbaikal) Kray,46.589101,143.193397,Sakhalin Oblast
+DEC_23,3,https://www.geoguessr.com/challenge/9K1rJigQT1lyhGbe,An Arbitrary Russia,30,NMPZ,52.958545,91.401074,Khakasiya Republic,46.129861,41.934256,Kalmykiya Republic,64.782895,43.34941,Arkhangelskaya,55.963786,48.495751,Mariy-El Republic,59.057385,28.488666,Leningradskaya Oblast'
+DEC_23,4,https://www.geoguessr.com/challenge/s41JLWatbAqfnFq7,An Arbitrary Russia,30,NMPZ,44.433176,39.53493,Krasnodar Krai,43.856818,43.199852,Kabardino-Balkariya Republic,53.878966,34.161257,Bryansk Oblast,56.045518,44.596414,Nizhny Novgorod Oblast,61.172989,29.066907,Leningradskaya Oblast'
+DEC_23,5,https://www.geoguessr.com/challenge/vF2IEKlpKK8hrAIg,An Arbitrary Russia,30,NMPZ,57.894056,102.479573,Irkutsk Oblast,56.63277,47.965427,Mariy-El Republic,51.788294,35.226778,Kursk Oblast,52.869023,49.523752,Samara Oblast,61.101004,48.87108,Arkhangelskaya
+DEC_23,6,https://www.geoguessr.com/challenge/azQL6SIGmI6sijYx,An Arbitrary Russia,30,NMPZ,48.599439,42.784947,Volgograd Oblast,55.129831,40.795838,Vladimir Oblast,45.45543,133.388163,Primorye,46.731672,40.040084,Rostov,48.362632,142.669828,Sakhalin Oblast
+DEC_23,7,https://www.geoguessr.com/challenge/BsUyXDkqN9NJlqS3,An Arbitrary Russia,30,NMPZ,59.565091,150.74285,Magadan Oblast,54.846798,53.223258,Tatarstan Republic,44.763655,43.429614,Stavropol Kray,56.993981,38.066492,Tver Oblast,44.518103,135.482434,Primorye
+DEC_23,8,https://www.geoguessr.com/challenge/jrBu97ea9sCmD90Q,An Arbitrary Russia,30,NMPZ,50.229393,38.52183,Belgorod Oblast,55.242208,36.938243,Moscow Oblast,67.069686,56.833575,Komi,60.735925,77.55452,Tomsk Oblast,54.670732,20.960896,Kaliningrad Oblast
+DEC_23,9,https://www.geoguessr.com/challenge/Jql3EYGHhOSoTKzj,An Arbitrary Russia,30,NMPZ,43.186874,44.339924,North Ossetia–Alania,56.749836,35.965985,Tver Oblast,56.868056,40.525996,Ivanovo Oblast,55.987802,95.389128,Krasnoyarsk Krai,48.685876,133.233482,Jewish Autonomous Oblast
+DEC_23,10,https://www.geoguessr.com/challenge/n5HUk7k8nhcewJhN,An Arbitrary Russia,30,NMPZ,67.103087,32.18879,Murmansk,51.113313,40.686711,Voronezh Oblast,51.288902,91.444635,Republic of Tyva,52.76692,143.074933,Sakhalin Oblast,53.982833,86.791936,Kuzbass
+DEC_23,11,https://www.geoguessr.com/challenge/Eu3QDmJavz32pcex,An Arbitrary Russia,30,NMPZ,43.472866,41.745357,Karachayevo-Cherkesiya Republic,51.450329,41.611049,Voronezh Oblast,60.782381,41.662732,Vologda Oblast,55.96796,59.659536,Chelyabinsk,49.583467,130.094011,Amur Oblast
+DEC_23,12,https://www.geoguessr.com/challenge/Nc6B9wtMFBJWFUrT,An Arbitrary Russia,30,NMPZ,47.403217,142.812244,Sakhalin Oblast,43.848961,43.938959,Kabardino-Balkariya Republic,46.680566,41.701779,Rostov,53.610635,45.855188,Penza Oblast,52.031606,143.084011,Sakhalin Oblast
+DEC_23,13,https://www.geoguessr.com/challenge/nR7hDNFvxfQmbbyR,An Arbitrary Russia,30,NMPZ,66.036139,76.022187,Yamalo-Nenets,46.744647,134.281379,Khabarovsk,53.660407,49.220053,Samara Oblast,51.621017,94.452171,Republic of Tyva,52.192388,113.57627,Zabaykalskiy (Transbaikal) Kray
+DEC_23,14,https://www.geoguessr.com/challenge/EqUtUXwV56PMTzXY,An Arbitrary Russia,30,NMPZ,51.920736,38.678973,Voronezh Oblast,44.251317,44.230082,Stavropol Kray,56.577802,53.527938,Udmurtiya Republic,56.346319,44.238309,Nizhny Novgorod Oblast,55.739829,40.99834,Vladimir Oblast
+DEC_23,15,https://www.geoguessr.com/challenge/4z4TYH0CdIoTJwou,An Arbitrary Russia,30,NMPZ,48.135925,142.508684,Sakhalin Oblast,61.197361,50.559687,Komi,54.438496,53.458389,Bashkortostan Republic,51.070236,107.90647,Buryatiya Republic,56.229672,95.863223,Krasnoyarsk Krai
+DEC_23,16,https://www.geoguessr.com/challenge/TCFIWX8iERLRRUbR,An Arbitrary Russia,30,NMPZ,53.965832,58.74877,Bashkortostan Republic,56.346265,40.756516,Vladimir Oblast,55.643444,85.285137,Kuzbass,47.822917,142.086606,Sakhalin Oblast,46.108843,45.376426,Kalmykiya Republic
+DEC_23,17,https://www.geoguessr.com/challenge/vgK1Y5r00FAxFVl2,An Arbitrary Russia,30,NMPZ,56.279043,160.25324,Kamchatka,51.820925,107.576633,Buryatiya Republic,59.236631,37.965604,Vologda Oblast,55.931961,98.028046,Irkutsk Oblast,43.835836,43.38249,Kabardino-Balkariya Republic
+DEC_23,18,https://www.geoguessr.com/challenge/LCEvynboLXjOyucC,An Arbitrary Russia,30,NMPZ,43.138311,47.351049,Dagestan,52.793217,80.99339,Altai Krai,55.784833,73.515347,Omsk Oblast,45.427546,40.546517,Krasnodar Krai,53.213679,54.185814,Bashkortostan Republic
+DEC_23,19,https://www.geoguessr.com/challenge/cGmLT2nn7QOIDvTX,An Arbitrary Russia,30,NMPZ,59.727621,149.884735,Magadan Oblast,53.988177,74.520679,Omsk Oblast,52.734817,38.253178,Lipetsk Oblast,53.824698,87.374473,Kuzbass,47.726191,40.296165,Rostov
+DEC_23,20,https://www.geoguessr.com/challenge/QZ9P7VOdnIMoArLe,An Arbitrary Russia,30,NMPZ,44.862786,133.174751,Primorye,54.664262,37.955901,Moscow Oblast,55.574658,40.689953,Vladimir Oblast,58.112265,28.187058,Pskov Oblast,51.842251,113.097146,Zabaykalskiy (Transbaikal) Kray
+NOV_23,1,https://www.geoguessr.com/challenge/uh1digUN6Dw7nj55,A Balanced Russia,60,NM,51.51027217499014,156.9976116039509,Kamchatka,55.16293633314221,73.45552361955959,Omsk Oblast,56.04081847875077,61.3208278452468,Chelyabinsk,57.31118223356462,41.92438324587154,Ivanovo Oblast,53.3948298578285,41.78457426739324,Tambov Oblast
+NOV_23,2,https://www.geoguessr.com/challenge/TVH2dC78h8tniodV,A Balanced Russia,60,NM,51.37665048520783,42.35980339093,Voronezh Oblast,66.70563669669826,34.3230554126746,Murmansk,58.34748549160074,33.30004515146256,Novgorod Oblast,53.99434875740741,38.57013910435767,Tula Oblast,44.07309911196405,42.86556515127585,Stavropol Kray
+NOV_23,3,https://www.geoguessr.com/challenge/XpPIG7pBX0n6XdnW,A Balanced Russia,60,NM,43.43652326210132,43.23665281335423,Kabardino-Balkariya Republic,51.59654800944767,57.91136131614543,Orenburg Oblast,51.63531323968079,41.95306274747768,Voronezh Oblast,66.06061911581476,32.87716873489999,Karelia,54.27812294087235,45.69682021240499,Mordoviya Republic
+NOV_23,4,https://www.geoguessr.com/challenge/kUwyEq0qUnWiUyJ7,A Balanced Russia,60,NM,54.54641260671065,53.83164130062364,Bashkortostan Republic,54.57668875531263,61.42350800531679,Chelyabinsk,53.52455821426148,102.6283077585204,Irkutsk Oblast,44.17192661191557,132.4412398116839,Primorye,53.60826127186481,47.0121460895419,Ulyanovsk
+NOV_23,5,https://www.geoguessr.com/challenge/HCTNRaU52erH1WQl,A Balanced Russia,60,NM,57.86267786079229,34.10379758857684,Tver Oblast,46.28813753734723,47.89153108574513,Astrakhan Oblast,67.00372713367588,32.20744269061993,Murmansk,55.71713680660068,47.44437981605831,Chuvash Republic,51.51893543054349,45.18314808655683,Saratov Oblast
+NOV_23,6,https://www.geoguessr.com/challenge/DlCEPbJAEm69hfMi,A Balanced Russia,60,NM,49.26851059258429,138.1533612317994,Khabarovsk,57.79877412926142,42.8280776289302,Kostroma Oblast,51.88351362450496,86.06767120583363,Altai,51.36955648526425,128.1372531194105,Amur Oblast,57.8376438535063,28.09837542278225,Pskov Oblast
+NOV_23,7,https://www.geoguessr.com/challenge/hsYpglAwhgUkhF3e,A Balanced Russia,60,NM,55.98787457494561,36.83198977329802,Moscow Oblast,54.1298759735458,61.16597415560534,Chelyabinsk,55.95885612207448,41.1778511354914,Vladimir Oblast,61.58823103251475,32.88672897688405,Karelia,48.30131535332986,40.24792377136043,Rostov
+NOV_23,8,https://www.geoguessr.com/challenge/s8bJxhLpJrDRPbja,A Balanced Russia,60,NM,56.3447847542789,29.63022371622205,Pskov Oblast,44.15718785451843,133.281857408189,Primorye,54.94030255442009,82.82234101323533,Novosibirsk Oblast,54.84908148381118,58.41664857473704,Chelyabinsk,51.90116822559565,44.85598662771952,Saratov Oblast
+NOV_23,9,https://www.geoguessr.com/challenge/yuHIQDQ3uAHOsJ9h,A Balanced Russia,60,NM,62.66914955737334,43.41768385937347,Arkhangelskaya,55.22691924588206,91.54681911332881,Krasnoyarsk Krai,46.18324328458005,133.9769476535078,Primorye,52.10452302583375,48.31702890994646,Saratov Oblast,55.33629009778326,77.66317687134618,Novosibirsk Oblast
+NOV_23,10,https://www.geoguessr.com/challenge/5RjBbU6rbB7u232v,A Balanced Russia,60,NM,55.30095755716975,40.64352738498788,Vladimir Oblast,44.43540601376082,39.65259662409764,Krasnodar Krai,53.07900389339436,33.38198470608583,Bryansk Oblast,56.15480471692585,35.61696756425136,Moscow Oblast,46.38981184240996,48.19701997959868,Astrakhan Oblast
+NOV_23,11,https://www.geoguessr.com/challenge/9kcj8CWOVFMqbMpu,A Balanced Russia,60,NM,52.91191520145505,103.4451740740003,Irkutsk Oblast,43.56544583644327,43.71956879184524,Kabardino-Balkariya Republic,64.1265179133896,42.08367126902039,Arkhangelskaya,53.43869986817836,36.81982459368193,Tula Oblast,45.27920031054035,39.23838083453001,Krasnodar Krai
+NOV_23,12,https://www.geoguessr.com/challenge/7RMyo5vYAYuQQjP0,A Balanced Russia,60,NM,60.84867247506342,78.71123710365029,Tomsk Oblast,44.29273492393723,40.18062769074904,Adygeya Republic,42.80237423625379,131.1841602014392,Primorye,43.24830012353853,45.88944716136839,Chechnya,65.00110256194202,53.90349579126863,Komi
+NOV_23,13,https://www.geoguessr.com/challenge/pbjlKgvsKeOTWSTg,A Balanced Russia,60,NM,57.83289339651667,61.68558481824475,Sverdlovsk Oblast,56.34598553191076,30.23805434514711,Pskov Oblast,51.93605619089499,86.26267698736388,Altai,58.70734521821603,50.1674223109513,Kirov Oblast,54.57966676922952,158.416283697899,Kamchatka
+NOV_23,14,https://www.geoguessr.com/challenge/8H9dcyGs9MRPMV2r,A Balanced Russia,60,NM,54.11547963449715,61.75028021009841,Chelyabinsk,54.25094317246702,45.48582079578679,Mordoviya Republic,56.54250729344977,84.34593107719212,Tomsk Oblast,44.18598424248903,46.58820642219613,Dagestan,52.752341002751,52.27502058141987,Orenburg Oblast
+NOV_23,15,https://www.geoguessr.com/challenge/rcyLnaDtyugzoVGO,A Balanced Russia,60,NM,43.19141076206353,46.76404833663037,Dagestan,52.95233697688367,37.44004795866194,Oryol oblast,54.80966140746676,20.40390855547551,Kaliningrad Oblast,53.64261978301264,119.5642210212213,Zabaykalskiy (Transbaikal) Kray,55.18950717274782,34.30827080435376,Smolensk Oblast
+NOV_23,16,https://www.geoguessr.com/challenge/2EguUoSLUHR9C2fB,A Balanced Russia,60,NM,57.73528720637383,40.73384480483017,Kostroma Oblast,57.18962460324082,36.72600257945189,Tver Oblast,51.7853766771039,143.1195949126865,Sakhalin Oblast,56.64023439179851,47.98486516375445,Mariy-El Republic,51.56863609977168,128.3356381087283,Amur Oblast
+NOV_23,17,https://www.geoguessr.com/challenge/B4ELPBHzjO2pv0Ud,A Balanced Russia,60,NM,44.2206604512436,44.35601395494076,Stavropol Kray,52.77389398552053,41.14155969955971,Tambov Oblast,50.47532555237026,137.0352075145984,Khabarovsk,66.0146522448653,32.48254314634997,Karelia,54.64866799389622,21.23910587376396,Kaliningrad Oblast
+NOV_23,18,https://www.geoguessr.com/challenge/y8VEYDcMPkfeaqpu,A Balanced Russia,60,NM,56.69101151584728,36.26581126563306,Tver Oblast,60.46093258597912,33.06375339216491,Leningradskaya Oblast',55.69521138525598,70.59361518114618,Tyumen Oblast,55.80731848872992,62.04146724814512,Chelyabinsk,58.53749959867037,31.42338899277157,Novgorod Oblast
+NOV_23,19,https://www.geoguessr.com/challenge/ZEsREqT4Ex2EhmJb,A Balanced Russia,60,NM,54.5584196075532,41.87974431381228,Ryazan Oblast,54.37692353007457,38.25451277657512,Tula Oblast,52.48897082425963,42.36598159855576,Tambov Oblast,56.37437062267938,44.01684036020194,Nizhny Novgorod Oblast,57.33129015490078,45.71343901875053,Nizhny Novgorod Oblast
+NOV_23,20,https://www.geoguessr.com/challenge/Zx1SS78KzAQXrncR,A Balanced Russia,60,NM,43.38578792070428,43.59810052122936,Kabardino-Balkariya Republic,48.67425212124652,133.2641694079081,Jewish Autonomous Oblast,56.84347225992412,40.53814681041773,Ivanovo Oblast,62.28065543235696,34.12632951730247,Karelia,55.7957862435474,37.65717221733398,Moscow
+OCT_23,1,https://www.geoguessr.com/challenge/cAtsUKBRQlirtq2H,An Arbitrary Russia,60,NM,56.749323,93.11606,Krasnoyarsk Krai,47.213,38.788984,Rostov,56.212066,61.934645,Chelyabinsk,53.155367,36.357697,Oryol oblast,47.897465,40.038807,Rostov
+OCT_23,2,https://www.geoguessr.com/challenge/JkmNmiCMfAxbDdbR,An Arbitrary Russia,60,NM,54.649475,83.236632,Novosibirsk Oblast,53.611427,91.412828,Khakasiya Republic,67.510285,30.72376,Murmansk,55.391155,159.260921,Kamchatka,56.856909,60.649844,Sverdlovsk Oblast
+OCT_23,3,https://www.geoguessr.com/challenge/ACQiD4ptG8fH1HYC,An Arbitrary Russia,60,NM,50.813474,107.994923,Buryatiya Republic,46.666778,39.068209,Krasnodar Krai,50.34814,39.897217,Voronezh Oblast,52.60567,55.846697,Bashkortostan Republic,54.551767,36.970431,Tula Oblast
+OCT_23,4,https://www.geoguessr.com/challenge/bH7f8hMgdyjTiHZJ,An Arbitrary Russia,60,NM,59.738371,29.012469,Leningradskaya Oblast',54.587469,158.427729,Kamchatka,51.054032,38.98735,Voronezh Oblast,53.942841,78.563573,Altai Krai,47.480937,38.916512,Rostov
+OCT_23,5,https://www.geoguessr.com/challenge/adDMGj1AumCl107w,An Arbitrary Russia,60,NM,57.143864,57.293504,Perm Krai,44.006827,40.124114,Adygeya Republic,53.466368,109.000152,Buryatiya Republic,62.081313,131.496422,Sakha,62.208932,34.095757,Karelia
+OCT_23,6,https://www.geoguessr.com/challenge/Y4qU1HKqCRuMTsZp,An Arbitrary Russia,60,NM,54.910731,36.383259,Kaluga Oblast,55.633824,124.840692,Amur Oblast,51.729117,107.281853,Buryatiya Republic,59.160841,57.59799,Perm Krai,50.397241,39.647136,Voronezh Oblast
+OCT_23,7,https://www.geoguessr.com/challenge/RLyOgvpG5QoKqo88,An Arbitrary Russia,60,NM,63.730803,146.167349,Magadan Oblast,54.696401,39.812854,Ryazan Oblast,68.841828,32.943838,Murmansk,56.948372,75.258929,Omsk Oblast,52.930228,84.79327,Altai Krai
+OCT_23,8,https://www.geoguessr.com/challenge/YBJH3BtoAX9wg1Pv,An Arbitrary Russia,60,NM,67.080863,32.8689,Murmansk,56.541915,47.953027,Mariy-El Republic,53.26861,58.359985,Bashkortostan Republic,56.334095,44.246672,Nizhny Novgorod Oblast,55.311215,82.759714,Novosibirsk Oblast
+OCT_23,9,https://www.geoguessr.com/challenge/H9UrMERVfUuMcQyM,An Arbitrary Russia,60,NM,56.799037,104.763859,Irkutsk Oblast,52.556466,42.442977,Tambov Oblast,55.742005,83.41629,Novosibirsk Oblast,50.972831,85.714006,Altai,66.000481,75.819703,Yamalo-Nenets
+OCT_23,10,https://www.geoguessr.com/challenge/Qx9h91mFFZBmNDIQ,An Arbitrary Russia,60,NM,44.624946,40.145004,Adygeya Republic,50.008632,45.987672,Volgograd Oblast,43.979415,44.284045,Stavropol Kray,55.125734,82.93249,Novosibirsk Oblast,46.191826,47.843406,Astrakhan Oblast
+OCT_23,11,https://www.geoguessr.com/challenge/TSU9AQaLeeLOBk79,An Arbitrary Russia,60,NM,48.858132,132.838448,Jewish Autonomous Oblast,58.567909,52.204594,Kirov Oblast,48.476678,135.311437,Khabarovsk,58.010611,39.004893,Yaroslavl Oblast,55.554098,35.819936,Moscow Oblast
+OCT_23,12,https://www.geoguessr.com/challenge/6L8V5fiFV3FRNKGx,An Arbitrary Russia,60,NM,55.033092,32.381379,Smolensk Oblast,46.877162,40.336042,Rostov,54.393716,86.4272,Kuzbass,53.507557,49.4185,Samara Oblast,63.405093,140.328598,Sakha
+OCT_23,13,https://www.geoguessr.com/challenge/VkoMCtJxU1vIKyau,An Arbitrary Russia,60,NM,55.982823,37.911017,Moscow Oblast,44.354045,46.549132,Dagestan,53.705564,124.997542,Amur Oblast,61.014807,73.137465,Khanty-Mansia,56.255641,51.277906,Kirov Oblast
+OCT_23,14,https://www.geoguessr.com/challenge/j1wbn0qXLJXmIt3u,An Arbitrary Russia,60,NM,44.67877,46.608887,Dagestan,68.110978,33.299946,Murmansk,48.891094,132.875178,Jewish Autonomous Oblast,56.153351,74.75253,Omsk Oblast,57.581188,46.664727,Nizhny Novgorod Oblast
+OCT_23,15,https://www.geoguessr.com/challenge/WeB388aRpsir2agy,An Arbitrary Russia,60,NM,60.863776,29.927719,Leningradskaya Oblast',44.74118,46.813881,Dagestan,55.271272,124.757907,Amur Oblast,44.352603,46.437249,Dagestan,54.216866,52.723349,Orenburg Oblast
+OCT_23,16,https://www.geoguessr.com/challenge/IxzhHyNw22MGtUuT,An Arbitrary Russia,60,NM,57.882655,28.330499,Pskov Oblast,53.551278,46.9653,Ulyanovsk,52.106533,106.697101,Buryatiya Republic,56.024047,158.839596,Kamchatka,43.254452,132.054882,Primorye
+OCT_23,17,https://www.geoguessr.com/challenge/GPuTKv262ur5rOwI,An Arbitrary Russia,60,NM,52.886202,32.612461,Bryansk Oblast,60.500398,34.832321,Leningradskaya Oblast',54.51912,52.907997,Tatarstan Republic,59.812843,40.819636,Vologda Oblast,65.817859,71.222179,Yamalo-Nenets
+OCT_23,18,https://www.geoguessr.com/challenge/IFd4eE0N0qdGs5W6,An Arbitrary Russia,60,NM,46.841394,39.212621,Rostov,63.021015,42.412888,Arkhangelskaya,55.46746,49.986716,Tatarstan Republic,55.326063,47.117503,Chuvash Republic,53.791047,54.59775,Bashkortostan Republic
+OCT_23,19,https://www.geoguessr.com/challenge/poFmPANg114Hx7Tk,An Arbitrary Russia,60,NM,55.92379,31.054821,Smolensk Oblast,53.601892,91.195329,Khakasiya Republic,55.179444,100.672777,Irkutsk Oblast,45.472593,133.381678,Primorye,65.820742,70.897391,Yamalo-Nenets
+OCT_23,20,https://www.geoguessr.com/challenge/LJkOQ1QWyqLgJL6Q,An Arbitrary Russia,60,NM,58.451577,56.507045,Perm Krai,51.666076,81.485985,Altai Krai,59.51916,65.989106,Khanty-Mansia,58.131681,32.641992,Novgorod Oblast,67.124344,32.541962,Murmansk
+OCT_23,21,https://www.geoguessr.com/challenge/rrAIuUcMil2rh1jT,An Arbitrary Russia,60,NM,57.975833,52.963344,Udmurtiya Republic,58.956922,36.525135,Vologda Oblast,48.02693,142.184685,Sakhalin Oblast,62.808746,34.498677,Karelia,57.540613,62.441415,Sverdlovsk Oblast
+OCT_23,22,https://www.geoguessr.com/challenge/y0H9ffGqtOCKmWQU,An Arbitrary Russia,60,NM,47.950404,43.937873,Kalmykiya Republic,48.970229,131.538359,Jewish Autonomous Oblast,54.62246,51.844042,Tatarstan Republic,59.509046,40.027127,Vologda Oblast,56.699119,36.799199,Tver Oblast
+OCT_23,23,https://www.geoguessr.com/challenge/92UUR3gJPke3ImJc,An Arbitrary Russia,60,NM,51.244163,109.397796,Zabaykalskiy (Transbaikal) Kray,57.988181,31.342174,Novgorod Oblast,54.250754,37.378296,Tula Oblast,56.527482,65.347554,Tyumen Oblast,61.961276,34.578101,Karelia
+OCT_23,24,https://www.geoguessr.com/challenge/xaI3o2NjAV05MljS,An Arbitrary Russia,60,NM,54.91772,61.236281,Chelyabinsk,46.277907,38.748241,Krasnodar Krai,51.540664,45.972623,Saratov Oblast,56.138746,93.262492,Krasnoyarsk Krai,53.286045,47.646559,Ulyanovsk
+OCT_23,25,https://www.geoguessr.com/challenge/k8WIqEoK7iEriWu8,An Arbitrary Russia,60,NM,45.339963,42.794212,Stavropol Kray,54.780266,37.666079,Moscow Oblast,64.28176287994339,38.19590512020626,Arkhangelskaya,57.711155,41.160387,Kostroma Oblast,54.326462,53.039067,Tatarstan Republic
+OCT_23,26,https://www.geoguessr.com/challenge/KG8x54MS1lBszXuv,An Arbitrary Russia,60,NM,50.969684,111.191706,Zabaykalskiy (Transbaikal) Kray,54.633179,20.499404,Kaliningrad Oblast,56.428018,38.921871,Vladimir Oblast,48.742781,133.111192,Jewish Autonomous Oblast,55.303318,72.754329,Omsk Oblast
+OCT_23,27,https://www.geoguessr.com/challenge/a6WXmTvDdTsbzMlz,An Arbitrary Russia,60,NM,58.4891,41.547016,Kostroma Oblast,51.938795,80.5211,Altai Krai,55.579643,75.084965,Omsk Oblast,61.449051,73.301469,Khanty-Mansia,57.399978,83.942747,Tomsk Oblast
+OCT_23,28,https://www.geoguessr.com/challenge/SvyNDlo2Wc5JMjr9,An Arbitrary Russia,60,NM,66.63232,79.387241,Yamalo-Nenets,61.872347,66.348985,Khanty-Mansia,54.485166,73.039097,Omsk Oblast,55.941296,92.485802,Krasnoyarsk Krai,45.947982,47.405489,Astrakhan Oblast
+OCT_23,29,https://www.geoguessr.com/challenge/ONwuXLo0gEk8vMbu,An Arbitrary Russia,60,NM,56.802249,62.565442,Sverdlovsk Oblast,62.261737,151.597697,Magadan Oblast,49.254453,138.190522,Khabarovsk,55.359612,69.252229,Tyumen Oblast,51.116373,55.369605,Orenburg Oblast
+OCT_23,30,https://www.geoguessr.com/challenge/5XQT2u8HOkuPSWj4,An Arbitrary Russia,60,NM,49.935489,43.362151,Volgograd Oblast,49.923359,137.057236,Khabarovsk,46.493853,39.206639,Krasnodar Krai,44.82384,38.221225,Krasnodar Krai,48.863609,142.939853,Sakhalin Oblast
+SEP_23,1,https://www.geoguessr.com/challenge/XMlVwaWoCxuQYCb2,An Arbitrary Russia,60,NM,65.168614,30.299152,Karelia,46.322857,46.304022,Astrakhan Oblast,50.456217,136.961134,Khabarovsk,55.979585,44.664791,Nizhny Novgorod Oblast,43.134201,134.274823,Primorye
+SEP_23,2,https://www.geoguessr.com/challenge/tPRIWHAk5ZvlnOV0,An Arbitrary Russia,60,NM,45.164213,36.624398,Krasnodar Krai,48.847407,44.737616,Volgograd Oblast,53.450377,61.084153,Chelyabinsk,51.855452,43.489677,Saratov Oblast,63.288675,118.454387,Sakha
+SEP_23,3,https://www.geoguessr.com/challenge/BivYE3LJc6fYk8OV,An Arbitrary Russia,60,NM,59.373311,49.743577,Kirov Oblast,57.868406,28.301007,Pskov Oblast,43.255805,46.300939,Chechnya,52.949031,35.979322,Oryol oblast,55.848282,49.233624,Tatarstan Republic
+SEP_23,4,https://www.geoguessr.com/challenge/U2UBnq2Fm468SLop,An Arbitrary Russia,60,NM,62.443784,35.298347,Karelia,58.753857,32.937923,Novgorod Oblast,60.391195,33.939754,Leningradskaya Oblast',56.002665,49.438467,Tatarstan Republic,54.71076,73.265666,Omsk Oblast
+SEP_23,5,https://www.geoguessr.com/challenge/lUWeVhrFpPLs6Mjp,An Arbitrary Russia,60,NM,58.00316,82.625192,Tomsk Oblast,50.167533,95.272442,Republic of Tyva,60.972927,29.169229,Leningradskaya Oblast',55.607615,98.581161,Irkutsk Oblast,43.453635,43.825644,Kabardino-Balkariya Republic
+SEP_23,6,https://www.geoguessr.com/challenge/gIqsbICTOyuz2wCu,An Arbitrary Russia,60,NM,53.877437,51.323886,Samara Oblast,56.575102,36.587814,Tver Oblast,54.288004,45.415089,Mordoviya Republic,49.737648,43.683903,Volgograd Oblast,53.797689,86.79645,Kuzbass
+SEP_23,7,https://www.geoguessr.com/challenge/5rEy5z18Ky0q5A2y,An Arbitrary Russia,60,NM,52.257979,43.753289,Saratov Oblast,46.539355,141.811928,Sakhalin Oblast,56.40006,39.072495,Yaroslavl Oblast,56.119451,61.929427,Chelyabinsk,53.077817,158.362533,Kamchatka
+SEP_23,8,https://www.geoguessr.com/challenge/ZgCyeeXiphPMq7w6,An Arbitrary Russia,60,NM,66.189036,79.125575,Yamalo-Nenets,52.698928,38.181465,Lipetsk Oblast,50.608128,107.514757,Buryatiya Republic,55.321055,89.224338,Krasnoyarsk Krai,45.996153,38.167656,Krasnodar Krai
+SEP_23,9,https://www.geoguessr.com/challenge/Jbf3TckVmyuA5Yrk,An Arbitrary Russia,60,NM,50.357897,38.648932,Belgorod Oblast,57.750253,40.710806,Kostroma Oblast,55.967068,52.316629,Tatarstan Republic,49.859178,45.436862,Volgograd Oblast,53.180385,33.600905,Bryansk Oblast
+SEP_23,10,https://www.geoguessr.com/challenge/8jaQDg1oHOBGaEkB,An Arbitrary Russia,60,NM,56.703961,53.31596,Udmurtiya Republic,57.715741,38.839295,Yaroslavl Oblast,57.304747,49.648211,Kirov Oblast,51.479806,85.564496,Altai,54.203115,48.607348,Ulyanovsk
+SEP_23,11,https://www.geoguessr.com/challenge/raefbYhUPeJUpTJ1,An Arbitrary Russia,60,NM,59.774185,70.626705,Khanty-Mansia,43.148092,44.405858,North Ossetia–Alania,56.519805,56.142621,Perm Krai,54.75833,38.081729,Moscow Oblast,55.596399,42.108326,Vladimir Oblast
+SEP_23,12,https://www.geoguessr.com/challenge/GO1aRffxYrx9MSHl,An Arbitrary Russia,60,NM,55.891156,42.940629,Nizhny Novgorod Oblast,60.924946,61.52625,Sverdlovsk Oblast,44.591408,44.87648,Stavropol Kray,53.817119,53.163182,Orenburg Oblast,54.987482,36.471096,Kaluga Oblast
+SEP_23,13,https://www.geoguessr.com/challenge/GZjk4NjCxuWSGQ3S,An Arbitrary Russia,60,NM,55.2965,89.33359,Krasnoyarsk Krai,64.228559,54.949306,Komi,46.861741,141.958913,Sakhalin Oblast,57.977935,56.1272,Perm Krai,56.71706,104.146729,Irkutsk Oblast
+SEP_23,14,https://www.geoguessr.com/challenge/yBmn7p4rAPBU8AZY,An Arbitrary Russia,60,NM,60.829232,64.809621,Khanty-Mansia,57.696111,65.978789,Tyumen Oblast,51.099059,128.552081,Amur Oblast,51.049895,36.767962,Belgorod Oblast,64.963181,53.978062,Komi
+SEP_23,15,https://www.geoguessr.com/challenge/Cf1TZFQBGk4s8h4v,An Arbitrary Russia,60,NM,54.878879,158.771899,Kamchatka,55.202354,43.62222,Nizhny Novgorod Oblast,59.641193,29.44036,Leningradskaya Oblast',52.068218,89.758477,Khakasiya Republic,62.409173,114.747522,Sakha
+SEP_23,16,https://www.geoguessr.com/challenge/74DpMHvAjBRk9UZa,An Arbitrary Russia,60,NM,44.576808,43.147222,Stavropol Kray,53.921221,55.919707,Bashkortostan Republic,61.694943,50.822905,Komi,61.947746,52.278061,Komi,45.563082,45.901103,Kalmykiya Republic
+SEP_23,17,https://www.geoguessr.com/challenge/zVNQ0PNK30oJrTal,An Arbitrary Russia,60,NM,54.007098,124.044485,Amur Oblast,55.235934,63.041376,Kurgan Oblast,61.918089,42.172706,Arkhangelskaya,54.596436,38.418445,Moscow Oblast,55.483113,60.557034,Chelyabinsk
+SEP_23,18,https://www.geoguessr.com/challenge/2fCruNOimGRGlG2a,An Arbitrary Russia,60,NM,53.941174,37.701431,Tula Oblast,44.034534,44.5845,Stavropol Kray,43.155707,47.346751,Dagestan,52.493813,38.650205,Lipetsk Oblast,66.388009,35.603316,Murmansk
+SEP_23,19,https://www.geoguessr.com/challenge/U9TCg8lbk4rVoZZJ,An Arbitrary Russia,60,NM,63.948834,54.529604,Komi,54.040778,41.71124,Ryazan Oblast,55.851787,46.551628,Chuvash Republic,55.587565,86.28643,Kuzbass,50.642276,55.635304,Aqtöbe
+SEP_23,20,https://www.geoguessr.com/challenge/p0gWXj7Rb55LkVtD,An Arbitrary Russia,60,NM,50.739809,39.948537,Voronezh Oblast,60.653429,60.217198,Sverdlovsk Oblast,59.613567,150.904924,Magadan Oblast,62.35329,44.005308,Arkhangelskaya,59.057071,42.296095,Kostroma Oblast
+AUG_23,1,https://www.geoguessr.com/challenge/ALEg8jlU30s4IhKF,A Balanced Russia,60,NM,51.79560688361968,37.66701605615154,Kursk Oblast,60.26732684145139,29.11675324552899,Leningradskaya Oblast',52.11995289130027,85.02242517028662,Altai Krai,55.73232891503547,41.54545758711512,Vladimir Oblast,51.32363075241619,94.79810010557803,Republic of Tyva
+AUG_23,2,https://www.geoguessr.com/challenge/roEDrgQM0ek3Kfmo,A Balanced Russia,60,NM,52.33214879653382,86.98311553839741,Altai,53.65069213093324,38.14039564277517,Tula Oblast,43.32300368265659,44.11955776638085,North Ossetia–Alania,51.8440435012195,107.7099771414078,Buryatiya Republic,53.89205168432547,37.8385134733488,Tula Oblast
+AUG_23,3,https://www.geoguessr.com/challenge/HSBU0Unm4TpPP1oH,A Balanced Russia,60,NM,53.72557153260464,58.2394539788751,Bashkortostan Republic,55.33700783241472,85.78402207764249,Kuzbass,52.42952115124065,143.1126945323098,Sakhalin Oblast,52.01722569747195,87.04465195275961,Altai,57.64076526290301,39.48337421361745,Yaroslavl Oblast
+AUG_23,4,https://www.geoguessr.com/challenge/dDUKhgo7EUYKYRwh,A Balanced Russia,60,NM,53.33255369732784,37.45090712311636,Oryol oblast,51.48631042305288,90.21839657669784,Republic of Tyva,52.54305838450119,33.23532535498567,Bryansk Oblast,56.18016026370233,37.38416263379597,Moscow Oblast,43.79213887958922,46.54578467718305,Chechnya
+AUG_23,5,https://www.geoguessr.com/challenge/hfdMRDq9MNYsW3lp,A Balanced Russia,60,NM,62.12589568205992,45.07506026972101,Arkhangelskaya,46.91640550065234,47.44237679826316,Astrakhan Oblast,59.60245473845212,69.42836752735407,Khanty-Mansia,56.58040665795927,57.97362297687918,Sverdlovsk Oblast,53.62162442790549,48.3431997923137,Ulyanovsk
+AUG_23,6,https://www.geoguessr.com/challenge/Cnvijcfi1uqDYPaL,A Balanced Russia,60,NM,62.66615854866934,33.89966474682532,Karelia,52.63840364236574,83.03459806204528,Altai Krai,63.21849201635061,139.5566173024602,Sakha,52.21127234700189,93.7586935556326,Republic of Tyva,51.81395021716587,107.7171619515285,Buryatiya Republic
+AUG_23,7,https://www.geoguessr.com/challenge/h2AIlr19rhd889Am,A Balanced Russia,60,NM,51.39022325029997,37.91169258964104,Belgorod Oblast,63.1223617432621,66.7054856803578,Khanty-Mansia,59.47347910805816,34.23899417006761,Leningradskaya Oblast',44.05311582247649,42.85248788838683,Stavropol Kray,68.7802047008794,30.5111419666393,Murmansk
+AUG_23,8,https://www.geoguessr.com/challenge/USm3EDV02wwTPDZ8,A Balanced Russia,60,NM,43.85114217020356,41.58736337918806,Karachayevo-Cherkesiya Republic,52.62268354758542,82.30447472323613,Altai Krai,43.35255965747518,132.6697968109772,Primorye,52.11816181191801,113.4850340766167,Zabaykalskiy (Transbaikal) Kray,56.74885939674226,93.11609767989039,Krasnoyarsk Krai
+AUG_23,9,https://www.geoguessr.com/challenge/JNJpPdnU7mGtteNG,A Balanced Russia,60,NM,58.57753921809843,80.93990124126886,Tomsk Oblast,53.25808349637457,50.67561215607184,Samara Oblast,50.28822195718956,40.26426033690853,Voronezh Oblast,55.10699405500169,84.44475043902683,Novosibirsk Oblast,59.48211183136636,34.15873036651394,Leningradskaya Oblast'
+AUG_23,10,https://www.geoguessr.com/challenge/GF1oNSDpa5b9Ygzs,A Balanced Russia,60,NM,61.88277650194479,53.19792049117588,Komi,59.04089558152538,80.84657613188067,Tomsk Oblast,48.12125277768771,44.46662098475564,Kalmykiya Republic,58.48763745583375,58.73752425235143,Perm Krai,50.04087538068293,45.03739857738619,Volgograd Oblast
+AUG_23,11,https://www.geoguessr.com/challenge/y6BlDTeZ9YlZJVKa,A Balanced Russia,60,NM,51.79133841351781,103.1581559193571,Irkutsk Oblast,59.45726208814633,40.05041171252271,Vologda Oblast,56.92594688782361,53.27293706730348,Udmurtiya Republic,55.97639262437002,40.89193020766442,Vladimir Oblast,50.36967618330749,103.276944979315,Buryatiya Republic
+AUG_23,12,https://www.geoguessr.com/challenge/ROdFnXZca4tkWfDY,A Balanced Russia,60,NM,47.13485972996345,39.930700264404,Rostov,61.05244350303295,42.70810398203545,Arkhangelskaya,50.92467337463427,127.7952983217631,Amur Oblast,58.97298317103655,28.44824534208904,Leningradskaya Oblast',52.55138571117769,41.16535014669554,Tambov Oblast
+AUG_23,13,https://www.geoguessr.com/challenge/X7GLF4cYtKUBJez9,A Balanced Russia,60,NM,44.48534715563346,41.54190326869996,Krasnodar Krai,45.77777609862015,41.47896190131006,Stavropol Kray,54.52640089795404,37.29315944961946,Tula Oblast,58.76626939008618,50.35559834354106,Kirov Oblast,63.22008913010423,118.1583756678674,Sakha
+AUG_23,14,https://www.geoguessr.com/challenge/d4UxGB5WShS2yzz9,A Balanced Russia,60,NM,56.77036879971699,93.11589718786762,Krasnoyarsk Krai,48.29657335195873,39.93785268381225,Luhansk,63.68220643274419,54.25471183820948,Komi,54.71520574142869,42.81479417355906,Mordoviya Republic,43.63608179473451,44.02221127724972,Kabardino-Balkariya Republic
+AUG_23,15,https://www.geoguessr.com/challenge/ZCVqzEMZwnnOlPIJ,A Balanced Russia,60,NM,52.00111807637587,55.19809060228868,Orenburg Oblast,52.11432842510866,113.4618895148388,Zabaykalskiy (Transbaikal) Kray,53.32737849279072,83.00348828682309,Altai Krai,61.03853156161785,28.95706710296798,Leningradskaya Oblast',56.48050476699102,43.78680544157096,Nizhny Novgorod Oblast
+AUG_23,16,https://www.geoguessr.com/challenge/ja2FkZy61TWoXC91,A Balanced Russia,60,NM,46.95878734732432,47.40743564866994,Astrakhan Oblast,54.20523577221819,49.60717113753264,Ulyanovsk,43.86650667728264,46.82019134210935,Dagestan,53.28595495463117,34.15587154112544,Bryansk Oblast,53.69363530397219,52.60375020989576,Orenburg Oblast
+AUG_23,17,https://www.geoguessr.com/challenge/wJE2xBBTxVIY9XtL,A Balanced Russia,60,NM,44.13814561086117,133.2710310874658,Primorye,53.08530613992598,46.05319700065151,Penza Oblast,52.59318936359916,39.43902929133629,Lipetsk Oblast,50.49155882424446,104.4848557724864,Selenge Province,55.31136765185961,85.57652866852614,Kuzbass
+AUG_23,18,https://www.geoguessr.com/challenge/nKjjphFfK1aAvIhM,A Balanced Russia,60,NM,54.77585343556104,32.1549914454714,Smolensk Oblast,66.00539181530961,32.37727909293019,Karelia,50.30317559280307,95.12019657362103,Republic of Tyva,55.99895515347347,60.43999671627537,Chelyabinsk,48.1807825709277,40.41872672645567,Rostov
+AUG_23,19,https://www.geoguessr.com/challenge/sk6UaW1w8a5nusV7,A Balanced Russia,60,NM,56.89529462745472,35.4496464282872,Tver Oblast,51.85355536752014,107.7014027425301,Buryatiya Republic,58.05852653587302,80.59970077375333,Tomsk Oblast,43.26494880946086,45.88031022679698,Chechnya,51.72986735447654,36.23309453724072,Kursk Oblast
+AUG_23,20,https://www.geoguessr.com/challenge/fLptz3zrIDUAdgs4,A Balanced Russia,60,NM,50.40814317232964,86.8796524449005,Altai,60.14211389719638,64.74302711775461,Khanty-Mansia,51.62684469510965,39.39172764582462,Voronezh Oblast,60.47380363622138,51.045552918748,Komi,55.88022201119082,38.15989413998926,Moscow Oblast
+JUN_24,1,https://www.geoguessr.com/challenge/NuxhLCzhlA4XLrcR,An Arbitrary Russia,60,NM,51.5481,46.81484,Saratov Oblast,43.60971,46.85396,Dagestan,63.50152,48.48042,Komi,54.8795,72.38348,Omsk Oblast,57.7072,35.10662,Tver Oblast
+JUN_24,2,https://www.geoguessr.com/challenge/4jfXLs1xtZ8X4O3h,An Arbitrary Russia,60,NM,62.13973,72.01451,Khanty-Mansia,53.51374,91.8636,Krasnoyarsk Krai,47.53273,46.72812,Kalmykiya Republic,64.31015,76.11469,Yamalo-Nenets,55.95224,51.75581,Udmurtiya Republic
+JUN_24,3,https://www.geoguessr.com/challenge/o19RToFzcJSWF8Ky,An Arbitrary Russia,60,NM,54.75161,51.49188,Tatarstan Republic,56.66883,40.550711,Ivanovo Oblast,64.34535,76.21063,Yamalo-Nenets,52.33257,56.0057,Orenburg Oblast,68.255183,33.313969,Murmansk
+JUN_24,4,https://www.geoguessr.com/challenge/O9yXCiJbXLxZ4v3B,An Arbitrary Russia,60,NM,51.14317,55.12033,Orenburg Oblast,44.62384,132.78182,Primorye,54.82907,22.13546,Kaliningrad Oblast,59.66994208104249,150.6148073754577,Magadan Oblast,43.95358,132.13455,Primorye
+JUN_24,5,https://www.geoguessr.com/challenge/kKyUoCMexxO5pUN6,An Arbitrary Russia,60,NM,59.37901,33.84319,Leningradskaya Oblast',54.483122,101.065953,Irkutsk Oblast,53.06899,158.53835,Kamchatka,48.53851,134.64152,Jewish Autonomous Oblast,52.54946,42.5308,Tambov Oblast
+JUN_24,6,https://www.geoguessr.com/challenge/lS527K3EVDRM0vml,An Arbitrary Russia,60,NM,64.29426,75.9922,Yamalo-Nenets,61.51596,53.78219,Komi,53.67829,33.15076,Bryansk Oblast,61.140817,32.497723,Karelia,54.088765,45.092076,Mordoviya Republic
+JUN_24,7,https://www.geoguessr.com/challenge/JcyXCChj7ApSYUPz,An Arbitrary Russia,60,NM,63.53034,45.78927,Arkhangelskaya,52.88728,91.42976,Khakasiya Republic,63.19217,75.48037,Yamalo-Nenets,51.47908,81.22321,Altai Krai,59.02004,28.46752,Leningradskaya Oblast'
+JUN_24,8,https://www.geoguessr.com/challenge/KQoY68uTyr4xxq3K,An Arbitrary Russia,60,NM,59.19086,31.26485,Leningradskaya Oblast',53.06912,40.3827,Tambov Oblast,43.58161,131.86275,Primorye,56.840179,124.95552,Sakha,54.51153,90.03146,Khakasiya Republic
+JUN_24,9,https://www.geoguessr.com/challenge/e4zOIbyaezWBERl8,An Arbitrary Russia,60,NM,65.15649,77.73875,Yamalo-Nenets,56.996549,60.578201,Sverdlovsk Oblast,56.579645,86.116884,Tomsk Oblast,59.68624559190605,150.9244467699665,Magadan Oblast,54.80095,21.81997,Kaliningrad Oblast
+JUN_24,10,https://www.geoguessr.com/challenge/QBG8kt9AZUUitbKa,An Arbitrary Russia,60,NM,54.76848,52.49195,Tatarstan Republic,59.11783,66.07339,Khanty-Mansia,62.007577,114.219559,Sakha,50.74396,115.96173,Zabaykalskiy (Transbaikal) Kray,53.35659,83.49605,Altai Krai
+JUN_24,11,https://www.geoguessr.com/challenge/1LvlLviiOvRxaP1s,An Arbitrary Russia,60,NM,54.77421,56.03399,Bashkortostan Republic,54.73803,20.97116,Kaliningrad Oblast,51.31827,58.43293,Orenburg Oblast,56.47542,68.44616,Tyumen Oblast,42.69577,47.6985,Dagestan
+JUN_24,12,https://www.geoguessr.com/challenge/i8TVElKSR8XpSOBL,An Arbitrary Russia,60,NM,47.277756,134.452782,Khabarovsk,52.54494,107.11117,Buryatiya Republic,53.39235,92.04653,Krasnoyarsk Krai,56.10948,91.92131,Krasnoyarsk Krai,45.22754,42.37689,Stavropol Kray
+JUN_24,13,https://www.geoguessr.com/challenge/ugt2CbYrpol1QemH,An Arbitrary Russia,60,NM,55.53321,41.41334,Vladimir Oblast,55.0895,21.79525,Kaliningrad Oblast,54.04863,74.39581,Omsk Oblast,54.2306,80.21037,Novosibirsk Oblast,43.23013,131.96468,Primorye
+JUN_24,14,https://www.geoguessr.com/challenge/aPcRDCdeLETrdT8W,An Arbitrary Russia,60,NM,57.446369,40.594325,Kostroma Oblast,51.23498,58.61899,Orenburg Oblast,51.97619,85.89256,Altai,51.39277,110.17175,Zabaykalskiy (Transbaikal) Kray,43.87484,135.44383,Primorye
+JUN_24,15,https://www.geoguessr.com/challenge/yysA6KhJYluqaJ9W,An Arbitrary Russia,60,NM,43.91937,132.03197,Primorye,51.973,108.14638,Buryatiya Republic,55.3986,65.38976,Kurgan Oblast,55.09696,75.1497,Omsk Oblast,51.32311,85.67063,Altai
+JUN_24,16,https://www.geoguessr.com/challenge/2Yb4Alt0Gyup3Ozg,An Arbitrary Russia,60,NM,55.14443,37.94789,Moscow Oblast,50.51314,40.490248,Voronezh Oblast,43.70401,44.56466,North Ossetia–Alania,52.562374,103.847866,Irkutsk Oblast,50.21054,44.91994,Volgograd Oblast
+JUN_24,17,https://www.geoguessr.com/challenge/t3UBzChLuQhqPuxD,An Arbitrary Russia,60,NM,56.63721,56.16049,Perm Krai,66.38767142113618,79.29254659288732,Yamalo-Nenets,54.950309,98.866817,Irkutsk Oblast,55.408795,43.16719,Nizhny Novgorod Oblast,51.550282,93.533637,Republic of Tyva
+JUN_24,18,https://www.geoguessr.com/challenge/OFBijiu2ll007xuP,An Arbitrary Russia,60,NM,51.60251,85.81452,Altai,45.23855,39.02676,Krasnodar Krai,57.790091,39.970637,Yaroslavl Oblast,63.19217,75.48037,Yamalo-Nenets,58.07635,49.08735,Kirov Oblast
+JUN_24,19,https://www.geoguessr.com/challenge/NiUcybzOLvvLyhTw,An Arbitrary Russia,60,NM,54.58033,90.77421,Khakasiya Republic,56.562809,83.618052,Tomsk Oblast,51.698833,35.959573,Kursk Oblast,61.869032,132.262824,Sakha,52.01632,47.33896,Saratov Oblast
+JUN_24,20,https://www.geoguessr.com/challenge/686TLTfBCEU8c2At,An Arbitrary Russia,60,NM,54.408485,48.298433,Ulyanovsk,56.668233,124.839786,Sakha,56.358787,28.221957,Ludza Municipality,55.65716,48.5534,Tatarstan Republic,58.948055,34.144023,Novgorod Oblast
+JUL_24,1,https://www.geoguessr.com/challenge/N1dHsZkZ28zXY7hG,An Arbitrary Russia,30,NM,55.98744,84.81198,Kuzbass,51.932654,94.329829,Republic of Tyva,55.03087,60.33596,Chelyabinsk,48.36283,142.66888,Sakhalin Oblast,49.4398,142.84236,Sakhalin Oblast
+JUL_24,2,https://www.geoguessr.com/challenge/oTZ45Fz6SXkTxamx,An Arbitrary Russia,30,NM,55.050609,46.846576,Chuvash Republic,55.040048,32.789964,Smolensk Oblast,46.30081,47.9486,Astrakhan Oblast,69.435601,31.027367,Murmansk,57.92231,56.14196,Perm Krai
+JUL_24,3,https://www.geoguessr.com/challenge/m9vlExdQUamBw93o,An Arbitrary Russia,30,NM,55.38147,38.26029,Moscow Oblast,53.13746,91.44832,Khakasiya Republic,55.1451,86.06664,Kuzbass,60.78384,28.66411,Leningradskaya Oblast',52.73643,59.02225,Bashkortostan Republic
+JUL_24,4,https://www.geoguessr.com/challenge/GC3HSXwBQYWgzzLS,An Arbitrary Russia,30,NM,54.21483,74.72242,Omsk Oblast,54.879375,32.395608,Smolensk Oblast,46.2643,47.98338,Astrakhan Oblast,50.611394,41.138013,Voronezh Oblast,60.49945,48.11596,Kirov Oblast
+JUL_24,5,https://www.geoguessr.com/challenge/W6YMGkiKSEuXJL02,An Arbitrary Russia,30,NM,56.042787,46.298624,Chuvash Republic,57.75016,39.805248,Yaroslavl Oblast,55.065882,32.620299,Smolensk Oblast,45.65577,39.71357,Krasnodar Krai,57.56301,39.938037,Yaroslavl Oblast
+JUL_24,6,https://www.geoguessr.com/challenge/v7rOMVTUaTrXhHaM,An Arbitrary Russia,30,NM,55.30508,35.69158,Moscow Oblast,48.77696,132.86583,Jewish Autonomous Oblast,56.10596,92.68221,Krasnoyarsk Krai,54.47119,90.23682,Khakasiya Republic,57.509875,38.340418,Yaroslavl Oblast
+JUL_24,7,https://www.geoguessr.com/challenge/YyBquU5OqcXuE04V,An Arbitrary Russia,30,NM,51.82071,55.0975,Orenburg Oblast,59.094606,60.476822,Sverdlovsk Oblast,51.33766,57.14953,Orenburg Oblast,58.262158,42.26633,Kostroma Oblast,61.41835450477151,152.1236591874305,Magadan Oblast
+JUL_24,8,https://www.geoguessr.com/challenge/O1d5XmN8OUzqyFZm,An Arbitrary Russia,30,NM,51.502495,90.202837,Republic of Tyva,66.947484,29.482869,Lapland,51.74413,85.72679,Altai,55.99018,92.68374,Krasnoyarsk Krai,56.01874,39.18067,Vladimir Oblast
+JUL_24,9,https://www.geoguessr.com/challenge/yyS1HazL35zBbjPp,An Arbitrary Russia,30,NM,68.730818,30.393222,Murmansk,67.272825,32.376748,Murmansk,58.01725,55.88132,Perm Krai,57.75527,36.60382,Tver Oblast,48.19236,44.40514,Kalmykiya Republic
+JUL_24,10,https://www.geoguessr.com/challenge/SkmEMPqdfbogsUi2,An Arbitrary Russia,30,NM,51.928739,39.152628,Voronezh Oblast,56.743151,46.925384,Mariy-El Republic,54.20442,36.37922,Tula Oblast,61.348028,129.016199,Sakha,44.65743,41.7386,Stavropol Kray
+JUL_24,11,https://www.geoguessr.com/challenge/ZmWzrp69ZU4F2KsW,An Arbitrary Russia,30,NM,55.32763,39.07322,Moscow Oblast,57.78339,48.91638,Kirov Oblast,56.05927,43.678136,Nizhny Novgorod Oblast,55.98523,38.33844,Moscow Oblast,51.468503,128.144863,Amur Oblast
+JUL_24,12,https://www.geoguessr.com/challenge/Az2kHNOAvO17SoVw,An Arbitrary Russia,30,NM,42.92613,47.34868,Dagestan,46.07228,41.92056,Kalmykiya Republic,59.2509,39.84626,Vologda Oblast,48.29978,39.93849,Rostov,57.68898,34.21522,Tver Oblast
+JUL_24,13,https://www.geoguessr.com/challenge/QMACVSeLnXzjzSqW,An Arbitrary Russia,30,NM,44.09863,40.65248,Krasnodar Krai,53.17202,157.90701,Kamchatka,53.39394,157.50766,Kamchatka,60.5508,34.17955,Leningradskaya Oblast',54.933971,43.218473,Nizhny Novgorod Oblast
+JUL_24,14,https://www.geoguessr.com/challenge/k3qDIgr9sitetfSY,An Arbitrary Russia,30,NM,44.15977,135.12127,Primorye,50.68408,41.97277,Volgograd Oblast,58.361769,45.090505,Kostroma Oblast,57.03755,35.17245,Tver Oblast,63.22012,76.13478,Yamalo-Nenets
+JUL_24,15,https://www.geoguessr.com/challenge/Q9bCMb2aoA6QVNeH,An Arbitrary Russia,30,NM,52.310732,104.262394,Irkutsk Oblast,57.694729,41.021128,Kostroma Oblast,43.51981,43.50531,Kabardino-Balkariya Republic,53.32268,83.63953,Altai Krai,52.908682,38.09622,Tula Oblast
+JUL_24,16,https://www.geoguessr.com/challenge/ysD8DkbIlAfvs7fI,An Arbitrary Russia,30,NM,54.444394,48.801564,Ulyanovsk,65.74703,70.15052,Yamalo-Nenets,57.52548,47.96329,Kirov Oblast,51.79669,102.93525,Buryatiya Republic,56.26589,40.2945,Vladimir Oblast
+JUL_24,17,https://www.geoguessr.com/challenge/chNH2VxcaxLqDL5N,An Arbitrary Russia,30,NM,53.32242,44.05854,Penza Oblast,57.0188,57.46431,Perm Krai,55.58971,37.53701,Moscow,48.60504,134.04685,Jewish Autonomous Oblast,54.5054,50.55432,Tatarstan Republic
+JUL_24,18,https://www.geoguessr.com/challenge/NCYI7tcBRZ2mMfer,An Arbitrary Russia,30,NM,58.50171,49.62452,Kirov Oblast,51.94098,48.51889,Saratov Oblast,46.23824,44.03745,Kalmykiya Republic,56.39043,38.73851,Vladimir Oblast,58.12144,57.71486,Perm Krai
+JUL_24,19,https://www.geoguessr.com/challenge/damCFIYoa0whjnlv,An Arbitrary Russia,30,NM,54.0513,59.44825,Chelyabinsk,44.42627,135.7582,Primorye,43.21609,44.7269,Ingushetiya Republic,60.886865,33.234324,Karelia,54.435976,46.58399,Ulyanovsk
+JUL_24,20,https://www.geoguessr.com/challenge/ZzXXHFyLyqb9PBBU,An Arbitrary Russia,30,NM,52.358303,127.366413,Amur Oblast,55.357565,34.030596,Smolensk Oblast,56.842445,124.908258,Sakha,53.921869,32.919605,Smolensk Oblast,62.718,51.41026,Komi

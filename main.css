@@ -82,9 +82,6 @@ body {
 #playerSummaryTable td {
     color: rgb(200,200,200);
 }
-#unplayedSeedsTable tr > th, #testResultTable tr > th {
-    background-color: rgb(40,40,40);
-}
 div.table-wrapper:nth-of-type(odd) tr:nth-child(1) > th {
     background-color: var(--ru-blue);
 }
@@ -159,9 +156,23 @@ tr:last-child td {
 tr > th:first-child {
    width: 30%; 
 }
-#unplayedSeedsTable tr > th:first-child {
-    width: 50%;
+
+.table-wrapper {
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
+
+.table-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.table-wrapper.removing {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
 
 /* Top 3 rows */
 div.table-wrapper table > tbody > tr:nth-child(2){
@@ -202,10 +213,9 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-button:hover, button:active {
-    background-color: var(--ru-blue-light);
+    &:hover, &:active {
+        background-color: var(--ru-blue-light);
+    }
 }
 
 select {
@@ -260,6 +270,7 @@ a:hover::before {
 }
 
 
+/* Tooltips */
 .tippy-content {
     padding: 2px 5px;
 }
@@ -269,12 +280,12 @@ a:hover::before {
 
 
 /* Test Title Container */
-.test-title-container {
+/* .test-title-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
-}
+} */
 
 /* Page Title */
 #pageTitle {
@@ -282,21 +293,3 @@ a:hover::before {
     text-align: center;
 }
 
-/* Test Details Box */
-.test-details-box {
-    font-size: 18px;
-    background-color: var(--ru-blue);
-    color: var(--ru-white);
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.test-details-box span {
-    margin: 0 0px;
-}
-
-
-.test-summary-table tr:first-child > th {
-    background-color: rgb(40, 40, 40);
-}

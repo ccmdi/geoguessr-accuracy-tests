@@ -1118,6 +1118,207 @@ class TestSummary {
     // }
 }
 
+class SubdivisionCharts {
+    constructor(tableContainer) {
+        this.tableContainer = tableContainer;
+        this.subdivisionData = [];
+        this.sortOrder = 'highest';
+        this.displayCount = 10;
+        this.chartsConfig = [
+            {
+                id: 'average-score-chart',
+                title: 'Subdivision average round score',
+                dataKey: 'averageScore',
+                color: '#6699ff',
+                max: 4000
+            },
+            {
+                id: 'area-adjusted-score-chart',
+                title: 'Area-adjusted subdivision metric',
+                dataKey: 'areaAdjustedScore',
+                color: '#66cc99',
+                calculateValue: (item) => {
+                    const area = SUBDIVISIONS.subdivisions[item.id].area || 1;
+                    return item.averageScore * Math.pow(area, 1/10);
+                }
+            }
+        ];
+        this.charts = new Map();
+    }
+
+    async initialize() {
+        this.subdivisionData = await this.fetchSubdivisionData();
+        this.createLayout();
+        this.initializeCharts();
+        this.updateCharts();
+    }
+
+    createLayout() {
+        this.tableContainer.innerHTML = '';
+
+        const wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        wrapper.style.flexDirection = 'column';
+        wrapper.style.height = '100%';
+
+        const controlsContainer = this.createControlsContainer();
+        wrapper.appendChild(controlsContainer);
+
+        this.chartsContainer = document.createElement('div');
+        this.chartsContainer.style.display = 'flex';
+        this.chartsContainer.style.flexDirection = 'column';
+        this.chartsContainer.style.height = 'calc(100vh - 200px)';
+        this.chartsContainer.style.overflow = 'hidden';
+
+        this.chartsConfig.forEach(config => {
+            const chartContainer = this.createChartContainer(config.id);
+            this.chartsContainer.appendChild(chartContainer);
+        });
+
+        wrapper.appendChild(this.chartsContainer);
+        this.tableContainer.appendChild(wrapper);
+
+        this.updateChartHeights();
+    }
+
+    createControlsContainer() {
+        const container = document.createElement('div');
+        container.className = 'chart-controls';
+        container.style.marginBottom = '20px';
+        const sortButton = document.createElement('button');
+        sortButton.textContent = 'Highest';
+        sortButton.className = 'sort-button';
+        sortButton.addEventListener('click', () => {
+            this.sortOrder = this.sortOrder === 'highest' ? 'lowest' : 'highest';
+            sortButton.textContent = `${this.sortOrder === 'highest' ? 'Highest' : 'Lowest'}`;
+            this.updateCharts();
+        });
+        container.appendChild(sortButton);
+        return container;
+    }
+
+    createChartContainer(id) {
+        const container = document.createElement('div');
+        container.id = id;
+        container.style.width = '100%';
+        container.style.flex = '1';
+        return container;
+    }
+
+    initializeCharts() {
+        this.chartsConfig.forEach(config => {
+            const chartContainer = document.getElementById(config.id);
+            const chart = echarts.init(chartContainer);
+            this.charts.set(config.id, chart);
+        });
+    }
+
+    updateCharts() {
+        this.chartsConfig.forEach(config => {
+            const sortedData = this.getSortedData(this.subdivisionData, config);
+            this.updateChart(config, sortedData);
+        });
+    }
+
+    getSortedData(data, config) {
+        const processedData = data.map(item => ({
+            ...item,
+            [config.dataKey]: config.calculateValue ? Math.round(config.calculateValue(item)) : item[config.dataKey]
+        }));
+
+        return [...processedData]
+            .sort((a, b) => this.sortOrder === 'highest' ? b[config.dataKey] - a[config.dataKey] : a[config.dataKey] - b[config.dataKey])
+            .slice(0, this.displayCount)
+            .reverse();
+    }
+
+    updateChart(config, data) {
+        const chart = this.charts.get(config.id);
+        const option = {
+            title: {
+                text: config.title,
+                left: 'center',
+                top: 10,
+                textStyle: { 
+                    color: '#e0e0e0',
+                    fontSize: 24,
+                    fontWeight: 'bold'
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: { type: 'shadow' }
+            },
+            grid: {
+                left: '3%',
+                right: '10%',
+                top: 60,
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                name: config.title,
+                nameLocation: 'middle',
+                nameGap: 30,
+                max: config.max ? config.max : Math.round((data.map(item => item[config.dataKey]).reduce((a, b) => Math.max(a, b)) * 1.25) / 3000) * 3000,
+                axisLabel: { color: '#e0e0e0' }
+            },
+            yAxis: {
+                type: 'category',
+                data: data.map(item => item.name),
+                axisLabel: { color: '#e0e0e0' }
+            },
+            series: [{
+                name: config.title,
+                type: 'bar',
+                data: data.map(item => item[config.dataKey]),
+                itemStyle: { color: config.color },
+                animationDuration: 1000,
+                animationEasing: 'cubicInOut',
+                animationDelay: (idx) => idx * 100
+            }],
+            backgroundColor: 'rgba(0,0,0,0)'
+        };
+        chart.setOption(option, true);
+    }
+
+    updateChartHeights() {
+        const totalHeight = this.chartsContainer.clientHeight;
+        const chartHeight = totalHeight / this.chartsConfig.length;
+
+        this.chartsConfig.forEach(config => {
+            const chartContainer = document.getElementById(config.id);
+            chartContainer.style.height = `${chartHeight}px`;
+        });
+
+        this.charts.forEach(chart => chart.resize());
+    }
+
+    async fetchSubdivisionData() {
+        try {
+            const csvResponse = await fetch('./static/csv/views/SUBDIVISION_SUMMARY.csv')
+            const csvText = await csvResponse.text();
+           
+            const rows = csvText.split('\n').slice(1);
+            return rows.map(row => {
+                const [id, occurrences, rounds, uniquePlayers, averageScore] = row.split(',');
+                const subdiv = SUBDIVISIONS['subdivisions'][id];
+                if (!subdiv) return;
+                return {
+                    id,
+                    name: subdiv.name,
+                    averageScore: Math.round(parseFloat(averageScore)),
+                    rounds: parseInt(rounds)
+                };
+            }).filter(Boolean);
+        } catch (error) {
+            console.error('Error fetching subdivision data:', error);
+            return [];
+        }
+    }
+}
+
 // Unique pages
 function initializePlayerSummary() {
     const mySummaryTab = document.getElementById('my-summary');
@@ -1198,6 +1399,22 @@ function initializeTestSummary() {
             this.selectedIndex = newIndex;
             this.dispatchEvent(new Event('change'));
         }
+    });
+}
+
+function initializeMisc() {
+    const miscTab = document.getElementById('misc');
+    miscTab.addEventListener('click', async (e) => {
+        hideContainers('tableContainer');
+        tableContainer.innerHTML = '';
+        pageTitle.innerHTML = 'Miscellaneous';
+        pageTitle.classList.remove('russiacord');
+        showContainer('tableContainer');
+
+        const subdivisionCharts = new SubdivisionCharts(tableContainer);
+        await subdivisionCharts.initialize();
+
+        e.stopPropagation();
     });
 }
 
@@ -1292,6 +1509,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeSubmenuItems();
     initializePlayerSummary();
     initializeTestSummary();
+    initializeMisc();
     initializeAbout();
 
     origMenu = document.querySelector('#player-all');
