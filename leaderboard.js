@@ -52,7 +52,7 @@ class AccuracyLeaderboard extends Leaderboard {
         super({
             rowClass: mode,
             headers: ['Player name', 'Accuracy', 'Games played'],
-            title: 'Accuracy leaderboard',
+            title: mode.includes('adj') ? 'Adjusted accuracy leaderboard' : 'Accuracy leaderboard',
             limit: 10,
             filterCondition: row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode.replace('adj_','')] * (1/3),
             sortFunction: (a, b) => parseFloat(b[5]) - parseFloat(a[5]),
@@ -1241,7 +1241,7 @@ class SubdivisionCharts {
                 top: 10,
                 textStyle: { 
                     color: '#e0e0e0',
-                    fontSize: 24,
+                    fontSize: '5vw',
                     fontWeight: 'bold'
                 }
             },
@@ -1292,7 +1292,17 @@ class SubdivisionCharts {
             chartContainer.style.height = `${chartHeight}px`;
         });
 
-        this.charts.forEach(chart => chart.resize());
+        this.charts.forEach(chart => {
+            chart.resize();
+            // Update font sizes after resize
+            const option = chart.getOption();
+            option.title[0].textStyle.fontSize = '5vw';
+            option.xAxis[0].axisLabel.fontSize = '2.5vw';
+            option.xAxis[0].nameTextStyle.fontSize = '3vw';
+            option.yAxis[0].axisLabel.fontSize = '2.5vw';
+            option.series[0].label.fontSize = '2.5vw';
+            chart.setOption(option);
+        });
     }
 
     async fetchSubdivisionData() {
@@ -1413,6 +1423,10 @@ function initializeMisc() {
 
         const subdivisionCharts = new SubdivisionCharts(tableContainer);
         await subdivisionCharts.initialize();
+
+        window.addEventListener('resize', () => {
+            subdivisionCharts.updateChartHeights();
+        });
 
         e.stopPropagation();
     });

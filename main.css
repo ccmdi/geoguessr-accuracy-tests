@@ -279,17 +279,174 @@ a:hover::before {
 }
 
 
-/* Test Title Container */
-/* .test-title-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-} */
 
-/* Page Title */
-#pageTitle {
-    margin-bottom: 10px;
-    text-align: center;
+
+
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .tab-menu {
+        flex-wrap: wrap;
+    }
+
+    .tab {
+        flex: 1 0 33.33%;
+        text-align: center;
+        padding: 10px 5px;
+        font-size: 14px;
+    }
+
+    .submenu {
+        position: static;
+        width: 100%;
+    }
+
+    #pageTitle {
+        font-size: 36px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    input, button, select { /* idk */
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .leaderboard-card {
+        padding: 10px;
+    }
+
+    .grade-container {
+        position: static;
+        margin-top: 10px;
+    }
+
+    .grade {
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .test-details {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .hide-on-mobile {
+        display: none;
+    }
+
+    #playerSearchContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    #playerNameInput {
+        width: 100%;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    #searchPlayerButton {
+        width: 100%;
+    }
+
+     #unplayedSeedsTable .sort-button {
+        width: 2em;
+    }
+
+    .leaderboard-card {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .leaderboard-card .grade-container {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leaderboard-card .grade {
+        font-size: 20px;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+    }
+
+    .leaderboard-card .adjusted-percentage {
+        font-size: 12px;
+    }
+
+    .leaderboard-card h3 {
+        font-size: 16px;
+        margin-bottom: 2px;
+        padding-right: 45px;
+    }
+
+    .leaderboard-card p {
+        font-size: 12px;
+        margin: 1px 0;
+        padding-right: 45px;
+    }
 }
 
+@media screen and (max-width: 480px) {
+    .tab {
+        flex: 1 0 50%;
+    }
+
+    #pageTitle {
+        font-size: 28px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    .leaderboard-card .grade {
+        font-size: 18px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .leaderboard-card .adjusted-percentage {
+        font-size: 10px;
+    }
+
+    .leaderboard-card h3 {
+        font-size: 14px;
+    }
+
+    .leaderboard-card p {
+        font-size: 11px;
+    }
+}
