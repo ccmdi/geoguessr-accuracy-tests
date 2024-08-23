@@ -72,7 +72,6 @@ class AccuracyLeaderboard extends Leaderboard {
                 },
                 {
                     display: (td, row) => {
-                        console.log(mode);
                         if(mode.includes('adj')) {
                             if(mode.includes('all')){
                                 td.textContent = row[2];
@@ -776,9 +775,7 @@ class PlayerSummary {
         const testName = PRECOMPUTE.tests[testId].month + ' ' + PRECOMPUTE.tests[testId].year;
         if(!testData) return null;
 
-        // Fetch overall test statistics TODO
         const overallTestData = tests.get(testId)[0];
-        console.log(overallTestData);
 
         return {
             testName: testName,
@@ -868,7 +865,6 @@ class PlayerSummary {
 
     getRankColor(rank, total) {
         const percentile = (total - rank + 1) / total * 100;
-        console.log(percentile);
         if (percentile >= 99) return 'gold';
         if (percentile >= 95) return '#00ff00';
         if (percentile >= 90) return '#40ff00';
@@ -891,7 +887,6 @@ class TestSummary {
         this.testId = testId;
         this.testData = PRECOMPUTE.tests[testId];
         this.overallTestData = tests.get(testId)[0];
-        console.log(this.overallTestData)
         this.testDetails = this.getTestDetails();
     }
 
