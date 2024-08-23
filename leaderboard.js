@@ -19,12 +19,6 @@ class Leaderboard {
         });
     }
 
-    filterAndSortData(data) {
-        return data.slice(1)
-            .filter(row => this.config.filterCondition(row))
-            .sort(this.config.sortFunction);
-    }
-
     async display(data) {
         this.titleElement.textContent = this.config.title;
         this.createHeaders();
@@ -34,7 +28,11 @@ class Leaderboard {
         } else {
             data = await CSVUtil.loadCSV(data);
         }
-        const filteredData = this.filterAndSortData(data);
+        
+        const filteredData = data.slice(1)
+        .filter(row => this.config.filterCondition(row))
+        .sort(this.config.sortFunction);
+
         filteredData.slice(0, this.config.limit).forEach(row => this.createRow(row));
     }
 
@@ -48,13 +46,13 @@ class Leaderboard {
 }
 
 class AccuracyLeaderboard extends Leaderboard {
-    constructor(mode) {
+    constructor(mode, isAdjusted) {
         super({
             rowClass: mode,
             headers: ['Player name', 'Accuracy', 'Games played'],
-            title: mode.includes('adj') ? 'Adjusted accuracy leaderboard' : 'Accuracy leaderboard',
+            title: isAdjusted ? 'Adjusted accuracy leaderboard' : 'Accuracy leaderboard',
             limit: 10,
-            filterCondition: row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode.replace('adj_','')] * (1/3),
+            filterCondition: row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode] * (1/3),
             sortFunction: (a, b) => parseFloat(b[5]) - parseFloat(a[5]),
             cellConfigs: [
                 {
@@ -72,14 +70,14 @@ class AccuracyLeaderboard extends Leaderboard {
                 },
                 {
                     display: (td, row) => {
-                        if(mode.includes('adj')) {
-                            if(mode.includes('all')){
+                        if(isAdjusted) {
+                            if(mode === 'all'){
                                 td.textContent = row[2];
-                            } if (mode.includes('nm')) {
+                            } if (mode === 'nm') {
                                 td.textContent = row[7];
-                            } if (mode.includes('nmpz')) {
+                            } if (mode === 'nmpz') {
                                 td.textContent = row[10];
-                            } // TODO: Logic for handling adjusted accuracy is garbage
+                            }
                         } else {
                             td.textContent = row[4];
                         }
@@ -246,25 +244,6 @@ class TestsLeaderboard extends Leaderboard {
                 }
             ]
         });
-    }
-}
-
-class LeaderboardFactory {
-    static create(type, mode = '') {
-        switch (type) {
-            case 'accuracy':
-                return new AccuracyLeaderboard(mode);
-            case 'streak':
-                return new StreakLeaderboard();
-            case 'aggregate':
-                return new AggregateLeaderboard(mode);
-            case 'highScores':
-                return new HighScoresLeaderboard();
-            case 'tests':
-                return new TestsLeaderboard(mode);
-            default:
-                throw new Error(`Unknown leaderboard type: ${type}`);
-        }
     }
 }
 
@@ -1472,26 +1451,27 @@ async function displayLeaderboard(container, activeId, dataFiles) {
             case 'player-all':
                 mode = activeId.split('-')[1];
                 pageTitle.textContent = mode === 'all' ? 'All-time' : mode.toUpperCase();
-                if(file.includes('ADJ')) mode = 'adj_' + mode;
-                leaderboard = LeaderboardFactory.create('accuracy', mode);
+                
+                const isAdjusted = file.includes('ADJ');
+                leaderboard = new AccuracyLeaderboard(mode, isAdjusted);
                 break;
             case 'player-hedge':
-                leaderboard = LeaderboardFactory.create('streak');
+                leaderboard = new StreakLeaderboard();
                 pageTitle.textContent = 'Hedge';
                 break;
             case 'player-games':
             case 'player-rounds':
                 mode = activeId.split('-')[1];
-                leaderboard = LeaderboardFactory.create('aggregate', mode);
+                leaderboard = new AggregateLeaderboard(mode);
                 pageTitle.textContent = mode === 'rounds' ? 'Rounds' : 'Games';
                 break;
             case 'high-scores':
-                leaderboard = LeaderboardFactory.create('highScores');
+                leaderboard = new HighScoresLeaderboard();
                 pageTitle.textContent = "High scores";
                 break;
             case 'tests':
                 mode = file[0][0].split('_')[2] || 'all';
-                leaderboard = LeaderboardFactory.create('tests', mode);
+                leaderboard = new TestsLeaderboard(mode);
                 pageTitle.textContent = "Tests";
                 break;
             default:
