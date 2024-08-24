@@ -19,7 +19,7 @@ class Leaderboard {
         });
     }
 
-    async display(data) {
+    async display(data, hasHeader) {
         this.titleElement.textContent = this.config.title;
         this.createHeaders();
         
@@ -29,7 +29,7 @@ class Leaderboard {
             data = await CSVUtil.loadCSV(data);
         }
         
-        const filteredData = data.slice(1)
+        const filteredData = data.slice(hasHeader ? 1 : 0)
         .filter(row => this.config.filterCondition(row))
         .sort(this.config.sortFunction);
 
@@ -1208,6 +1208,8 @@ class SubdivisionCharts {
 
     updateChart(config, data) {
         const chart = this.charts.get(config.id);
+        const isMobile = window.innerWidth <= 768;
+
         const option = {
             title: {
                 text: config.title,
@@ -1215,16 +1217,22 @@ class SubdivisionCharts {
                 top: 10,
                 textStyle: { 
                     color: '#e0e0e0',
-                    fontSize: '5vw',
+                    fontSize: isMobile ? 18 : 24,
                     fontWeight: 'bold'
                 }
             },
             tooltip: {
                 trigger: 'axis',
-                axisPointer: { type: 'shadow' }
+                axisPointer: { type: 'shadow' },
+                formatter: function(params) {
+                    let dataIndex = params[0].dataIndex;
+                    let item = data[dataIndex];
+                    return `<strong>${item.name}</strong><br/>${config.title}: ${item[config.dataKey]}`;
+                },
+                confine: true
             },
             grid: {
-                left: '3%',
+                left: '5%',
                 right: '10%',
                 top: 60,
                 bottom: '3%',
@@ -1232,15 +1240,12 @@ class SubdivisionCharts {
             },
             xAxis: {
                 type: 'value',
-                name: config.title,
-                nameLocation: 'middle',
-                nameGap: 30,
                 max: config.max ? config.max : Math.round((data.map(item => item[config.dataKey]).reduce((a, b) => Math.max(a, b)) * 1.25) / 3000) * 3000,
                 axisLabel: { color: '#e0e0e0' }
             },
             yAxis: {
                 type: 'category',
-                data: data.map(item => item.name),
+                data: data.map(item => isMobile ? item.iso2 : item.name),
                 axisLabel: { color: '#e0e0e0' }
             },
             series: [{
@@ -1268,9 +1273,8 @@ class SubdivisionCharts {
 
         this.charts.forEach(chart => {
             chart.resize();
-            // Update font sizes after resize
+
             const option = chart.getOption();
-            option.title[0].textStyle.fontSize = '5vw';
             option.xAxis[0].axisLabel.fontSize = '2.5vw';
             option.xAxis[0].nameTextStyle.fontSize = '3vw';
             option.yAxis[0].axisLabel.fontSize = '2.5vw';
@@ -1292,6 +1296,7 @@ class SubdivisionCharts {
                 return {
                     id,
                     name: subdiv.name,
+                    iso2: subdiv.iso2,
                     averageScore: Math.round(parseFloat(averageScore)),
                     rounds: parseInt(rounds)
                 };
@@ -1436,11 +1441,15 @@ async function displayLeaderboard(container, activeId, dataFiles) {
                 files = [records.get('TEST_ACCURACY'), records.get('TEST_ACCURACY_NM'), records.get('TEST_ACCURACY_NMPZ')];
                 break;
         }
+    } else {
+        
     }
 
     for (let file of files) {
         let leaderboard;
         let mode;
+        let hasHeader = true;
+
         const tableWrapper = document.createElement('div');
         tableWrapper.className = 'table-wrapper';
         pageTitle.classList.add('russiacord');
@@ -1466,10 +1475,12 @@ async function displayLeaderboard(container, activeId, dataFiles) {
                 pageTitle.textContent = mode === 'rounds' ? 'Rounds' : 'Games';
                 break;
             case 'high-scores':
+                hasHeader = false;
                 leaderboard = new HighScoresLeaderboard();
                 pageTitle.textContent = "High scores";
                 break;
             case 'tests':
+                hasHeader = false;
                 mode = file[0][0].split('_')[2] || 'all';
                 leaderboard = new TestsLeaderboard(mode);
                 pageTitle.textContent = "Tests";
@@ -1483,7 +1494,7 @@ async function displayLeaderboard(container, activeId, dataFiles) {
         tableWrapper.appendChild(leaderboard.table);
         container.appendChild(tableWrapper);
 
-        await leaderboard.display(file);
+        await leaderboard.display(file, hasHeader);
 
         requestAnimationFrame(() => {
             tableWrapper.classList.add('visible');

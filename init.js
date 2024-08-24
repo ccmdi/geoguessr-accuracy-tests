@@ -10,7 +10,6 @@ let tests = new Map();
 let records = new Map();
 let origMenu;
 
-
 class CSVUtil {
     static async loadCSV(file, type = 'views') {
         try {

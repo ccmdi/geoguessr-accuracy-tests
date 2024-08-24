@@ -2,327 +2,408 @@
     "subdivisions": {
         "Sakhalin Oblast": {
             "name": "Sakhalin Oblast",
-            "area": 87100
+            "area": 87100,
+            "iso2": "SAK"
         },
         "Moscow Oblast": {
             "name": "Moscow Oblast",
-            "area": 44300
+            "area": 44300,
+            "iso2": "MOS"
         },
         "Leningradskaya Oblast'": {
             "name": "Leningrad Oblast",
-            "area": 84500
+            "area": 84500,
+            "iso2": "LEN"
         },
         "Buryatiya Republic": {
             "name": "Republic of Buryatia",
-            "area": 351300
+            "area": 351300,
+            "iso2": "BU"
         },
         "Primorye": {
             "name": "Primorsky Krai",
-            "area": 164700
+            "area": 164700,
+            "iso2": "PRI"
         },
         "Yamalo-Nenets": {
             "name": "Yamalo-Nenets Autonomous Okrug",
-            "area": 769250
+            "area": 769250,
+            "iso2": "YAN"
         },
         "Karelia": {
             "name": "Republic of Karelia",
-            "area": 180500
+            "area": 180500,
+            "iso2": "KR"
         },
         "Nizhny Novgorod Oblast": {
             "name": "Nizhny Novgorod Oblast",
-            "area": 76600
+            "area": 76600,
+            "iso2": "NIZ"
         },
         "Komi": {
             "name": "Komi Republic",
-            "area": 416800
+            "area": 416800,
+            "iso2": "KO"
         },
         "Murmansk": {
             "name": "Murmansk Oblast",
-            "area": 144900
+            "area": 144900,
+            "iso2": "MUR"
         },
         "Bashkortostan Republic": {
             "name": "Republic of Bashkortostan",
-            "area": 142900
+            "area": 142900,
+            "iso2": "BA"
         },
         "Kuzbass": {
             "name": "Kemerovo Oblast",
-            "area": 95700
+            "area": 95700,
+            "iso2": "KEM"
         },
         "Saratov Oblast": {
             "name": "Saratov Oblast",
-            "area": 101200
+            "area": 101200,
+            "iso2": "SAR"
         },
         "Krasnoyarsk Krai": {
             "name": "Krasnoyarsk Krai",
-            "area": 2366800
+            "area": 2366800,
+            "iso2": "KYA"
         },
         "Zabaykalskiy (Transbaikal) Kray": {
             "name": "Zabaykalsky Krai",
-            "area": 431500
+            "area": 431500,
+            "iso2": "ZAB"
         },
         "Rostov": {
             "name": "Rostov Oblast",
-            "area": 100800
+            "area": 100800,
+            "iso2": "ROS"
         },
         "Sakha": {
             "name": "Sakha Republic",
-            "area": 3083500
+            "area": 3083500,
+            "iso2": "SA"
         },
         "Krasnodar Krai": {
             "name": "Krasnodar Krai",
-            "area": 75500
+            "area": 75500,
+            "iso2": "KDA"
         },
         "Kamchatka": {
             "name": "Kamchatka Krai",
-            "area": 464300
+            "area": 464300,
+            "iso2": "KAM"
         },
         "Perm Krai": {
             "name": "Perm Krai",
-            "area": 160600
+            "area": 160600,
+            "iso2": "PER"
         },
         "Volgograd Oblast": {
             "name": "Volgograd Oblast",
-            "area": 112900
+            "area": 112900,
+            "iso2": "VGG"
         },
         "Orenburg Oblast": {
             "name": "Orenburg Oblast",
-            "area": 123700
+            "area": 123700,
+            "iso2": "ORE"
         },
         "Smolensk Oblast": {
             "name": "Smolensk Oblast",
-            "area": 49800
+            "area": 49800,
+            "iso2": "SMO"
         },
         "Omsk Oblast": {
             "name": "Omsk Oblast",
-            "area": 141100
+            "area": 141100,
+            "iso2": "OMS"
         },
         "Tver Oblast": {
             "name": "Tver Oblast",
-            "area": 84100
+            "area": 84100,
+            "iso2": "TVE"
         },
         "Amur Oblast": {
             "name": "Amur Oblast",
-            "area": 361900
+            "area": 361900,
+            "iso2": "AMU"
         },
         "Irkutsk Oblast": {
             "name": "Irkutsk Oblast",
-            "area": 767900
+            "area": 767900,
+            "iso2": "IRK"
         },
         "Kostroma Oblast": {
             "name": "Kostroma Oblast",
-            "area": 60200
+            "area": 60200,
+            "iso2": "KOS"
         },
         "Arkhangelskaya": {
             "name": "Arkhangelsk Oblast",
-            "area": 589900
+            "area": 589900,
+            "iso2": "ARK"
         },
         "Kirov Oblast": {
             "name": "Kirov Oblast",
-            "area": 120400
+            "area": 120400,
+            "iso2": "KIR"
         },
         "Voronezh Oblast": {
             "name": "Voronezh Oblast",
-            "area": 52200
+            "area": 52200,
+            "iso2": "VOR"
         },
         "Stavropol Kray": {
             "name": "Stavropol Krai",
-            "area": 66200
+            "area": 66200,
+            "iso2": "STA"
         },
         "Altai": {
             "name": "Altai Republic",
-            "area": 92900
+            "area": 92900,
+            "iso2": "AL"
         },
         "Dagestan": {
             "name": "Republic of Dagestan",
-            "area": 50300
+            "area": 50300,
+            "iso2": "DA"
         },
         "Khabarovsk": {
             "name": "Khabarovsk Krai",
-            "area": 787600
+            "area": 787600,
+            "iso2": "KHA"
         },
         "Khanty-Mansia": {
             "name": "Khanty-Mansi Autonomous Okrug",
-            "area": 534800
+            "area": 534800,
+            "iso2": "KHM"
         },
         "Vladimir Oblast": {
             "name": "Vladimir Oblast",
-            "area": 29100
+            "area": 29100,
+            "iso2": "VLA"
         },
         "Chelyabinsk": {
             "name": "Chelyabinsk Oblast",
-            "area": 88500
+            "area": 88500,
+            "iso2": "CHE"
         },
         "Sverdlovsk Oblast": {
             "name": "Sverdlovsk Oblast",
-            "area": 194300
+            "area": 194300,
+            "iso2": "SVE"
         },
         "Republic of Tyva": {
             "name": "Tuva Republic",
-            "area": 168600
+            "area": 168600,
+            "iso2": "TY"
         },
         "Ulyanovsk": {
             "name": "Ulyanovsk Oblast",
-            "area": 37200
+            "area": 37200,
+            "iso2": "ULY"
         },
         "Astrakhan Oblast": {
             "name": "Astrakhan Oblast",
-            "area": 49000
+            "area": 49000,
+            "iso2": "AST"
         },
         "Magadan Oblast": {
             "name": "Magadan Oblast",
-            "area": 462500
+            "area": 462500,
+            "iso2": "MAG"
         },
         "Altai Krai": {
             "name": "Altai Krai",
-            "area": 168000
+            "area": 168000,
+            "iso2": "ALT"
         },
         "Novosibirsk Oblast": {
             "name": "Novosibirsk Oblast",
-            "area": 177800
+            "area": 177800,
+            "iso2": "NVS"
         },
         "Jewish Autonomous Oblast": {
             "name": "Jewish Autonomous Oblast",
-            "area": 36300
+            "area": 36300,
+            "iso2": "YEV"
         },
         "Tatarstan Republic": {
             "name": "Republic of Tatarstan",
-            "area": 67800
+            "area": 67800,
+            "iso2": "TA"
         },
         "Vologda Oblast": {
             "name": "Vologda Oblast",
-            "area": 144500
+            "area": 144500,
+            "iso2": "VLG"
         },
         "Bryansk Oblast": {
             "name": "Bryansk Oblast",
-            "area": 34900
+            "area": 34900,
+            "iso2": "BRY"
         },
         "Tomsk Oblast": {
             "name": "Tomsk Oblast",
-            "area": 314400
+            "area": 314400,
+            "iso2": "TOM"
         },
         "Tula Oblast": {
             "name": "Tula Oblast",
-            "area": 25700
+            "area": 25700,
+            "iso2": "TUL"
         },
         "Samara Oblast": {
             "name": "Samara Oblast",
-            "area": 53600
+            "area": 53600,
+            "iso2": "SAM"
         },
         "Khakasiya Republic": {
             "name": "Republic of Khakassia",
-            "area": 61600
+            "area": 61600,
+            "iso2": "KK"
         },
         "Novgorod Oblast": {
             "name": "Novgorod Oblast",
-            "area": 54500
+            "area": 54500,
+            "iso2": "NGR"
         },
         "Kalmykiya Republic": {
             "name": "Republic of Kalmykia",
-            "area": 74700
+            "area": 74700,
+            "iso2": "KL"
         },
         "Yaroslavl Oblast": {
             "name": "Yaroslavl Oblast",
-            "area": 36200
+            "area": 36200,
+            "iso2": "YAR"
         },
         "Kaliningrad Oblast": {
             "name": "Kaliningrad Oblast",
-            "area": 15100
+            "area": 15100,
+            "iso2": "KGD"
         },
         "Pskov Oblast": {
             "name": "Pskov Oblast",
-            "area": 55400
+            "area": 55400,
+            "iso2": "PSK"
         },
         "Tambov Oblast": {
             "name": "Tambov Oblast",
-            "area": 34300
+            "area": 34300,
+            "iso2": "TAM"
         },
         "Udmurtiya Republic": {
             "name": "Udmurt Republic",
-            "area": 42100
+            "area": 42100,
+            "iso2": "UD"
         },
         "Kabardino-Balkariya Republic": {
             "name": "Kabardino-Balkar Republic",
-            "area": 12500
+            "area": 12500,
+            "iso2": "KB"
         },
         "Tyumen Oblast": {
             "name": "Tyumen Oblast",
-            "area": 160100
+            "area": 160100,
+            "iso2": "TYU"
         },
         "Chuvash Republic": {
             "name": "Chuvash Republic",
-            "area": 18300
+            "area": 18300,
+            "iso2": "CU"
         },
         "Belgorod Oblast": {
             "name": "Belgorod Oblast",
-            "area": 27100
+            "area": 27100,
+            "iso2": "BEL"
         },
         "Ivanovo Oblast": {
             "name": "Ivanovo Oblast",
-            "area": 21400
+            "area": 21400,
+            "iso2": "IVA"
         },
         "Kurgan Oblast": {
             "name": "Kurgan Oblast",
-            "area": 71500
+            "area": 71500,
+            "iso2": "KGN"
         },
         "Penza Oblast": {
             "name": "Penza Oblast",
-            "area": 43400
+            "area": 43400,
+            "iso2": "PNZ"
         },
         "Chechnya": {
             "name": "Chechen Republic",
-            "area": 15600
+            "area": 15600,
+            "iso2": "CE"
         },
         "Lipetsk Oblast": {
             "name": "Lipetsk Oblast",
-            "area": 24000
+            "area": 24000,
+            "iso2": "LIP"
         },
         "Mordoviya Republic": {
             "name": "Republic of Mordovia",
-            "area": 26100
+            "area": 26100,
+            "iso2": "MO"
         },
         "Mariy-El Republic": {
             "name": "Mari El Republic",
-            "area": 23400
+            "area": 23400,
+            "iso2": "ME"
         },
         "Oryol oblast": {
             "name": "Oryol Oblast",
-            "area": 24700
+            "area": 24700,
+            "iso2": "ORL"
         },
         "Ryazan Oblast": {
             "name": "Ryazan Oblast",
-            "area": 39600
+            "area": 39600,
+            "iso2": "RYA"
         },
         "North Ossetia–Alania": {
             "name": "Republic of North Ossetia–Alania",
-            "area": 8000
+            "area": 8000,
+            "iso2": "SE"
         },
         "Karachayevo-Cherkesiya Republic": {
             "name": "Karachay-Cherkess Republic",
-            "area": 14300
+            "area": 14300,
+            "iso2": "KC"
         },
         "Kaluga Oblast": {
             "name": "Kaluga Oblast",
-            "area": 29800
+            "area": 29800,
+            "iso2": "KLU"
         },
         "Kursk Oblast": {
             "name": "Kursk Oblast",
-            "area": 30000
+            "area": 30000,
+            "iso2": "KRS"
         },
         "Adygeya Republic": {
             "name": "Republic of Adygea",
-            "area": 7800
+            "area": 7800,
+            "iso2": "AD"
         },
         "Moscow": {
             "name": "Moscow",
-            "area": 2561
+            "area": 2561,
+            "iso2": "MOW"
         },
         "Ingushetiya Republic": {
             "name": "Republic of Ingushetia",
-            "area": 3600
+            "area": 3600,
+            "iso2": "IN"
         },
         "St.-Petersburg": {
             "name": "Saint Petersburg",
-            "area": 1439
+            "area": 1439,
+            "iso2": "SPE"
         }
     }
 }
