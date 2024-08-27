@@ -65,7 +65,6 @@ class AccuracyLeaderboard extends Leaderboard {
             limit: 10,
             filterCondition: row => {
                 if (isAdjusted) {
-                    console.log(row[1], row[roundsPlayedIndices[mode]] / 5, row[5],PRECOMPUTE['seedCount'][mode] * (1/2));
                     return parseInt(row[roundsPlayedIndices[mode]] / 5) >= PRECOMPUTE['seedCount'][mode] * (2/5) && parseInt(row[5]) == 0
                 } else {
                     return parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode] * (1/2) && parseInt(row[5]) == 0;

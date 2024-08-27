@@ -154,7 +154,6 @@ function initializeSubmenuItems() {
     document.querySelectorAll('.submenu-item').forEach(item => {
         item.addEventListener('click', async (e) => {
             const activeId = item.getAttribute('id');
-            console.log(document.querySelector(`#${activeId}`));
             await displayLeaderboard(tableContainer, activeId, document.querySelector(`#${activeId}`).getAttribute('data-file'));
             closeAllSubmenus();
             showContainer('tableContainer');
