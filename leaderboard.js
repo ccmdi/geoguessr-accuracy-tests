@@ -89,7 +89,11 @@ class AccuracyLeaderboard extends Leaderboard {
                 },
                 {
                     display: (td, row) => {
-                        td.textContent = `${Number(row[5] * 100).toFixed(2)}%`;
+                        if(isAdjusted) {
+                            td.textContent = `${Number(row[accAdjustedIndices[mode]] * 100).toFixed(2)}%`;
+                        } else {
+                            td.textContent = `${Number(row[5] * 100).toFixed(2)}%`;
+                        }
                     }
                 },
                 {
