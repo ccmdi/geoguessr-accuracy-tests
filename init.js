@@ -117,7 +117,7 @@ async function initializeData() {
             playerTests.get(playerName)[row[0]] = Array.from(row.slice(1));
             playerTests.get(playerName)[row[0]].push(tests.get(row[0])[0][4]);
         });
-        
+
         const recordsData = await CSVUtil.loadCSV('RECORDS.csv');
         recordsData.slice(1).forEach(row => {
             const recordType = row[0];

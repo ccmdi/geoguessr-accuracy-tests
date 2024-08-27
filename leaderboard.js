@@ -47,13 +47,37 @@ class Leaderboard {
 
 class AccuracyLeaderboard extends Leaderboard {
     constructor(mode, isAdjusted) {
+        const accAdjustedIndices = {
+            'all': 5,
+            'nm': 8, 
+            'nmpz': 11
+        }
+        const roundsPlayedIndices = {
+            'all': 4,
+            'nm': 7,
+            'nmpz': 10
+        }
+
         super({
             rowClass: mode,
             headers: ['Player name', 'Accuracy', 'Games played'],
             title: isAdjusted ? 'Adjusted accuracy leaderboard' : 'Accuracy leaderboard',
             limit: 10,
-            filterCondition: row => parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode] * (1/3),
-            sortFunction: (a, b) => parseFloat(b[5]) - parseFloat(a[5]),
+            filterCondition: row => {
+                if (isAdjusted) {
+                    console.log(row[1], row[roundsPlayedIndices[mode]] / 5, row[5],PRECOMPUTE['seedCount'][mode] * (1/2));
+                    return parseInt(row[roundsPlayedIndices[mode]] / 5) >= PRECOMPUTE['seedCount'][mode] * (2/5) && parseInt(row[5]) == 0
+                } else {
+                    return parseInt(row[4]) >= PRECOMPUTE['seedCount'][mode] * (1/2) && parseInt(row[5]) == 0;
+                }
+            },
+            sortFunction: (a, b) => {
+                if(isAdjusted) {
+                    return parseFloat(b[accAdjustedIndices[mode]]) - parseFloat(a[accAdjustedIndices[mode]]);
+                } else {
+                    return parseFloat(b[5]) - parseFloat(a[5]);
+                }
+            },
             cellConfigs: [
                 {
                     display: (td, row) => {
@@ -71,13 +95,7 @@ class AccuracyLeaderboard extends Leaderboard {
                 {
                     display: (td, row) => {
                         if(isAdjusted) {
-                            if(mode === 'all'){
-                                td.textContent = row[2];
-                            } if (mode === 'nm') {
-                                td.textContent = row[7];
-                            } if (mode === 'nmpz') {
-                                td.textContent = row[10];
-                            }
+                            td.textContent = Math.round(row[roundsPlayedIndices[mode]] / 5);
                         } else {
                             td.textContent = row[4];
                         }
@@ -384,19 +402,62 @@ class PlayerSummary {
     }
 
     getImprovementData() {
-        return [
-            { name: 'TOTAL TESTS', key: 'TOTAL_TESTS', isPercentage: false },
-            { name: 'OVERALL IMPROVEMENT', key: 'OVERALL_IMPROVEMENT', isPercentage: true },
-            { name: 'RECENT IMPROVEMENT', key: 'RECENT_IMPROVEMENT', isPercentage: true },
-            { name: 'RECENT IMPROVEMENT (5)', key: 'RECENT_5_IMPROVEMENT', isPercentage: true },
-            { name: 'FIRST TEST', key: 'FIRST_TEST_NAME', isPercentage: false },
-            { name: 'LATEST TEST', key: 'LAST_TEST_NAME', isPercentage: false }
-        ].map(item => ({
-            type: 'improvement',
-            name: item.name,
-            value: this.playerData[item.key],
-            isPercentage: item.isPercentage
-        }));
+        const testData = Object.entries(playerTests.get(this.playerName))
+            .map(([testId, data]) => {
+                const testInfo = PRECOMPUTE.tests[testId];
+                return {
+                    testId,
+                    accuracy: parseFloat(data[6]),
+                    date: new Date(testInfo.year, this.getMonthNumber(testInfo.month)),
+                    mode: data[7],
+                    time: data[23]
+                };
+            })
+            .sort((a, b) => b.date - a.date);
+    
+        if (testData.length === 0) {
+            return [];
+        }
+    
+        const getImprovementForMode = (modeData) => {
+            if (modeData.length < 2) return 0;
+            return modeData[modeData.length - 1].accuracy - modeData[0].accuracy;
+        };
+    
+        const getRecentImprovementForMode = (modeData, count) => {
+            const recentTests = modeData.slice(-count);
+            return recentTests.length > 1
+                ? recentTests[recentTests.length - 1].accuracy - recentTests[0].accuracy
+                : 0;
+        };
+    
+        const totalTests = testData.length;
+        const firstTest = testData[testData.length - 1];
+        const lastTest = testData[0];
+    
+        const playerMostRecentTest = testData[0];
+        const mostRecentMode = playerMostRecentTest.mode === 'NMPZ' && playerMostRecentTest.time === '10' ? 'NMPZ10' : playerMostRecentTest.mode;
+    
+        const modeData = testData.filter(test =>
+            (mostRecentMode === 'NMPZ10' && test.mode === 'NMPZ' && test.time === '10') ||
+            (mostRecentMode !== 'NMPZ10' && test.mode === mostRecentMode)
+        ).sort((a, b) => a.date - b.date);
+    
+        const improvements = [
+            { type: 'improvement', name: 'TOTAL TESTS', value: totalTests, isPercentage: false },
+            { type: 'improvement', name: 'FIRST TEST', value: `${PRECOMPUTE.tests[firstTest.testId].month} ${PRECOMPUTE.tests[firstTest.testId].year}`, isPercentage: false },
+            { type: 'improvement', name: 'LATEST TEST', value: `${PRECOMPUTE.tests[lastTest.testId].month} ${PRECOMPUTE.tests[lastTest.testId].year}`, isPercentage: false }
+        ];
+    
+        if (modeData.length > 0) {
+            improvements.push(
+                { type: 'improvement', name: 'OVERALL IMPROVEMENT', value: getImprovementForMode(modeData), isPercentage: true },
+                { type: 'improvement', name: 'RECENT IMPROVEMENT', value: getRecentImprovementForMode(modeData, 3), isPercentage: true },
+                { type: 'improvement', name: 'RECENT IMPROVEMENT (5)', value: getRecentImprovementForMode(modeData, 5), isPercentage: true }
+            );
+        }
+    
+        return improvements;
     }
 
     getCardContent(data) {
@@ -527,6 +588,7 @@ class PlayerSummary {
             section.stats.forEach(([statName, allTimeKey, nmKey, nmpzKey]) => {
                 const formatValue = (key) => {
                     let value = this.playerData[key];
+                    if(!value) return '-';
                     if (key.includes('ACCURACY') || key.includes('RATE')) {
                         return `${(parseFloat(value) * 100).toFixed(2)}%`;
                     } else if (key.includes('SCORE')) {
@@ -1441,8 +1503,6 @@ async function displayLeaderboard(container, activeId, dataFiles) {
                 files = [records.get('TEST_ACCURACY'), records.get('TEST_ACCURACY_NM'), records.get('TEST_ACCURACY_NMPZ')];
                 break;
         }
-    } else {
-        
     }
 
     for (let file of files) {
