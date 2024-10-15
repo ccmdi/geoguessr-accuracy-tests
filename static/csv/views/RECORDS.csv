@@ -9,7 +9,7 @@ GAME_SCORE,6201965f19c16500017cd2ce,アキナトル,24226,https://www.geoguessr.
 GAME_SCORE,5f3c49af588cd80001d51f51,bones,24207,https://www.geoguessr.com/challenge/HbBrMP1uSSIQg4DE,https://www.geoguessr.com/challenge/HbBrMP1uSSIQg4DE,MAY_24,MAY_24,20,20,8
 GAME_SCORE,5c03eed1b5b94ba700403005,Finbarr,24198,https://www.geoguessr.com/challenge/Cnvijcfi1uqDYPaL,https://www.geoguessr.com/challenge/Cnvijcfi1uqDYPaL,AUG_23,AUG_23,6,6,9
 GAME_SCORE,63b6e8ccb8148b72cafa0adb,KZT,24191,https://www.geoguessr.com/challenge/O1d5XmN8OUzqyFZm,https://www.geoguessr.com/challenge/O1d5XmN8OUzqyFZm,JUL_24,JUL_24,8,8,10
-LARGEST_COOK,60a55176895a250001d9e2d8,emshanoff,8053,https://www.geoguessr.com/challenge/vdZ5bFTTkI7v20nW,https://www.geoguessr.com/challenge/vdZ5bFTTkI7v20nW,FEB_24,FEB_24,19,19,1
+LARGEST_COOK,60a55176895a250001d9e2d8,emshanoff,7708,https://www.geoguessr.com/challenge/vdZ5bFTTkI7v20nW,https://www.geoguessr.com/challenge/vdZ5bFTTkI7v20nW,FEB_24,FEB_24,19,19,1
 LARGEST_COOK,5ddd2840db02e1948493a2a0,Illusion,7195,https://www.geoguessr.com/challenge/RVtlNlIELGt1AMev,https://www.geoguessr.com/challenge/RVtlNlIELGt1AMev,MAY_24,MAY_24,11,11,2
 LARGEST_COOK,60a55176895a250001d9e2d8,emshanoff,5766,https://www.geoguessr.com/challenge/8H9dcyGs9MRPMV2r,https://www.geoguessr.com/challenge/8H9dcyGs9MRPMV2r,NOV_23,NOV_23,14,14,3
 LARGEST_COOK,5c03eed1b5b94ba700403005,Finbarr,5707,https://www.geoguessr.com/challenge/Eu3QDmJavz32pcex,https://www.geoguessr.com/challenge/Eu3QDmJavz32pcex,DEC_23,DEC_23,11,11,4
@@ -18,7 +18,7 @@ LARGEST_COOK,6201965f19c16500017cd2ce,アキナトル,4535,https://www.geoguessr
 LARGEST_COOK,5c03eed1b5b94ba700403005,Finbarr,4500,https://www.geoguessr.com/challenge/jrBu97ea9sCmD90Q,https://www.geoguessr.com/challenge/jrBu97ea9sCmD90Q,DEC_23,DEC_23,8,8,7
 LARGEST_COOK,5fe6c5e7ae5ccd000197c9e7,logan,4154,https://www.geoguessr.com/challenge/kw06tCDMJGpPpo1w,https://www.geoguessr.com/challenge/kw06tCDMJGpPpo1w,MAY_24,MAY_24,9,9,8
 LARGEST_COOK,63b6e8ccb8148b72cafa0adb,KZT,3964,https://www.geoguessr.com/challenge/CRPX6XxASitrOHii,https://www.geoguessr.com/challenge/CRPX6XxASitrOHii,AUG_24,AUG_24,17,17,9
-LARGEST_COOK,63b6e8ccb8148b72cafa0adb,KZT,3949,https://www.geoguessr.com/challenge/yxZnLaps0OYpPOgk,https://www.geoguessr.com/challenge/yxZnLaps0OYpPOgk,AUG_24,AUG_24,11,11,10
+LARGEST_COOK,5ddd2840db02e1948493a2a0,Illusion,3684,https://www.geoguessr.com/challenge/d1GTdgzphcOdnQnb,https://www.geoguessr.com/challenge/d1GTdgzphcOdnQnb,MAR_24,MAR_24,4,4,10
 TEST_STDEV_NMPZ,5fe6c5e7ae5ccd000197c9e7,logan,1400.6042861038902,,,MAR_24,MAR_24,,,10
 TEST_STDEV_NMPZ,6201965f19c16500017cd2ce,アキナトル,1395.4111989089108,,,MAR_24,MAR_24,,,9
 TEST_STDEV_NMPZ,60e6fefd864e960001667155,ĐɄ§ҜƦØИ,1394.789374744083,,,MAR_24,MAR_24,,,8
@@ -26,8 +26,8 @@ TEST_STDEV_NMPZ,5fe6c5e7ae5ccd000197c9e7,logan,1390.5477206969035,,,DEC_23,DEC_2
 TEST_STDEV_NMPZ,62c0257a2e7b083b8fb3ffdf,yark,1381.7951621111104,,,DEC_23,DEC_23,,,6
 TEST_STDEV_NMPZ,5ee933f15426a914442197e4,Jeif,1360.6756275299551,,,DEC_23,DEC_23,,,5
 TEST_STDEV_NMPZ,6201965f19c16500017cd2ce,アキナトル,1355.868268496299,,,DEC_23,DEC_23,,,4
-TEST_STDEV_NMPZ,5ddd2840db02e1948493a2a0,Illusion,1288.248474174187,,,MAY_24,MAY_24,,,3
-TEST_STDEV_NMPZ,5a54c41257f1750a400b7a26,oscar,1286.6209084342606,,,MAR_24,MAR_24,,,2
+TEST_STDEV_NMPZ,5a54c41257f1750a400b7a26,oscar,1308.1770676974268,,,MAR_24,MAR_24,,,3
+TEST_STDEV_NMPZ,5ddd2840db02e1948493a2a0,Illusion,1288.248474174187,,,MAY_24,MAY_24,,,2
 TEST_STDEV_NMPZ,5ddd2840db02e1948493a2a0,Illusion,1216.7969419668173,,,MAR_24,MAR_24,,,1
 TEST_STDEV_NM,5fe6c5e7ae5ccd000197c9e7,logan,1068.1390595353446,,,JUN_24,JUN_24,,,10
 TEST_STDEV_NM,6201965f19c16500017cd2ce,アキナトル,1053.4075472033844,,,SEP_23,SEP_23,,,9
