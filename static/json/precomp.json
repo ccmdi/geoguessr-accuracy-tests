@@ -1,7 +1,7 @@
 {
   "seedCount": {
-    "all": 270,
-    "nm": 190,
+    "all": 290,
+    "nm": 210,
     "nmpz": 60
   },
   "tests": {
@@ -69,6 +69,11 @@
       "year": "2024",
       "month": "August",
       "order": 13
+    },
+    "OCT_24": {
+      "year": "2024",
+      "month": "October",
+      "order": 14
     }
   }
 }
