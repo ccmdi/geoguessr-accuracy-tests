@@ -24,11 +24,16 @@ PLAYER_ID,PLAYER_NAME,streak_length,start_seed_link,end_seed_link,start_test_id,
 5ddd2840db02e1948493a2a0,Illusion,1,https://www.geoguessr.com/challenge/RVtlNlIELGt1AMev,https://www.geoguessr.com/challenge/RVtlNlIELGt1AMev,MAY_24,11,MAY_24,11
 5ddd2840db02e1948493a2a0,Illusion,1,https://www.geoguessr.com/challenge/Aj1ZxLEHiQOzYr9G,https://www.geoguessr.com/challenge/Aj1ZxLEHiQOzYr9G,MAY_24,13,MAY_24,13
 5ddd2840db02e1948493a2a0,Illusion,2,https://www.geoguessr.com/challenge/ia8PZ0d1XK43n1bV,https://www.geoguessr.com/challenge/kuqSFdeZMxp9ZZE1,MAY_24,16,MAY_24,17
-5ddd2840db02e1948493a2a0,Illusion,2,https://www.geoguessr.com/challenge/7XxKsiRfXc9FRCGP,https://www.geoguessr.com/challenge/HbBrMP1uSSIQg4DE,MAY_24,19,MAY_24,20
+5ddd2840db02e1948493a2a0,Illusion,3,https://www.geoguessr.com/challenge/7XxKsiRfXc9FRCGP,https://www.geoguessr.com/challenge/Noy0tZXVUYYcTmEt,MAY_24,19,NOV_24,1
+5ddd2840db02e1948493a2a0,Illusion,1,https://www.geoguessr.com/challenge/o0jS6p4Q7cFfkLKZ,https://www.geoguessr.com/challenge/o0jS6p4Q7cFfkLKZ,NOV_24,6,NOV_24,6
+5ddd2840db02e1948493a2a0,Illusion,2,https://www.geoguessr.com/challenge/77bKKLzjSJuQmcDQ,https://www.geoguessr.com/challenge/yWS8tNrHXCrSqp6F,NOV_24,12,NOV_24,13
+5ddd2840db02e1948493a2a0,Illusion,1,https://www.geoguessr.com/challenge/Vm7uyqOlbA65mxJ4,https://www.geoguessr.com/challenge/Vm7uyqOlbA65mxJ4,NOV_24,19,NOV_24,19
 5e2e983722bbda85a40e9009,Eamonn,1,https://www.geoguessr.com/challenge/4z4TYH0CdIoTJwou,https://www.geoguessr.com/challenge/4z4TYH0CdIoTJwou,DEC_23,15,DEC_23,15
 5e2e983722bbda85a40e9009,Eamonn,1,https://www.geoguessr.com/challenge/uTWuaov5bk7KFRrJ,https://www.geoguessr.com/challenge/uTWuaov5bk7KFRrJ,MAR_24,8,MAR_24,8
 5e2e983722bbda85a40e9009,Eamonn,1,https://www.geoguessr.com/challenge/F95Rnn7xIgbbmHH7,https://www.geoguessr.com/challenge/F95Rnn7xIgbbmHH7,MAR_24,16,MAR_24,16
 5e8f73b22ad6cf6e8851b0ca,Tonito,1,https://www.geoguessr.com/challenge/LyCWys2ao7598wGT,https://www.geoguessr.com/challenge/LyCWys2ao7598wGT,MAR_24,5,MAR_24,5
+5e8f73b22ad6cf6e8851b0ca,Tonito,1,https://www.geoguessr.com/challenge/77bKKLzjSJuQmcDQ,https://www.geoguessr.com/challenge/77bKKLzjSJuQmcDQ,NOV_24,12,NOV_24,12
+5e8f73b22ad6cf6e8851b0ca,Tonito,1,https://www.geoguessr.com/challenge/mKp3z6bC7bkr9iWG,https://www.geoguessr.com/challenge/mKp3z6bC7bkr9iWG,NOV_24,18,NOV_24,18
 5ee933f15426a914442197e4,Jeif,1,https://www.geoguessr.com/challenge/s41JLWatbAqfnFq7,https://www.geoguessr.com/challenge/s41JLWatbAqfnFq7,DEC_23,4,DEC_23,4
 5ee933f15426a914442197e4,Jeif,3,https://www.geoguessr.com/challenge/Jql3EYGHhOSoTKzj,https://www.geoguessr.com/challenge/Nc6B9wtMFBJWFUrT,DEC_23,9,DEC_23,12
 5ee933f15426a914442197e4,Jeif,1,https://www.geoguessr.com/challenge/LCEvynboLXjOyucC,https://www.geoguessr.com/challenge/LCEvynboLXjOyucC,DEC_23,18,DEC_23,18
@@ -52,7 +57,10 @@ PLAYER_ID,PLAYER_NAME,streak_length,start_seed_link,end_seed_link,start_test_id,
 5fe6c5e7ae5ccd000197c9e7,logan,1,https://www.geoguessr.com/challenge/kw06tCDMJGpPpo1w,https://www.geoguessr.com/challenge/kw06tCDMJGpPpo1w,MAY_24,9,MAY_24,9
 5fe6c5e7ae5ccd000197c9e7,logan,1,https://www.geoguessr.com/challenge/Aj1ZxLEHiQOzYr9G,https://www.geoguessr.com/challenge/Aj1ZxLEHiQOzYr9G,MAY_24,13,MAY_24,13
 5fe6c5e7ae5ccd000197c9e7,logan,1,https://www.geoguessr.com/challenge/ia8PZ0d1XK43n1bV,https://www.geoguessr.com/challenge/ia8PZ0d1XK43n1bV,MAY_24,16,MAY_24,16
-5fe6c5e7ae5ccd000197c9e7,logan,1,https://www.geoguessr.com/challenge/HbBrMP1uSSIQg4DE,https://www.geoguessr.com/challenge/HbBrMP1uSSIQg4DE,MAY_24,20,MAY_24,20
+5fe6c5e7ae5ccd000197c9e7,logan,2,https://www.geoguessr.com/challenge/HbBrMP1uSSIQg4DE,https://www.geoguessr.com/challenge/Noy0tZXVUYYcTmEt,MAY_24,20,NOV_24,1
+5fe6c5e7ae5ccd000197c9e7,logan,1,https://www.geoguessr.com/challenge/WXs1tONE4emlmXsV,https://www.geoguessr.com/challenge/WXs1tONE4emlmXsV,NOV_24,8,NOV_24,8
+5fe6c5e7ae5ccd000197c9e7,logan,1,https://www.geoguessr.com/challenge/yWS8tNrHXCrSqp6F,https://www.geoguessr.com/challenge/yWS8tNrHXCrSqp6F,NOV_24,13,NOV_24,13
+5fe6c5e7ae5ccd000197c9e7,logan,2,https://www.geoguessr.com/challenge/mKp3z6bC7bkr9iWG,https://www.geoguessr.com/challenge/Vm7uyqOlbA65mxJ4,NOV_24,18,NOV_24,19
 5ffb5e4975d2770001545cf5,Geooo,1,https://www.geoguessr.com/challenge/azQL6SIGmI6sijYx,https://www.geoguessr.com/challenge/azQL6SIGmI6sijYx,DEC_23,6,DEC_23,6
 5ffb5e4975d2770001545cf5,Geooo,1,https://www.geoguessr.com/challenge/uTWuaov5bk7KFRrJ,https://www.geoguessr.com/challenge/uTWuaov5bk7KFRrJ,MAR_24,8,MAR_24,8
 60069f898c6114000112b409,icepelican,1,https://www.geoguessr.com/challenge/ia8PZ0d1XK43n1bV,https://www.geoguessr.com/challenge/ia8PZ0d1XK43n1bV,MAY_24,16,MAY_24,16
@@ -74,8 +82,11 @@ PLAYER_ID,PLAYER_NAME,streak_length,start_seed_link,end_seed_link,start_test_id,
 6201965f19c16500017cd2ce,アキナトル,1,https://www.geoguessr.com/challenge/acSLl6agdYQUyl2G,https://www.geoguessr.com/challenge/acSLl6agdYQUyl2G,MAR_24,12,MAR_24,12
 6201965f19c16500017cd2ce,アキナトル,2,https://www.geoguessr.com/challenge/F95Rnn7xIgbbmHH7,https://www.geoguessr.com/challenge/Z7V3QsHN3sV3fU1r,MAR_24,16,MAR_24,17
 6201965f19c16500017cd2ce,アキナトル,2,https://www.geoguessr.com/challenge/K9RglrVMJgEVgnwb,https://www.geoguessr.com/challenge/moFFy1J89AxTkLGX,MAR_24,19,MAR_24,20
+6201965f19c16500017cd2ce,アキナトル,1,https://www.geoguessr.com/challenge/u6sBcJLWWJksL4Nr,https://www.geoguessr.com/challenge/u6sBcJLWWJksL4Nr,NOV_24,2,NOV_24,2
 62bfd10dea6140a9ef5f3224,Program,1,https://www.geoguessr.com/challenge/FtMbgjzWhFAS6OLB,https://www.geoguessr.com/challenge/FtMbgjzWhFAS6OLB,MAR_24,2,MAR_24,2
 62bfd10dea6140a9ef5f3224,Program,1,https://www.geoguessr.com/challenge/K9RglrVMJgEVgnwb,https://www.geoguessr.com/challenge/K9RglrVMJgEVgnwb,MAR_24,19,MAR_24,19
+62c0257a2e7b083b8fb3ffdf,yark,1,https://www.geoguessr.com/challenge/Noy0tZXVUYYcTmEt,https://www.geoguessr.com/challenge/Noy0tZXVUYYcTmEt,NOV_24,1,NOV_24,1
+62c0257a2e7b083b8fb3ffdf,yark,1,https://www.geoguessr.com/challenge/3MmnehdoXy6WqGtc,https://www.geoguessr.com/challenge/3MmnehdoXy6WqGtc,NOV_24,11,NOV_24,11
 62d17b25f827cbfd7205c25d,deshawn,2,https://www.geoguessr.com/challenge/EqUtUXwV56PMTzXY,https://www.geoguessr.com/challenge/4z4TYH0CdIoTJwou,DEC_23,14,DEC_23,15
 6376f2fd270414a1000e1fbf,bobasucker,1,https://www.geoguessr.com/challenge/M2iocZqbysYq6Rfi,https://www.geoguessr.com/challenge/M2iocZqbysYq6Rfi,MAR_24,3,MAR_24,3
 63b6e8ccb8148b72cafa0adb,KZT,1,https://www.geoguessr.com/challenge/BsUyXDkqN9NJlqS3,https://www.geoguessr.com/challenge/BsUyXDkqN9NJlqS3,DEC_23,7,DEC_23,7
@@ -97,3 +108,5 @@ PLAYER_ID,PLAYER_NAME,streak_length,start_seed_link,end_seed_link,start_test_id,
 6460e8bfec20ce42ae0b90bb,Spirit Donk,1,https://www.geoguessr.com/challenge/4AJEkIcOQCXOZBd3,https://www.geoguessr.com/challenge/4AJEkIcOQCXOZBd3,MAR_24,13,MAR_24,13
 64899fdf6552c09cf38d9d8e,豆豆冖,1,https://www.geoguessr.com/challenge/LCEvynboLXjOyucC,https://www.geoguessr.com/challenge/LCEvynboLXjOyucC,DEC_23,18,DEC_23,18
 64899fdf6552c09cf38d9d8e,豆豆冖,1,https://www.geoguessr.com/challenge/acSLl6agdYQUyl2G,https://www.geoguessr.com/challenge/acSLl6agdYQUyl2G,MAR_24,12,MAR_24,12
+649b4141377d3ba1a0809e04,🌺МоутонЛовесЙонаС🌺,1,https://www.geoguessr.com/challenge/Noy0tZXVUYYcTmEt,https://www.geoguessr.com/challenge/Noy0tZXVUYYcTmEt,NOV_24,1,NOV_24,1
+649b4141377d3ba1a0809e04,🌺МоутонЛовесЙонаС🌺,1,https://www.geoguessr.com/challenge/77bKKLzjSJuQmcDQ,https://www.geoguessr.com/challenge/77bKKLzjSJuQmcDQ,NOV_24,12,NOV_24,12
